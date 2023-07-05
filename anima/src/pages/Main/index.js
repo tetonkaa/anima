@@ -24,14 +24,14 @@ export default function MainPage() {
     }, []);
   
     useEffect(() => {
-      setTestList({ tests }.tests.docs);
+      setTestList({ tests }.tests.docs); console.log(tests)
     }, [tests]);
   
     function loaded() {
       return (
    
           <div>
-            {testList.map((test, i) => {
+            {tests.map((test, i) => {
               return (
                 <div>
                   
@@ -45,7 +45,7 @@ export default function MainPage() {
       );
     }
   
-    return testList ? (
+    return tests ? (
       loaded()
     ) : (
       <div >
