@@ -7,17 +7,22 @@ export default function TestPage(props) {
   const [questions, setQuestions] = useState([]);
   const [questionsList, setQuestionsList] = useState();
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [currentTest, setCurrentTest] = useState()
+
+  const thisTest = localStorage.getItem("currentTestId");
 
   async function getQuestions() {
     const { data } = await axios.get(
-      props.URL + "test-questions/" + props.testId
+      props.URL + "test-questions/" + thisTest
     );
     setQuestions(data);
     return data;
   }
+
+
   useEffect(() => {
     getQuestions();
-  }, [props.testId]);
+  }, []);
 
   useEffect(() => {
     console.log(questions);
@@ -53,7 +58,7 @@ export default function TestPage(props) {
                         }
                       />
                       <span>
-                        {answer.Answer} - Score: {answer.Score}
+                        {answer.Answer} 
                       </span>
                     </label>
                   </li>

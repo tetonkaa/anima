@@ -5,12 +5,9 @@ import axios from "axios";
 import "./main.css";
 import { Routes, Route, Link } from "react-router-dom";
 
-
 export default function MainPage(props) {
   const [tests, setTests] = useState([{}]);
   const [testList, setTestList] = useState();
-
-  // const [category, setCategory] = useState("tests");
 
   async function getTestInfo() {
     const { data } = await axios.get(props.URL);
@@ -23,30 +20,28 @@ export default function MainPage(props) {
   }, []);
 
   const handleTestNavigator = (testId) => {
+    localStorage.setItem("currentTestId", testId);
     props.setTestId(testId);
-    
-    
-  }
+  };
 
   useEffect(() => {
     setTestList({ tests }.tests.docs);
     console.log(tests);
   }, [tests]);
 
-  console.log(props.testId)
+  console.log(props.testId);
   function loaded() {
     return (
       <>
         {tests.map((test, i) => {
           return (
             <Link
-            to="/test"
+              to="/test"
               key={test._id}
               href="#"
               className="flex mainPageCards flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
               onClick={() => handleTestNavigator(test._id)}
-              >
-            
+            >
               <img
                 className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
                 src={test.testPic}
@@ -94,5 +89,4 @@ export default function MainPage(props) {
       </svg>
     </div>
   );
-  
 }
