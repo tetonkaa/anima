@@ -9,7 +9,18 @@ export default function TestPage(props) {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [currentTest, setCurrentTest] = useState()
 
-  const thisTest = localStorage.getItem("currentTestId");
+  let aTotal = 0
+  let bTotal = 0
+  let cTotal = 0
+  let dTotal = 0
+
+  console.log("aTotal"+aTotal)
+  console.log("bTotal"+bTotal)
+  console.log("cTotal"+cTotal)
+  console.log("dTotal"+dTotal)
+  
+  const thisTest = localStorage.getItem("currentTestId"); //define local storage from initial page load to store testId
+  
 
   async function getQuestions() {
     const { data } = await axios.get(
@@ -30,7 +41,15 @@ export default function TestPage(props) {
 
   const handleAnswerChange = (event, questionId) => {
     // You can handle the selected answer here if needed
-    console.log("Selected Answer:", event.target.value);
+    console.log("Selected Answer:", event.target.value)
+    
+  };
+
+  const handleAnswerValue = (event, answerValue) => {
+    // You can handle the selected answer here if needed
+    console.log("Selected Answer:", event.target.id)
+    console.log("Answer Score:", event.target.value)
+    
   };
 
   return questions.length > 0 ? (
@@ -52,9 +71,11 @@ export default function TestPage(props) {
                       <input
                         type="radio"
                         name={`answer_${questionItem._id}`}
-                        value={answer.Answer}
+                        value={answer.Score}
+                        id={answer.Label}
                         onChange={(event) =>
-                          handleAnswerChange(event, questionItem._id)
+                          // handleAnswerChange(event, questionItem._id)
+                          handleAnswerValue(event, answer)
                         }
                       />
                       <span>
