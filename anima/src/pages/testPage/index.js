@@ -4,32 +4,16 @@ import { Routes, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export default function TestPage(props) {
+  const thisTest = localStorage.getItem("currentTestId"); //define testId from local storage
   const [questions, setQuestions] = useState([]);
-  const [questionsList, setQuestionsList] = useState();
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [currentTest, setCurrentTest] = useState()
-
-  let aTotal = 0
-  let bTotal = 0
-  let cTotal = 0
-  let dTotal = 0
-
-  console.log("aTotal"+aTotal)
-  console.log("bTotal"+bTotal)
-  console.log("cTotal"+cTotal)
-  console.log("dTotal"+dTotal)
-  
-  const thisTest = localStorage.getItem("currentTestId"); //define local storage from initial page load to store testId
+  const [userAnswers, setUserAnswers] = useState({[thisTest]:{}}); //define user answers as object, using thisTest as key and answers as object for value
   
 
   async function getQuestions() {
-    const { data } = await axios.get(
-      props.URL + "test-questions/" + thisTest
-    );
+    const { data } = await axios.get(props.URL + "test-questions/" + thisTest);
     setQuestions(data);
     return data;
   }
-
 
   useEffect(() => {
     getQuestions();
@@ -41,16 +25,26 @@ export default function TestPage(props) {
 
   const handleAnswerChange = (event, questionId) => {
     // You can handle the selected answer here if needed
-    console.log("Selected Answer:", event.target.value)
-    
+    console.log("Selected Answer:", event.target.value);
   };
+
 
   const handleAnswerValue = (event, answerValue) => {
     // You can handle the selected answer here if needed
-    console.log("Selected Answer:", event.target.id)
+    console.log("Question ID "+ event.target.id)
     console.log("Answer Score:", event.target.value)
-    
+    console.log("Selected Answer:",event.target.name)
+    const questionId = event.target.id
+    const answerScore = event.target.value
+    const answerLabel = event.target.name
+    // const answerObject = { [questionId] : {[answerLabel]:answerScore}}
+    userAnswers[thisTest][questionId] = {[answerLabel]:answerScore}
+    console.log(userAnswers[thisTest])
+
+
   };
+
+  // change radio input field property from onChange to onSubmit, have event handler submit xTotal variable change/ create submit button
 
   return questions.length > 0 ? (
     <>
@@ -70,17 +64,15 @@ export default function TestPage(props) {
                     <label>
                       <input
                         type="radio"
-                        name={`answer_${questionItem._id}`}
+                        name={answer.Label}
                         value={answer.Score}
-                        id={answer.Label}
-                        onChange={(event) =>
+                        id={questionItem._id}
+                        onClick={(event) =>
                           // handleAnswerChange(event, questionItem._id)
                           handleAnswerValue(event, answer)
                         }
                       />
-                      <span>
-                        {answer.Answer} 
-                      </span>
+                      <span>{answer.Answer}</span>
                     </label>
                   </li>
                 ))}
