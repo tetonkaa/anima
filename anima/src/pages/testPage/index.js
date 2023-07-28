@@ -31,18 +31,19 @@ export default function TestPage(props) {
 
   const handleAnswerValue = (event, answerValue) => {
     // You can handle the selected answer here if needed
-    console.log("Question ID "+ event.target.id)
+    console.log("Question ID "+ event.target.name)
     console.log("Answer Score:", event.target.value)
-    console.log("Selected Answer:",event.target.name)
-    const questionId = event.target.id
+    console.log("Selected Answer:", event.target.id )
+    const questionId = event.target.name
     const answerScore = event.target.value
-    const answerLabel = event.target.name
+    const answerLabel = event.target.id
     // const answerObject = { [questionId] : {[answerLabel]:answerScore}}
     userAnswers[thisTest][questionId] = {[answerLabel]:answerScore}
     console.log(userAnswers[thisTest])
 
 
   };
+/////////////////////
 
   // change radio input field property from onChange to onSubmit, have event handler submit xTotal variable change/ create submit button
 
@@ -64,9 +65,9 @@ export default function TestPage(props) {
                     <label>
                       <input
                         type="radio"
-                        name={answer.Label}
+                        name={questionItem._id}
                         value={answer.Score}
-                        id={questionItem._id}
+                        id={answer.Label }
                         onClick={(event) =>
                           // handleAnswerChange(event, questionItem._id)
                           handleAnswerValue(event, answer)
