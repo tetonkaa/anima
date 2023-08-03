@@ -6,7 +6,7 @@ import DefaultNavbar from "./components/Nav";
 import { Button } from "flowbite-react";
 import TestPage from "./pages/testPage";
 import React, { useState, useEffect } from 'react';
-
+import CreatePage from "./pages/createPage";
 function App() {
 
   const[testId, setTestId] = useState();
@@ -14,12 +14,13 @@ function App() {
 
   return (
     <>
-      <DefaultNavbar />
+      {/* <DefaultNavbar /> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainPage setTestId={setTestId} testId={testId} URL={URL} />}  />
           <Route path="/About" element={<AboutPage />} />
           <Route path= "/test" element={<TestPage testId={testId} URL={URL} />}></Route>
+          <Route path= "/create" element={<CreatePage URL={URL} />}></Route>
         </Routes>
       </BrowserRouter>
     </>
