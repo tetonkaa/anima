@@ -15,6 +15,7 @@ export default function CreatePage(props) {
     testPic: "",
   });
 
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -25,7 +26,6 @@ export default function CreatePage(props) {
       console.error("error posting test", error);
     }
   };
-
 
   const handleTestNameInput = (event) => {
     const { value } = event.target;
@@ -41,8 +41,6 @@ export default function CreatePage(props) {
     const { value } = event.target;
     setTestData((previousData) => ({ ...previousData, testPic: value }));
   };
-
-
 
   const handleFormInput = (event, index) => {
     const { name, value } = event.target;
@@ -108,89 +106,107 @@ export default function CreatePage(props) {
             onChange={handleTestPicInput}
           />
         </div>
-        {/* Input for 'a' */}
-        <input
-          type="text"
-          name="a"
-          value={testData.results[0].a}
-          onChange={(e) => handleFormInput(e, 0)}
-          placeholder="Enter value for 'a'"
-          required
-        />
 
-        {/* Input for 'imagelink' */}
-        <input
-          type="text"
-          name="imagelink"
-          value={testData.results[0].imagelink}
-          onChange={(e) => handleFormInput(e, 0)}
-          placeholder="Enter image link"
-          required
-        />
+        {/*result input fields*/}
 
-        {/* Input for 'b' */}
-        <input
-          type="text"
-          name="b"
-          value={testData.results[1].b}
-          onChange={(e) => handleFormInput(e, 1)}
-          placeholder="Enter value for 'b'"
-          required
-        />
+        <div class="mb-6">Results
+          {/* Input for 'a' */}
+          <input
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            type="text"
+            name="a"
+            value={testData.results[0].a}
+            onChange={(e) => handleFormInput(e, 0)}
+            placeholder="Enter value for 'a'"
+            required
+          />
 
-        {/* Input for 'imagelink' */}
-        <input
-          type="text"
-          name="imagelink"
-          value={testData.results[1].imagelink}
-          onChange={(e) => handleFormInput(e, 1)}
-          placeholder="Enter image link"
-          required
-        />
+          {/* Input for 'imagelink' */}
+          <input
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            type="text"
+            name="imagelink"
+            value={testData.results[0].imagelink}
+            onChange={(e) => handleFormInput(e, 0)}
+            placeholder="Enter image link"
+            required
+          />
+        </div>
 
-        {/* Input for 'c' */}
-        <input
-          type="text"
-          name="c"
-          value={testData.results[2].c}
-          onChange={(e) => handleFormInput(e, 2)}
-          placeholder="Enter value for 'c'"
-          required
-        />
+        <div class="mb-6">
+          {/* Input for 'b' */}
+          <input
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            type="text"
+            name="b"
+            value={testData.results[1].b}
+            onChange={(e) => handleFormInput(e, 1)}
+            placeholder="Enter value for 'b'"
+            required
+          />
 
-        {/* Input for 'imagelink' */}
-        <input
-          type="text"
-          name="imagelink"
-          value={testData.results[2].imagelink}
-          onChange={(e) => handleFormInput(e, 2)}
-          placeholder="Enter image link"
-          required
-        />
+          {/* Input for 'imagelink' */}
+          <input
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            type="text"
+            name="imagelink"
+            value={testData.results[1].imagelink}
+            onChange={(e) => handleFormInput(e, 1)}
+            placeholder="Enter image link"
+            required
+          />
+        </div>
 
-        {/* Input for 'd' */}
-        <input
-          type="text"
-          name="d"
-          value={testData.results[3].d}
-          onChange={(e) => handleFormInput(e, 3)}
-          placeholder="Enter value for 'd'"
-          required
-        />
+        <div class="mb-6">
+          {/* Input for 'c' */}
+          <input
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            type="text"
+            name="c"
+            value={testData.results[2].c}
+            onChange={(e) => handleFormInput(e, 2)}
+            placeholder="Enter value for 'c'"
+            required
+          />
 
-        {/* Input for 'imagelink' */}
-        <input
-          type="text"
-          name="imagelink"
-          value={testData.results[3].imagelink}
-          onChange={(e) => handleFormInput(e, 3)}
-          placeholder="Enter image link"
-          required
-        />
+          {/* Input for 'imagelink' */}
+          <input
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            type="text"
+            name="imagelink"
+            value={testData.results[2].imagelink}
+            onChange={(e) => handleFormInput(e, 2)}
+            placeholder="Enter image link"
+            required
+          />
+        </div>
+
+        <div>
+          {/* Input for 'd' */}
+          <input
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            type="text"
+            name="d"
+            value={testData.results[3].d}
+            onChange={(e) => handleFormInput(e, 3)}
+            placeholder="Enter value for 'd'"
+            required
+          />
+
+          {/* Input for 'imagelink' */}
+          <input
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            type="text"
+            name="imagelink"
+            value={testData.results[3].imagelink}
+            onChange={(e) => handleFormInput(e, 3)}
+            placeholder="Enter image link"
+            required
+          />
+        </div>
 
         <button type="submit">Submit</button>
       </form>
     </>
   );
 }
-

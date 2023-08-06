@@ -6,8 +6,10 @@ import { useState, useEffect } from "react";
 export default function TestPage(props) {
   const thisTest = localStorage.getItem("currentTestId"); //define testId from local storage
   const [questions, setQuestions] = useState([]);
-  const [userAnswers, setUserAnswers] = useState({[thisTest]:{}}); //define user answers as object, using thisTest as key and answers as object for value
-  
+  const [userAnswers, setUserAnswers] = useState({
+    testId: thisTest,
+    userAnswers: {},
+  }); //define user answers as object, using thisTest as key and answers as object for value
 
   async function getQuestions() {
     const { data } = await axios.get(props.URL + "test-questions/" + thisTest);
@@ -28,22 +30,19 @@ export default function TestPage(props) {
     console.log("Selected Answer:", event.target.value);
   };
 
-
   const handleAnswerValue = (event, answerValue) => {
     // You can handle the selected answer here if needed
-    console.log("Question ID "+ event.target.name)
-    console.log("Answer Score:", event.target.value)
-    console.log("Selected Answer:", event.target.id )
-    const questionId = event.target.name
-    const answerScore = event.target.value
-    const answerLabel = event.target.id
+    console.log("Question ID " + event.target.name);
+    console.log("Answer Score:", event.target.value);
+    console.log("Selected Answer:", event.target.id);
+    const questionId = event.target.name;
+    const answerScore = event.target.value;
+    const answerLabel = event.target.id;
     // const answerObject = { [questionId] : {[answerLabel]:answerScore}}
-    userAnswers[thisTest][questionId] = {[answerLabel]:answerScore}
-    console.log(userAnswers[thisTest])
-
-
+    userAnswers.userAnswers[questionId] = { [answerLabel]: answerScore };
+    console.log(userAnswers);
   };
-/////////////////////
+  /////////////////////
 
   // change radio input field property from onChange to onSubmit, have event handler submit xTotal variable change/ create submit button
 
@@ -67,7 +66,7 @@ export default function TestPage(props) {
                         type="radio"
                         name={questionItem._id}
                         value={answer.Score}
-                        id={answer.Label }
+                        id={answer.Label}
                         onClick={(event) =>
                           // handleAnswerChange(event, questionItem._id)
                           handleAnswerValue(event, answer)
