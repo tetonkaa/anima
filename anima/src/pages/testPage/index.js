@@ -45,7 +45,7 @@ export default function TestPage(props) {
     };
     axios.post(props.URL + "submit", userAnswers).then((response) => {
       updateProps(response.data.finalResult);
-      console.log("user result", props.userResult);
+      
     });
     navigate("/result");
   }
