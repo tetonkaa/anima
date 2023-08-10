@@ -1,10 +1,11 @@
 import axios from "axios";
 import "./main.css";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export default function TestPage(props) {
   const thisTest = localStorage.getItem("currentTestId"); //define testId from local storage
+  const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
   const [userAnswers, setUserAnswers] = useState({
     testId: thisTest,
@@ -25,26 +26,29 @@ export default function TestPage(props) {
     console.log(questions);
   }, [questions]);
 
-  const handleAnswerChange = (event, questionId) => {
-    // You can handle the selected answer here if needed
-    console.log("Selected Answer:", event.target.value);
-  };
-
   const handleAnswerValue = (event, answerValue) => {
     // You can handle the selected answer here if needed
-    console.log("Question ID " + event.target.name);
-    console.log("Answer Score:", event.target.value);
-    console.log("Selected Answer:", event.target.id);
+    // console.log("Question ID " + event.target.name);
+    // console.log("Answer Score:", event.target.value);
+    // console.log("Selected Answer:", event.target.id);
     const questionId = event.target.name;
     const answerScore = event.target.value;
     const answerLabel = event.target.id;
     // const answerObject = { [questionId] : {[answerLabel]:answerScore}}
     userAnswers.userAnswers[questionId] = { [answerLabel]: answerScore };
-    console.log(userAnswers);
   };
   /////////////////////
 
-  // change radio input field property from onChange to onSubmit, have event handler submit xTotal variable change/ create submit button
+  async function handleAnswerSubmit() {
+    const updateProps = (response) => {
+      props.setUserResult(response);
+    };
+    axios.post(props.URL + "submit", userAnswers).then((response) => {
+      updateProps(response.data.finalResult);
+      console.log("user result", props.userResult);
+    });
+    navigate("/result");
+  }
 
   return questions.length > 0 ? (
     <>
@@ -72,7 +76,7 @@ export default function TestPage(props) {
                           handleAnswerValue(event, answer)
                         }
                       />
-                      <span>{answer.Answer}</span>
+                      <span class="answer">{answer.Answer}</span>
                     </label>
                   </li>
                 ))}
@@ -81,6 +85,13 @@ export default function TestPage(props) {
           </div>
         );
       })}
+      <button
+        type="button"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        onClick={handleAnswerSubmit}
+      >
+        Submit
+      </button>
     </>
   ) : (
     <div>
