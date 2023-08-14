@@ -18,11 +18,15 @@ export default function ResultsPage(props) {
   }
   useEffect(() => {
     getTestResults();
-  }, []);
+  }, [setRenderedResult]);
+
+  // console.log(renderedResult);
+  useEffect(() => {
+  }, [renderedResult]);
 
   useEffect(() => {
-    console.log(renderedResult);
-  }, [renderedResult]);
+    renderedResult(...renderedResult, Object.keys)
+  })
 
   function loaded() {
     return (
