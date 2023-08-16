@@ -16,28 +16,40 @@ export default function ResultsPage(props) {
     setRenderedResult(data);
     return data;
   }
-  useEffect(() => {
-    getTestResults();
-  }, [setRenderedResult]);
 
-  // console.log(renderedResult);
+  ///async function to allow renderedResult to update upon request pull completion
   useEffect(() => {
+    async function fetchResults() {
+      const results = await getTestResults();
+      setRenderedResult(results);
+    }
+    fetchResults();
+  }, [thisTest, props.userResult]);
+
+  useEffect(() => {
+    console.log(renderedResult);
   }, [renderedResult]);
 
-  useEffect(() => {
-    renderedResult(...renderedResult, Object.keys)
-  })
+  console.log(renderedResult[Object.keys(renderedResult)[0]]);
+
+  // useEffect(() => {
+  //   renderedResult(...renderedResult, Object.keys)
+  // })
 
   function loaded() {
     return (
       <>
+        <a>{renderedResult[Object.keys(renderedResult)[0]]}</a>
         <img src={renderedResult.image} />
       </>
     );
   }
 
-  return renderedResult ? (
-    loaded()
+  return Object.keys(renderedResult).length > 0 ? (
+    <>
+      <a>{renderedResult[Object.keys(renderedResult)[0]]}</a>
+      <img src={renderedResult.image} />
+    </>
   ) : (
     <div>
       {/* <h1 className=" loader animate__animated animate__pulse animate__infinite 	infinite"> Loading...</h1> */}
