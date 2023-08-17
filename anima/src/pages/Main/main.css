@@ -2,3 +2,33 @@
     margin: auto;
     margin-top: 5%;
 }
+
+.resultCard{
+    margin-top: 5% !important;
+    margin: auto;
+    width: 100vw !important;
+    height: 70vh !important;
+}
+
+.resultImage{
+    margin: auto;
+    border-radius: 20px;
+    border: 1px black solid;
+    margin-top: 2vh;
+    max-height: 65%;
+}
+
+.resultName{
+    margin:auto;
+    
+}
+
+#retakeButton{
+    width: fit-content;
+    margin: auto;
+}
+
+#resultsItems{
+    display:flex;
+    flex-direction: column;
+}

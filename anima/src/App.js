@@ -16,7 +16,7 @@ function App() {
 
   return (
     <>
-      {/* <DefaultNavbar /> */}
+      <DefaultNavbar />
       <BrowserRouter>
         <Routes>
           <Route
