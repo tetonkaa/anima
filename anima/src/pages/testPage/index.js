@@ -12,6 +12,8 @@ export default function TestPage(props) {
     userAnswers: {},
   }); //define user answers as object, using thisTest as key and answers as object for value
 
+  const [answeredQuestions, setAnsweredQuestions] = useState({})
+
   async function getQuestions() {
     const { data } = await axios.get(props.URL + "test-questions/" + thisTest);
     setQuestions(data);
@@ -27,15 +29,13 @@ export default function TestPage(props) {
   }, [questions]);
 
   const handleAnswerValue = (event, answerValue) => {
-    // You can handle the selected answer here if needed
-    // console.log("Question ID " + event.target.name);
-    // console.log("Answer Score:", event.target.value);
-    // console.log("Selected Answer:", event.target.id);
     const questionId = event.target.name;
     const answerScore = event.target.value;
     const answerLabel = event.target.id;
-    // const answerObject = { [questionId] : {[answerLabel]:answerScore}}
+
     userAnswers.userAnswers[questionId] = { [answerLabel]: answerScore };
+
+    setAnsweredQuestions({ ...answeredQuestions, [questionId]: true });
   };
   /////////////////////
 
@@ -45,7 +45,6 @@ export default function TestPage(props) {
     };
     axios.post(props.URL + "submit", userAnswers).then((response) => {
       updateProps(response.data.finalResult);
-      
     });
     navigate("/result");
   }
@@ -88,6 +87,7 @@ export default function TestPage(props) {
       <button
         type="button"
         class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        disabled={Object.keys(answeredQuestions).length !== questions.length}
         onClick={handleAnswerSubmit}
       >
         Submit
