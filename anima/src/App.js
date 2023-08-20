@@ -16,11 +16,14 @@ function App() {
 
   return (
     <>
-      <DefaultNavbar />
+      <DefaultNavbar URL={URL} />
       <BrowserRouter>
         <Routes>
           <Route
-            path="/"
+          path="/"
+           />
+          <Route
+            path="/Collections"
             element={
               <MainPage setTestId={setTestId} testId={testId} URL={URL} />
             }

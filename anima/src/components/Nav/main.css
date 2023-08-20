@@ -1,0 +1,11 @@
+.animaTitle{
+    font-size: 40px !important;
+    font-family: Techovier ;
+    animation: titleAnimation 1s ease-in;
+
+}
+
+@keyframes titleAnimation {
+    0%{filter:blur(1em)}
+    100%{filter: blur(0em)}
+}

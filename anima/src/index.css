@@ -16,3 +16,16 @@ code {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Techovier';
+  src: url(./fonts/Techovier-.woff) format('woff');
+}
+@font-face {
+  font-family: 'moto-verse';
+  src: url(./fonts/moto-verse.woff) format('woff');
+}
+@font-face {
+  font-family: 'aAutobusOmnibus';
+  src: url(/src/fonts/aAutobusOmnibus.woff) format('woff');
+}
