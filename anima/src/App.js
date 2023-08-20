@@ -8,6 +8,7 @@ import TestPage from "./pages/testPage";
 import React, { useState, useEffect } from "react";
 import CreatePage from "./pages/createPage";
 import ResultsPage from "./pages/resultsPage";
+import HomePage from "./pages/Home";
 
 function App() {
   const [testId, setTestId] = useState();
@@ -20,8 +21,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
-          path="/"
-           />
+            path="/"
+            element={
+              <HomePage setTestId={setTestId} testId={testId} URL={URL} />
+            }
+          />
           <Route
             path="/Collections"
             element={
@@ -31,12 +35,21 @@ function App() {
           <Route path="/About" element={<AboutPage />} />
           <Route
             path="/test"
-            element={<TestPage testId={testId} setUserResult={setUserResult} userResult={userResult} URL={URL} />}
+            element={
+              <TestPage
+                testId={testId}
+                setUserResult={setUserResult}
+                userResult={userResult}
+                URL={URL}
+              />
+            }
           />
           <Route path="/create" element={<CreatePage URL={URL} />} />
           <Route
             path="/result"
-            element={<ResultsPage testId={testId} URL={URL} userResult={userResult} />}
+            element={
+              <ResultsPage testId={testId} URL={URL} userResult={userResult} />
+            }
           />
         </Routes>
       </BrowserRouter>

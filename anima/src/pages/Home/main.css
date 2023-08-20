@@ -1,0 +1,17 @@
+.homePageContainer{
+    background-image: url("https://cdn.discordapp.com/attachments/1110618287924072449/1142657482943111350/tetonka._the_word_anima__drawn_out_in_a_logo_style-_futuristic__63643df4-3b77-44fb-931d-d12d575cbd95.png");
+    background-repeat: no-repeat;    
+    height:100vw;
+    background-size: cover;
+    animation: bgPulse 10s infinite ease-in;
+}
+
+@keyframes bgPulse{
+    0%{filter:blur(.5em) brightness(.5)}
+    50%{filter:blur(0) brightness(1)}
+    100%{filter: blur(.5em) brightness(.5)}
+
+    /* 0%{filter: brightness(.3),blur(.1em)}
+    50%{filter: brightness(1),blur(0em)}
+    100%{filter: brightness(.3),blur(.1em)} */
+}
