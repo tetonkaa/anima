@@ -1,7 +1,7 @@
 .homePageContainer {
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: column;
     justify-content: left;
     height: 100vh; /* Use viewport height for better sizing */
   }
@@ -19,11 +19,16 @@
     z-index: -1; 
   }
   
+.homePageContainer p{
+    color:black;
+    font-size: 1.5rem;
+}
+
   .homePageContainer a {
     color: rgb(0, 0, 0);
     font-size: 6em;
     padding: 10px;
-    position: relative;
+    padding-left: 5%;
     /* backdrop-filter: blur(5px); */
     height:80vh;
     margin-top: 25vh;
