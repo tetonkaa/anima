@@ -10,9 +10,9 @@
     background-image: url("https://cdn.discordapp.com/attachments/1110618287924072449/1143063337379303444/tetonka._cascade_of_sillouhettes_in_different_solid_colors__dra_c0080f1f-57a3-4628-881d-95a1fb63cef7.png");
     background-repeat: no-repeat;
     background-size: 100%;
-    animation: bgPulse 10s infinite ease-in;
+    animation: bgPulse 2s ease-in;
     position: absolute;
-    top: 0;
+    top: 5%;
     left: 50%;
     width: 50%;
     height: 100%;
@@ -20,30 +20,33 @@
   }
   
 .homePageContainer p{
-    color:black;
+    color:rgb(97, 96, 96);
     font-size: 1.5rem;
+    font-weight: lighter;
+    text-shadow: none;
+    -webkit-text-fill-color: rgb(97, 96, 96)!important;
 }
 
   .homePageContainer a {
     color: rgb(0, 0, 0);
     font-size: 6em;
     padding: 10px;
-    padding-left: 5%;
+    padding-left: 10%;
     /* backdrop-filter: blur(5px); */
     height:80vh;
-    margin-top: 25vh;
+    margin-top: 30vh;
     width:100%;
     font-family: 'Julius Sans One', sans-serif;
+    font-weight: bold;
+    text-shadow: rgb(32, 32, 32) 2px 0 2px;;
+    
   }
   
-  /* @keyframes bgPulse {
+  @keyframes bgPulse {
     0% {
-      filter: brightness(.7);
-    }
-    50% {
-      filter: brightness(.5);
+      filter: blur(8px);
     }
     100% {
-      filter: brightness(.7);
+      filter: blur(0px);
     }
-  } */
+  }
