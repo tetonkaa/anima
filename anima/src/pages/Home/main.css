@@ -7,30 +7,31 @@
   }
   
   .backgroundEffect {
-    background-image: url("https://cdn.discordapp.com/attachments/1110618287924072449/1142657482943111350/tetonka._the_word_anima__drawn_out_in_a_logo_style-_futuristic__63643df4-3b77-44fb-931d-d12d575cbd95.png");
+    background-image: url("https://cdn.discordapp.com/attachments/1110618287924072449/1143063337379303444/tetonka._cascade_of_sillouhettes_in_different_solid_colors__dra_c0080f1f-57a3-4628-881d-95a1fb63cef7.png");
     background-repeat: no-repeat;
     background-size: 100%;
     animation: bgPulse 10s infinite ease-in;
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    width: 50%;
     height: 100%;
     z-index: -1; 
   }
   
   .homePageContainer a {
-    color: rgb(255, 255, 255);
-    font-size: 25px;
+    color: rgb(0, 0, 0);
+    font-size: 6em;
     padding: 10px;
     position: relative;
-    backdrop-filter: blur(5px);
+    /* backdrop-filter: blur(5px); */
     height:80vh;
-    margin-top: 5vh;
+    margin-top: 25vh;
     width:100%;
+    font-family: 'Julius Sans One', sans-serif;
   }
   
-  @keyframes bgPulse {
+  /* @keyframes bgPulse {
     0% {
       filter: brightness(.7);
     }
@@ -40,4 +41,4 @@
     100% {
       filter: brightness(.7);
     }
-  }
+  } */

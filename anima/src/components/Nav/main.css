@@ -1,7 +1,7 @@
 .animaTitle{
     font-size: 40px !important;
     font-family: Techovier ;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 
@@ -16,7 +16,7 @@
 }
 .navItemsContainer ul{
     background-color: #00000000;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .animaTitle:hover{
