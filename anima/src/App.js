@@ -10,6 +10,11 @@ import CreatePage from "./pages/createPage";
 import ResultsPage from "./pages/resultsPage";
 import HomePage from "./pages/Home";
 import Footer from "./components/Footer";
+import Signin from "./pages/AuthPage/Signin";
+import Signup from "./pages/AuthPage/Signup";
+import { db } from './services/firebase.config'
+
+
 
 function App() {
   const [testId, setTestId] = useState();
@@ -18,7 +23,7 @@ function App() {
 
   return (
     <>
-      <DefaultNavbar URL={URL} />
+      {/* <DefaultNavbar URL={URL} /> */}
       <BrowserRouter>
         <Routes>
           <Route
@@ -27,6 +32,8 @@ function App() {
               <HomePage setTestId={setTestId} testId={testId} URL={URL} />
             }
           />
+          <Route path="/signin" element={<Signin URL={URL} />} />
+          <Route path="/signup" element={<Signup URL={URL} />} />
           <Route
             path="/test-list"
             element={
