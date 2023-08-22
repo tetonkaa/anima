@@ -25,3 +25,8 @@
     75%{fill :#8a1e5a}
     100%{fill: #4d1e20}
 }
+
+#authentication-modal{
+    background-color: rgba(0, 0, 0, 0.573);
+    height: 100%;
+}
