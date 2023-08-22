@@ -19,7 +19,7 @@ import { db } from './services/firebase.config'
 function App() {
   const [testId, setTestId] = useState();
   const [userResult, setUserResult] = useState("");
-  const URL = "http://localhost:4000/";
+  const URL = process.env.REACT_APP_URL;
 
   return (
     <>

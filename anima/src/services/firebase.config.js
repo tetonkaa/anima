@@ -7,15 +7,15 @@ const firebaseConfig = {
 
   apiKey: process.env.REACT_APP_APIKEY,
 
-  authDomain: "anima-80af4.firebaseapp.com",
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
 
-  projectId: "anima-80af4",
+  projectId: process.env.REACT_APP_PROJECTID,
 
-  storageBucket: "anima-80af4.appspot.com",
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
 
-  messagingSenderId: "107841057777",
+  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
 
-  appId: "1:107841057777:web:35a2014caaebb5e63c4a50",
+  appId: process.env.REACT_APP_MEASUREMENTID,
 
   measurementId: "G-QJ9KRMQSXH"
 
