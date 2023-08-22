@@ -1,3 +1,23 @@
-.renderedResult{
-    
+resultCard{
+    animation: bgshift 14s linear infinite alternate;
+}
+
+
+@keyframes bgshift{
+    0% { background-position: top left; }
+    100% { background-position: bottom right; }
+  }
+
+  #resultsItems{
+    background-color: rgba(255, 255, 255, 0.682) !important;
+    display:flex;
+    flex-direction: column;
+    width: 15vw;
+    margin:auto;
+    border-radius: 20px;
+  }
+
+  #retakeButton{
+    width: fit-content;
+    margin: auto;
 }

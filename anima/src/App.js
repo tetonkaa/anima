@@ -9,6 +9,7 @@ import React, { useState, useEffect } from "react";
 import CreatePage from "./pages/createPage";
 import ResultsPage from "./pages/resultsPage";
 import HomePage from "./pages/Home";
+import Footer from "./components/Footer";
 
 function App() {
   const [testId, setTestId] = useState();
@@ -27,7 +28,7 @@ function App() {
             }
           />
           <Route
-            path="/Collections"
+            path="/test-list"
             element={
               <MainPage setTestId={setTestId} testId={testId} URL={URL} />
             }
@@ -53,6 +54,7 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </>
   );
 }

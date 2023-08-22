@@ -1,6 +1,7 @@
 .mainPageCards{
     margin: auto;
     margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .resultCard{
@@ -8,6 +9,7 @@
     margin: auto;
     width: 100vw !important;
     height: 70vh !important;
+    
 }
 
 .resultImage{
@@ -23,15 +25,9 @@
     
 }
 
-#retakeButton{
-    width: fit-content;
-    margin: auto;
-}
 
-#resultsItems{
-    display:flex;
-    flex-direction: column;
-}
+
+
 
 button:disabled{
     opacity: .5;

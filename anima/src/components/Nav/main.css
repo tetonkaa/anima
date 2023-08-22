@@ -4,7 +4,10 @@
     color: rgb(0, 0, 0);
 }
 
-
+.navStyle{
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(10px);
+}
 
 .navItems:hover{
     animation: hoverAnimation 4s ease-in-out infinite;
