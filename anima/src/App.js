@@ -10,10 +10,9 @@ import CreatePage from "./pages/createPage";
 import ResultsPage from "./pages/resultsPage";
 import HomePage from "./pages/Home";
 import Footer from "./components/Footer";
-import Signin from "./pages/AuthPage/Signin";
 import Signup from "./pages/AuthPage/Signup";
 import { db } from './services/firebase.config'
-
+import Signin from "./pages/AuthPage/Signin";
 
 
 function App() {
@@ -23,7 +22,7 @@ function App() {
 
   return (
     <>
-      {/* <DefaultNavbar URL={URL} /> */}
+      <DefaultNavbar URL={URL} />
       <BrowserRouter>
         <Routes>
           <Route
@@ -31,37 +30,39 @@ function App() {
             element={
               <HomePage setTestId={setTestId} testId={testId} URL={URL} />
             }
-          />
-          <Route path="/signin" element={<Signin URL={URL} />} />
-          <Route path="/signup" element={<Signup URL={URL} />} />
+            />
+          {/* <Route path="/signin" element={<Signin URL={URL} />} />
+          <Route path="/signup" element={<Signup URL={URL} />} /> */}
           <Route
             path="/test-list"
             element={
               <MainPage setTestId={setTestId} testId={testId} URL={URL} />
             }
-          />
+            />
           <Route path="/About" element={<AboutPage />} />
           <Route
             path="/test"
             element={
               <TestPage
-                testId={testId}
-                setUserResult={setUserResult}
-                userResult={userResult}
-                URL={URL}
+              testId={testId}
+              setUserResult={setUserResult}
+              userResult={userResult}
+              URL={URL}
               />
             }
-          />
+            />
           <Route path="/create" element={<CreatePage URL={URL} />} />
           <Route
             path="/result"
             element={
               <ResultsPage testId={testId} URL={URL} userResult={userResult} />
             }
-          />
+            />
         </Routes>
       </BrowserRouter>
+      <Signin/>
       <Footer />
+
     </>
   );
 }
