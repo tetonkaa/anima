@@ -7,6 +7,8 @@ import {
 } from "firebase/auth";
 // import { useNavigate, Link } from "react-router-dom";
 
+import "./main.css"
+
 export default function Signin() {
   //   const navigate = useNavigate();
   const [email, SetEmail] = useState("");
@@ -48,50 +50,6 @@ export default function Signin() {
   };
 
   return (
-    // <div>
-    //   <form
-    //     onSubmit={(event) => {
-    //       sub(event);
-    //     }}
-    //   >
-    //     <div>
-    //       <label>
-    //         Email
-    //       </label>
-    //       <input
-    //         type="email"
-    //         placeholder="Email"
-    //         onChange={(e) => {
-    //           SetEmail(e.target.value);
-    //         }}
-    //       />
-    //     </div>
-    //     <div>
-    //       <label >
-    //         Password
-    //       </label>
-    //       <input
-    //         type="password"
-    //         placeholder="Password"
-    //         onChange={(e) => {
-    //           setPwd(e.target.value);
-    //         }}
-    //       />
-    //     </div>
-    //     <div>
-    //       <button>
-    //         Sign In
-    //       </button>
-    //     </div>
-    //     <div>
-    //       <button
-    //         onClick={googlesignin}
-    //       >
-    //         Google
-    //       </button>
-    //     </div>
-    //   </form>
-    // </div>
 
     <>
       <div
@@ -205,7 +163,7 @@ export default function Signin() {
                 >
                   Login to your account
                 </button>
-                <button onClick={googlesignin}>Google</button>
+                <img class="googleBtn" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" onClick={googlesignin} />
                 <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
                   Not registered?{" "}
                   <a

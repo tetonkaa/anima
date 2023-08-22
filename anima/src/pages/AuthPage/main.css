@@ -1,0 +1,27 @@
+.googleBtn{
+    height: 5vh !important;
+    
+}
+
+.googleBtn:hover{
+    cursor: pointer;
+}
+
+.loadingSvg{
+    fill: red;
+    padding: auto;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    animation: 3s ease-in svgColorizer infinite; 
+}
+
+@keyframes svgColorizer{
+    0%{fill: #013b31}
+    25%{fill :#378058}
+    50%{fill :#185a81}
+    75%{fill :#8a1e5a}
+    100%{fill: #4d1e20}
+}
