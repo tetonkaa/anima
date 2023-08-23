@@ -7,7 +7,7 @@ export default function HomePage() {
     <div class="homePageContainer">
       <div class="backgroundEffect"></div>
       <a>
-        Define<br></br>Yourself
+        Define<br></br>Your Self
       <p>A personality test generator.<br/> Create and share assessments with <br/>
          non-numerical results.</p>
       </a>
