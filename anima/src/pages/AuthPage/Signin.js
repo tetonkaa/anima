@@ -9,7 +9,7 @@ import {
 
 import "./main.css"
 
-export default function Signin() {
+export default function Signin(props) {
   //   const navigate = useNavigate();
   const [email, SetEmail] = useState("");
   const [pwd, setPwd] = useState("");
@@ -21,8 +21,10 @@ export default function Signin() {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, pwd)
       .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
+        // localStorage.setItem("token", token);
+        localStorage.setItem("userDetails", JSON.stringify(userCredential.user));
+        props.setUser(userCredential.user)
+        console.log("pulled user object"+ props.user.email)
         // navigate('/dshboard');
       })
       .catch((error) => {
@@ -37,8 +39,10 @@ export default function Signin() {
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
-        const user = result.user;
-        // navigate('/dshboard');
+        localStorage.setItem("token", token);
+        localStorage.setItem("userDetails", result.user);
+        props.setUser(result.user)
+        console.log("pulled user object"+ props.user)
       })
       .catch((error) => {
         const errorCode = error.code;

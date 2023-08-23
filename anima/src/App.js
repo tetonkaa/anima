@@ -18,7 +18,14 @@ import Signin from "./pages/AuthPage/Signin";
 function App() {
   const [testId, setTestId] = useState();
   const [userResult, setUserResult] = useState("");
+  const [user, setUser] = useState({});
   const URL = process.env.REACT_APP_URL;
+
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
 
   return (
     <>
@@ -60,7 +67,7 @@ function App() {
             />
         </Routes>
       </BrowserRouter>
-      <Signin/>
+      <Signin setUser={setUser} user={user}/>
       <Footer />
 
     </>
