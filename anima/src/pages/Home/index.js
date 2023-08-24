@@ -1,13 +1,44 @@
 import "./main.css";
 import animaParticles from "../../components/ Particles";
+import Typewriter from 'typewriter-effect';
+
+
+
+
+
+
+const typeWriterData = {
+  animated: {
+      first: "Self",
+      second: "Self",
+      third: "Self",
+      fourth: "Self",
+      fifth: "Self",
+  }
+};
+
 export default function HomePage() {
   return (
     <>
-    <animaParticles/>
     <div class="homePageContainer">
       <div class="backgroundEffect"></div>
       <a>
-        Define<br></br>Your Self
+        Define<br></br>Your
+        <span className="typeFont">
+        <Typewriter 
+                    options={{
+                      strings: [
+                        typeWriterData.animated.first,
+                        typeWriterData.animated.second,
+                        typeWriterData.animated.third,
+                        typeWriterData.animated.fourth,
+                        typeWriterData.animated.fifth
+                      ],
+                      autoStart: true,
+                      loop: true,
+                      deleteSpeed: 10,
+                    }}/>
+      </span>
       <p>A personality test generator.<br/> Create and share assessments with <br/>
          non-numerical results.</p>
       </a>
