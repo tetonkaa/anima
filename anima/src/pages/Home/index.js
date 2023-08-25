@@ -29,10 +29,6 @@ export default function HomePage() {
                     options={{
                       strings: [
                         typeWriterData.animated.first,
-                        typeWriterData.animated.second,
-                        typeWriterData.animated.third,
-                        typeWriterData.animated.fourth,
-                        typeWriterData.animated.fifth
                       ],
                       autoStart: true,
                       loop: true,
