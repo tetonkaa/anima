@@ -35,7 +35,7 @@ function App() {
           <Route
             path="/"
             element={
-              <HomePage setTestId={setTestId} testId={testId} URL={URL} />
+              <HomePage setTestId={setTestId} testId={testId} URL={URL} user={user} />
             }
             />
           {/* <Route path="/signin" element={<Signin URL={URL} />} />
@@ -43,7 +43,7 @@ function App() {
           <Route
             path="/test-list"
             element={
-              <MainPage setTestId={setTestId} testId={testId} URL={URL} />
+              <MainPage setTestId={setTestId} testId={testId} URL={URL} user={user} />
             }
             />
           <Route path="/About" element={<AboutPage />} />
@@ -55,14 +55,15 @@ function App() {
               setUserResult={setUserResult}
               userResult={userResult}
               URL={URL}
+              user={user}
               />
             }
             />
-          <Route path="/create" element={<CreatePage URL={URL} />} />
+          <Route path="/create" element={<CreatePage URL={URL} user={user} />} />
           <Route
             path="/result"
             element={
-              <ResultsPage testId={testId} URL={URL} userResult={userResult} />
+              <ResultsPage testId={testId} URL={URL} userResult={userResult} user={user} />
             }
             />
         </Routes>

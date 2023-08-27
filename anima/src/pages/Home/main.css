@@ -11,12 +11,12 @@
   background-repeat: no-repeat;
   background-size: 95%;
   animation: bgPulse 2s ease-in;
-  position: absolute;
-  top: 5%;
+  margin-top: 2%;
   left: 50%;
   width: 50%;
   height: 100%;
   z-index: -1;
+  
 }
 
 .homePageContainer p {
@@ -29,15 +29,16 @@
 
 .homePageContainer a {
   color: rgb(0, 0, 0);
-  font-size: 6em;
+  font-size: 6em !important;
   padding: 3vh;
   padding-left: 10%;
   /* backdrop-filter: blur(5px); */
   margin-top: 20vh;
-  width: 100%;
+  width: 50%;
   font-family: "Julius Sans One", sans-serif;
   font-weight: bold;
   text-shadow: rgb(32, 32, 32) 2px 0 2px;
+  
 }
 
 .typeFont {

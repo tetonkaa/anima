@@ -21,7 +21,6 @@ export default function HomePage() {
   return (
     <>
     <div class="homePageContainer">
-      <div class="backgroundEffect"></div>
       <a>
         Define<br></br>Your
         <span className="typeFont">
@@ -38,6 +37,7 @@ export default function HomePage() {
       <p>A personality test generator.<br/> Create and share assessments with <br/>
          non-numerical results.</p>
       </a>
+                    <div class="backgroundEffect"></div>
     </div>
     </>
   );
