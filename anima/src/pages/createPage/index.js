@@ -1,6 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 export default function CreatePage(props) {
   const [testData, setTestData] = useState({
     //create default test state
@@ -13,8 +12,22 @@ export default function CreatePage(props) {
       { d: "", imagelink: "" },
     ],
     testPic: "",
+    user: "",
   });
 
+  useEffect(() => {
+    if (Object.keys(props.user).length > 0) {
+      setTestData((testData) => {
+        const value = props.user[Object.keys(props.user)[4]];
+        return { ...testData, user: value };
+      });
+      console.log(testData.user + "User assigned to test create");
+      console.log(props.user[Object.keys(props.user)[4]] + "log in on create");
+    } else {
+      console.log("not signed in");
+      console.log(testData.user);
+    }
+  }, [props.user]);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -109,7 +122,8 @@ export default function CreatePage(props) {
 
         {/*result input fields*/}
 
-        <div class="mb-6">Results
+        <div class="mb-6">
+          Results
           {/* Input for 'a' */}
           <input
             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -120,7 +134,6 @@ export default function CreatePage(props) {
             placeholder="Enter value for 'a'"
             required
           />
-
           {/* Input for 'imagelink' */}
           <input
             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
