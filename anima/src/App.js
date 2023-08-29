@@ -18,7 +18,7 @@ import Signin from "./pages/AuthPage/Signin";
 function App() {
   const [testId, setTestId] = useState();
   const [userResult, setUserResult] = useState("");
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("userDetails")));
   const URL = process.env.REACT_APP_URL;
 
 

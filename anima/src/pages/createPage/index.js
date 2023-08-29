@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import "./main.css";
 export default function CreatePage(props) {
   const [testData, setTestData] = useState({
     //create default test state
@@ -18,11 +19,11 @@ export default function CreatePage(props) {
   useEffect(() => {
     if (Object.keys(props.user).length > 0) {
       setTestData((testData) => {
-        const value = props.user[Object.keys(props.user)[4]];
+        const value = props.user.uid;
         return { ...testData, user: value };
       });
       console.log(testData.user + "User assigned to test create");
-      console.log(props.user[Object.keys(props.user)[4]] + "log in on create");
+      console.log(props.user.uid + "log in on create");
     } else {
       console.log("not signed in");
       console.log(testData.user);
@@ -34,7 +35,8 @@ export default function CreatePage(props) {
 
     try {
       const response = await axios.post(props.URL + "create", testData);
-      console.log("test post successful" + response.data);
+      console.log("test post successful", response);
+      localStorage.setItem("newTestId", response.data._id);
     } catch (error) {
       console.error("error posting test", error);
     }
@@ -218,7 +220,7 @@ export default function CreatePage(props) {
           />
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Next Step</button>
       </form>
     </>
   );

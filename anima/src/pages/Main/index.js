@@ -6,7 +6,7 @@ import "./main.css";
 import { Routes, Route, Link } from "react-router-dom";
 import {ReactComponent as Loading} from '../../assets/loading.svg'
 export default function MainPage(props) {
-  const [tests, setTests] = useState([{}]);
+  const [tests, setTests] = useState([]);
   const [testList, setTestList] = useState();
 
   async function getTestInfo() {
@@ -62,7 +62,7 @@ export default function MainPage(props) {
     );
   }
 
-  return tests ? (
+  return tests.length > 0 ? (
     loaded()
   ) : (
     <div className="loadingSvg">

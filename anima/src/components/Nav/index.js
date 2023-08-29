@@ -56,7 +56,7 @@ export default function DefaultNavbar(props) {
             <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white-500/25 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
                 <a
-                  href="#"
+                  href="/"
                   class="navItems block py-2 pl-3 pr-4 text-black bg-blue-700 rounded md:bg-transparent  md:p-0 md:dark:text-blue-500"
                   aria-current="page"
                 >
