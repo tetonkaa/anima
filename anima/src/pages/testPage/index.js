@@ -10,6 +10,7 @@ export default function TestPage(props) {
   const [userAnswers, setUserAnswers] = useState({
     testId: thisTest,
     userAnswers: {},
+    user: props.user ? props.user.uid : 'guest'
   }); //define user answers as object, using thisTest as key and answers as object for value
 
   const [answeredQuestions, setAnsweredQuestions] = useState({})

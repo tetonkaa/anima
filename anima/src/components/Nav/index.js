@@ -1,6 +1,11 @@
 import "./main.css";
 import Signin from "../../pages/AuthPage/Signin";
 
+const handleLogout =() => {
+  localStorage.clear();
+  window.location.reload()
+}
+
 export default function DefaultNavbar(props) {
   return (
     <>
@@ -17,13 +22,23 @@ export default function DefaultNavbar(props) {
             </span>
           </a>
           <div class="flex md:order-2">
-            <button
-            data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
-              type="button"
-              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Get started
-            </button>
+            {!props.user ? (
+              <button
+                data-modal-target="authentication-modal"
+                data-modal-toggle="authentication-modal"
+                type="button"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Get started
+              </button>
+            ) : (
+              <button onClick={() => handleLogout()}
+                type="button"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Logout
+              </button>
+            )}
             <button
               data-collapse-toggle="navbar-sticky"
               type="button"
@@ -63,14 +78,16 @@ export default function DefaultNavbar(props) {
                   Home
                 </a>
               </li>
-              <li>
-                <a
-                  href="/create"
-                  class=" navItems block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0  dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                >
-                  Create
-                </a>
-              </li>
+              {props.user ? (
+                <li>
+                  <a
+                    href="/create"
+                    class=" navItems block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0  dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  >
+                    Create
+                  </a>
+                </li>
+              ) : null}
               <li>
                 <a
                   href="/test-list"

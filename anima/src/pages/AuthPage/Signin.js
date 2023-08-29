@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -10,7 +12,7 @@ import {
 import "./main.css"
 
 export default function Signin(props) {
-  //   const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [email, SetEmail] = useState("");
   const [pwd, setPwd] = useState("");
 
@@ -42,6 +44,7 @@ export default function Signin(props) {
         localStorage.setItem("token", token);
         localStorage.setItem("userDetails", result.user);
         props.setUser(result.user)
+        window.location.reload()
         console.log("pulled user object"+ props.user)
       })
       .catch((error) => {
@@ -164,6 +167,7 @@ export default function Signin(props) {
                 <button
                   type="submit"
                   class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  data-modal-hide="authentication-modal"
                 >
                   Login to your account
                 </button>

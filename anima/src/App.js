@@ -29,7 +29,7 @@ function App() {
 
   return (
     <>
-      <DefaultNavbar URL={URL} />
+      <DefaultNavbar URL={URL}  user={user} />
       <BrowserRouter>
         <Routes>
           <Route
