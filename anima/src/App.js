@@ -14,7 +14,6 @@ import Signup from "./pages/AuthPage/Signup";
 import { db } from './services/firebase.config'
 import Signin from "./pages/AuthPage/Signin";
 
-
 function App() {
   const [testId, setTestId] = useState();
   const [userResult, setUserResult] = useState("");
@@ -38,8 +37,7 @@ function App() {
               <HomePage setTestId={setTestId} testId={testId} URL={URL} user={user} />
             }
             />
-          {/* <Route path="/signin" element={<Signin URL={URL} />} />
-          <Route path="/signup" element={<Signup URL={URL} />} /> */}
+          <Route path="/signup" element={<Signup URL={URL} />} />
           <Route
             path="/test-list"
             element={
