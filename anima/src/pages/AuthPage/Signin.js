@@ -20,6 +20,7 @@ export default function Signin(props) {
   const [pwd, setPwd] = useState("");
   const [confirmPwd, setConfirmPwd] = useState("");
   const [isRegistered, setIsRegistered] = useState(true)
+  const [success, setSuccess] = useState(false)
 
 
 
@@ -33,8 +34,8 @@ export default function Signin(props) {
         // localStorage.setItem("token", token);
         localStorage.setItem("userDetails", JSON.stringify(userCredential.user));
         props.setUser(userCredential.user)
+        setSuccess(true)
         console.log("pulled user object"+ props.user.email)
-        // navigate('/dshboard');
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -48,8 +49,9 @@ export default function Signin(props) {
     createUserWithEmailAndPassword(auth, email, pwd)
       //   .then(updateProfile(auth.currentUser, { displayName: displayName }))
       .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
+        localStorage.setItem("userDetails", JSON.stringify(userCredential.user));
+        props.setUser(userCredential.user)
+        setSuccess(true)
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -66,7 +68,7 @@ export default function Signin(props) {
         localStorage.setItem("token", token);
         localStorage.setItem("userDetails", result.user);
         props.setUser(result.user)
-        window.location.reload()
+        if(token)window.location.reload()
         console.log("pulled user object"+ props.user)
       })
       .catch((error) => {
@@ -190,7 +192,7 @@ export default function Signin(props) {
                   disabled={email.length < 6 || pwd.length < 6}
                   type="submit"
                   class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  data-modal-hide="authentication-modal"
+                  data-modal-hide={success ? "authentication-modal": null}
                 >
                   Sign in
                 </button>
@@ -331,7 +333,7 @@ export default function Signin(props) {
                       <button
                         type="submit"
                         class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        data-modal-hide="authentication-modal"
+                        data-modal-hide={success ? "authentication-modal": null}
                         disabled={confirmPwd !== pwd || email.length < 6 || pwd.length < 6}
                       >
                         Sign Up
