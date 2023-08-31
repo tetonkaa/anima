@@ -17,6 +17,7 @@ const typeWriterData = {
   }
 };
 
+
 export default function HomePage() {
   return (
     <>

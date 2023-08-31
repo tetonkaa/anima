@@ -1,0 +1,36 @@
+.aboutContainer{
+    height: 90vh;
+    display:flex;
+    padding:15vh ;
+    flex-direction: column;
+}
+
+.aboutContainer h1{
+    font-size: 4em;
+    font-family: "Julius Sans One", sans-serif;
+    
+}
+
+.aboutContainer p{
+    padding-bottom: 10vh;
+    width: 70vw;
+}
+
+.aboutContainer h2{
+    font-size: 2em;
+    font-family: "Julius Sans One", sans-serif;
+}
+
+.techSvgs{
+    padding: auto;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.techSvgs svg{
+    height: 15vh;
+    
+}
