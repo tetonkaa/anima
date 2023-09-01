@@ -1,19 +1,67 @@
 .aboutContainer{
     height: 90vh;
     display:flex;
-    padding:15vh ;
     flex-direction: column;
+    margin-top: 5%;
 }
 
 .aboutContainer h1{
     font-size: 4em;
     font-family: "Julius Sans One", sans-serif;
+    text-align: center
     
 }
 
-.aboutContainer p{
-    padding-bottom: 10vh;
-    width: 70vw;
+.aboutContainer h2{
+    text-align: center;
+}
+
+.aboutBlurb{
+
+    font-size: 1.5em;
+    color: rgb(119, 119, 119);
+    text-align: center;
+    padding-bottom: 2vh;
+    padding-left: 20vw;
+    padding-right: 20vw;
+}
+
+.team{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.teamMember{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "Julius Sans One", sans-serif;
+}
+
+.teamMember p{
+    text-align: center;
+}
+
+.team img{
+    border-radius: 35px;
+    width: 15rem;
+    padding: 1rem;
+}
+
+.teamMember h3{
+    text-align: center;
+    font-size: 2rem;
+}
+
+.teamMember svg{
+    margin: auto;
+}
+
+.team svg{
+    height: 5vh;
+    border: black;
+    
 }
 
 .aboutContainer h2{
@@ -27,10 +75,56 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 .techSvgs svg{
-    height: 15vh;
+    height: 10vh;
+    margin-top: 3vh;
+    border: red solid;
+    padding: .5vh;
+    animation: 3s linear 1s infinite alternate techBorderizer; 
+}
+
+.techSvgs svg:hover{
+    transform: scale(1.5);
+    background-color: rgba(208, 208, 208, 0.338);
     
+}
+
+.techSvgs svg:nth-of-type(1){
+    height: 11.5vh;
+    border: red solid;
+    animation-delay: .1s
+}
+.techSvgs svg:nth-of-type(2){
+    height: 10vh;
+    border: red solid;
+    animation-delay: .2s
+}
+.techSvgs svg:nth-of-type(3){
+    height: 15vh;
+    margin-top: 5vh;
+    border: red solid;
+    animation-delay: .3s 
+}
+.techSvgs svg:nth-of-type(4){
+    height: 10vh;
+    margin-top: 5vh;
+    border: red solid;
+    
+    animation-delay: .4s 
+}
+.techSvgs svg:nth-of-type(5){
+    height: 12.5vh;
+    margin-top: 5vh;
+    border: red solid;
+    animation-delay: .5s 
+}
+
+@keyframes techBorderizer{
+    0%{border: #013b31 solid 10px}
+    25%{border :#378058 solid 10px}
+    50%{border :#185a81 solid 10px}
+    75%{border :#8a1e5a solid 10px}
+    100%{border: #a9141b solid 10px}
 }

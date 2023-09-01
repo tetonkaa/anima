@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./main.css";
-import {ReactComponent as Loading} from '../../assets/loading.svg'
+import Typewriter from "typewriter-effect";
+import { ReactComponent as Loading } from "../../assets/loading.svg";
 export default function ResultsPage(props) {
   const [renderedResult, setRenderedResult] = useState({});
   const thisTest = localStorage.getItem("currentTestId");
@@ -58,7 +59,14 @@ export default function ResultsPage(props) {
           >
             <p class="resultName text-center" href="#">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {renderedResult[Object.keys(renderedResult)[0]]}!
+                <Typewriter
+                  options={{
+                    strings: [renderedResult[Object.keys(renderedResult)[0]]],
+                    autoStart: true,
+                    loop: true,
+                    deleteSpeed: 100000,
+                  }}
+                />
               </h5>
             </p>
             <a
@@ -94,7 +102,7 @@ export default function ResultsPage(props) {
   ) : (
     <div className="loadingSvg">
       {/* <h1 className=" loader animate__animated animate__pulse animate__infinite 	infinite"> Loading...</h1> */}
-    <Loading />
+      <Loading />
     </div>
   );
 }
