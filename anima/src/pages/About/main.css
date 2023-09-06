@@ -81,13 +81,15 @@
     height: 10vh;
     margin-top: 3vh;
     border: red solid;
-    padding: .5vh;
+    padding: 1vh;
     animation: 3s linear 1s infinite alternate techBorderizer; 
+    border-radius: 24px;
 }
 
 .techSvgs svg:hover{
     transform: scale(1.5);
     background-color: rgba(208, 208, 208, 0.338);
+    cursor:pointer;
     
 }
 
@@ -122,9 +124,9 @@
 }
 
 @keyframes techBorderizer{
-    0%{border: #013b31 solid 10px}
-    25%{border :#378058 solid 10px}
-    50%{border :#185a81 solid 10px}
-    75%{border :#8a1e5a solid 10px}
-    100%{border: #a9141b solid 10px}
+    0%{border: #013b31 solid 5px}
+    25%{border :#378058 solid 5px}
+    50%{border :#185a81 solid 5px}
+    75%{border :#8a1e5a solid 5px}
+    100%{border: #a9141b solid 5px}
 }

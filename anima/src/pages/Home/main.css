@@ -2,21 +2,12 @@
   position: relative;
   display: flex;
   align-items: column;
-  justify-content: left;
   height: 90.5vh; /* Use viewport height for better sizing */
+  width: 100%;
 }
 
-.backgroundEffect {
-  background-image: url("https://cdn.discordapp.com/attachments/1110618287924072449/1143063337379303444/tetonka._cascade_of_sillouhettes_in_different_solid_colors__dra_c0080f1f-57a3-4628-881d-95a1fb63cef7.png");
-  background-repeat: no-repeat;
-  background-size: 95%;
-  animation: bgPulse 2s ease-in;
-  margin-top: 2%;
-  left: 50%;
-  width: 50%;
-  height: 100%;
-  z-index: -1;
-  
+.homePageContainer img {
+
 }
 
 .homePageContainer p {
@@ -30,52 +21,42 @@
 .homePageContainer a {
   color: rgb(0, 0, 0);
   font-size: 6em !important;
-  padding: 3vh;
-  padding-left: 10%;
-  /* backdrop-filter: blur(5px); */
-  margin-top: 20vh;
-  width: 50%;
+  padding-left: 15vw;
+
+  padding-top: 15vh;
+  width: 50vw;
   font-family: "Julius Sans One", sans-serif;
   font-weight: bold;
   text-shadow: rgb(32, 32, 32) 2px 0 2px;
-  
 }
 
 .typeFont {
   animation: fontChanger 14s infinite ease-in;
-  position: absolute;
   padding-left: 2vw;
 }
-
-
-
 
 @keyframes fontChanger {
   0% {
     color: #0d7252;
-    font-family:'Techovier';
+    font-family: "Techovier";
   }
   30% {
     color: #52bba0;
-    font-family:'Techovier';
+    font-family: "Techovier";
   }
   40% {
     color: #3bb7d6;
   }
   45% {
-    font-family:'moto-verse';
+    font-family: "moto-verse";
     color: #e39bb7;
   }
   95% {
-    font-family:'moto-verse';
+    font-family: "moto-verse";
     color: #ca4444fe;
-   ;
-    
   }
   100% {
-    font-family:'moto-verse';
+    font-family: "moto-verse";
     color: #cf3737fe;
-
-    
   }
 }

@@ -37,7 +37,6 @@ function App() {
               <HomePage setTestId={setTestId} testId={testId} URL={URL} user={user} />
             }
             />
-          <Route path="/signup" element={<Signup URL={URL} />} />
           <Route
             path="/test-list"
             element={
@@ -45,7 +44,7 @@ function App() {
             }
             />
           <Route path="/About" element={<AboutPage />} />
-          <Route
+          <Route 
             path="/test"
             element={
               <TestPage
@@ -65,8 +64,8 @@ function App() {
             }
             />
         </Routes>
-      </BrowserRouter>
       <Signin setUser={setUser} user={user}/>
+      </BrowserRouter>
       <Footer />
 
     </>

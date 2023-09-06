@@ -1,6 +1,7 @@
-.createTestForm{
-   
-   padding-top: 5%;
-   padding-right: 5%; 
-   height: 100vh;
+.createTestForm {
+  border: dotted red;
+  padding-top: 5%;
+  padding-right: 5vw;
+  padding-left: 5vw;
+  height: 100vh;
 }

@@ -3,7 +3,7 @@ import Signin from "../../pages/AuthPage/Signin";
 
 const handleLogout =() => {
   localStorage.clear();
-  window.location.reload()
+  window.location.reload("/")
 }
 
 export default function DefaultNavbar(props) {

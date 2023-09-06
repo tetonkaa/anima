@@ -42,11 +42,21 @@ export default function AboutPage() {
       <div>
         <h2>Made with:</h2>
         <div className="techSvgs">
-          <Firebase />
-          <React />
-          <Tailwind />
-          <Node />
-          <Mongo />
+          <a href="https://firebase.google.com/">
+            <Firebase />
+          </a>
+          <a href="https://react.dev/">
+            <React />
+          </a>
+          <a href="https://tailwindcss.com/">
+            <Tailwind />
+          </a>
+          <a href="https://nodejs.org/en">
+            <Node />
+          </a>
+          <a href="https://www.mongodb.com/">
+            <Mongo />
+          </a>
         </div>
       </div>
     </div>
