@@ -63,7 +63,7 @@ export default function ResultsPage(props) {
                   options={{
                     strings: [renderedResult[Object.keys(renderedResult)[0]]],
                     autoStart: true,
-                    deleteSpeed: 100000,
+                    deleteSpeed: 1000000000,
                     cursor: ""
                   }}
                 />

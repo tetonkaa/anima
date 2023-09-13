@@ -1,7 +1,61 @@
+.createPageContainer{
+  background: rgba(28, 56, 139, 0.544);
+  animation: 8s ease-in createBgColorizer infinite alternate-reverse; 
+}
+
+
 .createTestForm {
-  border: dotted red;
-  padding-top: 5%;
-  padding-right: 5vw;
-  padding-left: 5vw;
+  padding-top: 10vh;
+  margin:auto;
+  padding-left: 15vw;
   height: 100vh;
+  background-color: white;
+  width: 85vw;
+}
+
+.createTestForm input{
+  width: 45vw;
+  
+}
+
+.resultsFormContainer{
+  border: dotted yellow;
+  display:flex;
+  justify-content: space-evenly;
+  padding: 2.5vw
+  
+}
+
+.resultsFormContainer input{
+ width: 10vw;
+ margin-bottom: 2vh;
+ 
+}
+
+
+h2{
+  font-weight: 700;
+}
+
+.mb-6 h2{
+  border-top:2px rgba(0, 0, 0, 0.202) solid;
+  width:50vw;
+  margin-bottom: 2vh;
+  font-weight: 700
+}
+
+.createTestForm h2{
+  font-size: larger;
+}
+
+
+
+
+
+@keyframes createBgColorizer{
+  0%{background: #013b3171}
+  25%{background:#3780588c}
+  50%{background:#185b817c}
+  75%{background:#8a1e5977}
+  100%{background: #4d1e20aa}
 }

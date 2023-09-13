@@ -47,7 +47,7 @@ export default function QuestionCreate(props) {
 
   return (
     <div className="questionCreateContainer">
-      <h1>Question one</h1>
+      <h1>Question</h1>
       <form onSubmit={handleFormSubmit}>
         <input
           type="text"
@@ -55,27 +55,30 @@ export default function QuestionCreate(props) {
           placeholder="Enter a question"
           value={createdQuestion.question}
           onChange={handleQuestionInput}
+          readonly
         />
         <div>
           {createdQuestion.answerChoices.map((choice, index) => (
             <div key={index}>
               <input
                 type="text"
-                placeholder={`Label for Choice ${choice.Label}`}
                 value={choice.Label}
-                onChange={(e) => handleAnswerChoiceChange(index, 'Label', e.target.value)}
+                readonly
+                disabled
               />
               <input
                 type="number"
                 placeholder={`Score for Choice ${choice.Label}`}
                 value={choice.Score}
                 onChange={(e) => handleAnswerChoiceChange(index, 'Score', parseInt(e.target.value))}
+                required
               />
               <input
                 type="text"
                 placeholder={`Answer for Choice ${choice.Label}`}
                 value={choice.Answer}
                 onChange={(e) => handleAnswerChoiceChange(index, 'Answer', e.target.value)}
+                required
               />
             </div>
           ))}
