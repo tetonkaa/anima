@@ -1,0 +1,9 @@
+.questionCreateContainer{
+    border: red dotted 2px;
+    display:flex;
+    justify-content: center;
+    flex-direction:column;
+    height: 70vh;
+    padding-top: 25vh;
+    border: dotted red;
+}

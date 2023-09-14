@@ -14,6 +14,7 @@ import Signup from "./pages/AuthPage/Signup";
 import { db } from './services/firebase.config'
 import Signin from "./pages/AuthPage/Signin";
 import QuestionCreate from "./pages/questionCreate";
+import QuestionCreateComponent from "./components/questionCreateComponent/questionCreateComponent";
 function App() {
   const [testId, setTestId] = useState();
   const [userResult, setUserResult] = useState("");

@@ -54,6 +54,7 @@ export default function TestPage(props) {
     <>
       {questions.map((questionItem, i) => {
         return (
+          <div class="masterPageContainer">
           <div
             key={questionItem._id}
             className="flex mainPageCards flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
@@ -82,6 +83,7 @@ export default function TestPage(props) {
                 ))}
               </ul>
             </div>
+          </div>
           </div>
         );
       })}

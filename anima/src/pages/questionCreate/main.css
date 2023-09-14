@@ -1,7 +1,6 @@
-.questionCreateContainer{
-    border: red dotted 2px;
-    display:flex;
-    justify-content: center;
-    height: 100vh;
-    padding-top: 5%
+.questionAddPageContainer{
+    border: dottted yellow ;
+    display: flex;
+    flex-direction: column;
+    
 }
