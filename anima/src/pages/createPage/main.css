@@ -1,61 +1,67 @@
-.createPageContainer{
-  background: rgba(28, 56, 139, 0.544);
-  animation: 8s ease-in createBgColorizer infinite alternate-reverse; 
+.createPageContainer {
+  background: repeating-radial-gradient(circle, transparent, transparent 3.5px, #474bff 3.5px, #474bff 4.5px), repeating-radial-gradient(circle, transparent, transparent 3.5px, #474bff 3.5px, #474bff 4.5px), #47d3ff;
+background-size: 20px 20px;
+background-position: 0 0, 10px 10px, 20px 10px;
+background-color: #47d3ff;
+  animation: 14s ease-in createBgColorizer infinite alternate-reverse;
 }
-
 
 .createTestForm {
   padding-top: 10vh;
-  margin:auto;
+  margin: auto;
   padding-left: 15vw;
   height: 100vh;
   background-color: white;
   width: 85vw;
 }
 
-.createTestForm input{
+.createTestForm input {
   width: 45vw;
-  
 }
 
-.resultsFormContainer{
-  border: dotted yellow;
-  display:flex;
-  justify-content: space-evenly;
-  padding: 2.5vw
-  
+.resultsFormContainer {
+  border-top: 2px rgba(0, 0, 0, 0.202) solid;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2.5vw;
+  margin-right: 15vw;
 }
 
-.resultsFormContainer input{
- width: 10vw;
- margin-bottom: 2vh;
- 
+.resultsFormContainer input {
+  width: 10vw;
+  margin-bottom: 2vh;
 }
 
-
-h2{
+h2 {
   font-weight: 700;
 }
 
-.mb-6 h2{
-  border-top:2px rgba(0, 0, 0, 0.202) solid;
-  width:50vw;
+.mb-6 h2 {
+  border-top: 2px rgba(0, 0, 0, 0.202) solid;
+  width: 50vw;
   margin-bottom: 2vh;
-  font-weight: 700
+  font-weight: 700;
 }
 
-.createTestForm h2{
+.createTestForm h2 {
   font-size: larger;
 }
 
-
-
-
-
-@keyframes createBgColorizer{
-  0%{background: #013b3171}
-  25%{background:#3780588c}
-  50%{background:#185b817c}
-  75%{background:#8a1e5977}
-  100%{background: #4d1e20aa}
+@keyframes createBgColorizer {
+  0% {
+    background-color: #013b3171;
+  }
+  25% {
+    background-color: #3780588c;
+  }
+  50% {
+    background-color: #185b817c;
+    background-position: 0 0, 25px 30px, 40px 200px;
+  }
+  75% {
+    background-color: #8a1e5977;
+  }
+  100% {
+    background-color: #ce3943b4;
+  }
 }
