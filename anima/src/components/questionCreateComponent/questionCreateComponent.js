@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./main.css";
 
-export default function QuestionCreateComponent(URL, props) {
+export default function QuestionCreateComponent(URL, props,addQuestion) {
   const [createdQuestion, setCreatedQuestion] = useState({
     question: "",
     answerChoices: [
@@ -14,20 +14,21 @@ export default function QuestionCreateComponent(URL, props) {
     testId: localStorage.getItem("newTestId"),
   });
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  // const handleFormSubmit = async (event) => {
+  //   event.preventDefault();
 
-    try {
-      const response = await axios.post(
-        URL.URL + "questions/add-question",
-        createdQuestion
-      );
-      console.log("Question post successful", response);
-    } catch (error) {
-      console.error("Error posting question", error);
-    }
-  };
+  //   try {
+  //     const response = await axios.post(
+  //       URL.URL + "questions/add-question",
+  //       createdQuestion
+  //     );
+  //     console.log("Question post successful", response);
+  //   } catch (error) {
+  //     console.error("Error posting question", error);
+  //   }
+  // };
 
+  
   const handleQuestionInput = (event) => {
     const { name, value } = event.target;
     setCreatedQuestion((previousData) => ({
@@ -35,24 +36,27 @@ export default function QuestionCreateComponent(URL, props) {
       [name]: value,
     }));
   };
-
+  
   // console.log(createdQuestion)
   console.log(URL.URL);
-
+  
   const handleAnswerChoiceChange = (index, field, value) => {
     const updatedAnswerChoices = [...createdQuestion.answerChoices];
     updatedAnswerChoices[index][field] = value;
-
+    
     setCreatedQuestion((previousData) => ({
       ...previousData,
       answerChoices: updatedAnswerChoices,
     }));
   };
-
+  
+  const handleCreateQuestion = (e) =>{
+    // addQuestion(createdQuestion)
+  }
   return (
     <div className="questionCreateContainer">
       <h1>Question</h1>
-      <form onSubmit={handleFormSubmit}>
+      <form >
         <input
           type="text"
           name="question"
@@ -90,7 +94,7 @@ export default function QuestionCreateComponent(URL, props) {
             </div>
           ))}
         </div>
-        <button type="submit">Submit</button>
+        <button type="button" onClick={handleCreateQuestion}>Submit</button>
       </form>
     </div>
   );

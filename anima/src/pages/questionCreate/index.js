@@ -3,11 +3,20 @@ import axios from "axios";
 import "./main.css";
 import QuestionCreateComponent from "../../components/questionCreateComponent/questionCreateComponent";
 
+
 export default function QuestionCreate(props) {
-const [questionForms, setQuestionForms] = useState([<QuestionCreateComponent key={0} />])
+const [questionForms, setQuestionForms] = useState([<QuestionCreateComponent URL={props.URL} key={0} />])
+const [createdQuestions, setCreatedQuestions] = useState([]);
+
+// const addQuestion = (createdQuestion) => {
+//   // Add the question to the createdQuestions array
+//   setCreatedQuestions({...createdQuestions, createdQuestion});
+// };
+
+
 let handleAddForm = (e) => {
   e.preventDefault()
-  setQuestionForms([...questionForms,<QuestionCreateComponent key={questionForms.length} />]);
+  setQuestionForms([...questionForms,<QuestionCreateComponent key={questionForms.length}/>]);
 }
 
   // const handleFormSubmit = async (event) => {
@@ -24,6 +33,25 @@ let handleAddForm = (e) => {
   //   }
   // };
 
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      // You can now access the createdQuestions state here
+      console.log("Created Questions:", createdQuestions);
+
+      // Use axios to post the questions to the server here
+      // ...
+
+    } catch (error) {
+      console.error("Error posting questions", error);
+    }
+  };
+
+
+  console.log(createdQuestions)
+
   return (
     <div class="questionAddPageContainer">
       <QuestionCreateComponent URL={props.URL} />
@@ -31,7 +59,7 @@ let handleAddForm = (e) => {
         {questionForms}
         <button onClick={handleAddForm}>ADD QUESTION</button>
       </form>
-      <button type="submit">Finish Questions</button>
+      <button type="submit" onClick={handleFormSubmit}>Finish Questions</button>
     </div>
   );
 }
