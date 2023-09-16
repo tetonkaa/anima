@@ -1,36 +1,43 @@
 .masterPageContainer {
-  background: repeating-radial-gradient(
-      circle,
-      transparent,
-      transparent 3.5px,
-      #474bff 3.5px,
-      #474bff 4.5px
-    ),
-    repeating-radial-gradient(
-      circle,
-      transparent,
-      transparent 3.5px,
-      #474bff 3.5px,
-      #474bff 4.5px
-    ),
-    #47d3ff;
-  background-size: 40px 40px;
-  background-position: 0 0, 10px 10px, 20px 10px;
-  background-color: #24a95c;
-  animation: 14s ease-in createBgColorizer infinite alternate-reverse;
+  background-color: #ffffff;
+  margin-top: 5vw;
+
+  animation: 14s ease-in marginBgColorizer infinite alternate-reverse;
+}
+
+.createPage {
+}
+
+.createInputFieldContainer {
+  height: 50vh;
+}
+
+.masterPageContainer button {
+  width: 15vw;
+  margin-left: 35vw;
 }
 
 .createTestForm {
-  padding-top: 10vh;
   margin: auto;
-  padding-left: 15vw;
+  padding-left: 0vw;
   height: 100vh;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   width: 85vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .createTestForm input {
+  border-radius: 10px;
   width: 45vw;
+  margin-left: 20vw;
+  font-size: 4em;
+  margin-top: 5vw;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.656);
+  box-shadow: 1px 0px 3px 2px rgba(0, 0, 0, 0.379);
+  animation: 14s ease-in createBgColorizer infinite alternate-reverse;
 }
 
 .resultsFormContainer {
@@ -47,7 +54,10 @@
 }
 
 h2 {
-  font-weight: 700;
+  font-weight: 00;
+  color: rgba(37, 37, 37, 0.914);
+  font-size: 6em !important;
+  font-family: "Julius Sans One", sans-serif;
 }
 
 .mb-6 h2 {
@@ -59,23 +69,46 @@ h2 {
 
 .createTestForm h2 {
   font-size: larger;
+  text-align: center;
+}
+
+#descriptionInput {
 }
 
 @keyframes createBgColorizer {
   0% {
-    background-color: #13742be4;
+    box-shadow: 1px 0px 15px 5px #13742be4;
   }
   25% {
-    background-color: #3e99678c;
+    box-shadow: 1px 0px 15px 5px #3e99678c;
   }
   50% {
-    background-color: #185b817c;
-    background-position: 0 0, 25px 30px, 40px 200px;
+    box-shadow: 1px 0px 15px 5px #185b817c;
   }
   75% {
-    background-color: #8a1e5977;
+    box-shadow: 1px 0px 15px 5px #8a1e5977;
   }
   100% {
-    background-color: #ce3943;
+    box-shadow: 1px 0px 15px 5px #ce3943;
+  }
+}
+
+@keyframes marginBgColorizer {
+  0% {
+    background-image: radial-gradient(#474bff 1px, transparent 1px);
+    background-position: 2px 2px;
+  }
+  25% {
+    background-image: radial-gradient(#474bff);
+  }
+  50% {
+    background-image: radial-gradient(#474bff);
+  }
+  75% {
+    background-image: radial-gradient(#474bff);
+  }
+  100% {
+    background-image: radial-gradient(#474bff 5px, transparent 11px);
+    background-position: 50px 50px;
   }
 }
