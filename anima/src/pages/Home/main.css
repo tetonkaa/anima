@@ -30,6 +30,8 @@
   text-shadow: rgb(32, 32, 32) 2px 0 2px;
 }
 
+
+
 .typeFont {
   animation: fontChanger 14s infinite ease-in;
   padding-left: 2vw;

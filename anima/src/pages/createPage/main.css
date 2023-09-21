@@ -1,7 +1,6 @@
 .masterPageContainer {
   background-color: #ffffff;
   margin-top: 5vw;
-
   animation: 14s ease-in marginBgColorizer infinite alternate-reverse;
 }
 
@@ -20,12 +19,14 @@
 .createTestForm {
   margin: auto;
   padding-left: 0vw;
-  height: 100vh;
+  height: 80vh;
   background-color: rgb(255, 255, 255);
   width: 85vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-radius: 18px;
+  animation: 14s ease-in createBgColorizer infinite alternate-reverse;
 }
 
 .createTestForm input {
@@ -37,20 +38,26 @@
   border: none;
   background-color: rgba(255, 255, 255, 0.656);
   box-shadow: 1px 0px 3px 2px rgba(0, 0, 0, 0.379);
-  animation: 14s ease-in createBgColorizer infinite alternate-reverse;
 }
 
 .resultsFormContainer {
-  border-top: 2px rgba(0, 0, 0, 0.202) solid;
   display: flex;
-  justify-content: space-between;
-  padding-top: 2.5vw;
-  margin-right: 15vw;
+  height: 70vh;
+  width: 85vw;
+  margin-left: 2vw;
+  flex-direction: row;
+}
+
+.placeholderImage {
+  height: 40vh;
+  width: 100%;
 }
 
 .resultsFormContainer input {
   width: 10vw;
-  margin-bottom: 2vh;
+  font-size: 1em;
+
+  margin: 0;
 }
 
 h2 {
@@ -70,26 +77,62 @@ h2 {
 .createTestForm h2 {
   font-size: larger;
   text-align: center;
+  animation: fadeIn 3s ease-in;
 }
 
 #descriptionInput {
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+}
+#descriptionInput h2 {
+  font-size: 2em !important;
+}
+#descriptionInput textarea {
+  font-size: 1em;
+  height: 5vh;
+  text-align: start;
+  padding: none;
+  width: 80%;
+  margin: auto;
+}
+#descriptionInput img {
+  width: 80%;
+  height: 40vh;
+  margin: auto;
+}
+
+.createTestForm p {
+  text-align: center;
+  animation: fadeIn 3s ease-in;
+  font-size: 2em;
+  padding: 1em;
+  font-family: "Julius Sans One", sans-serif;
+}
+#descriptionInput textarea:nth-of-type(2) {
+  font-size: 3em;
+  height: 10vh;
+  text-align: start;
+  padding: none;
+  width: 50%;
+  margin: auto;
 }
 
 @keyframes createBgColorizer {
   0% {
-    box-shadow: 1px 0px 15px 5px #13742be4;
+    box-shadow: 1px 0px 20px 2px #13742be4;
   }
   25% {
-    box-shadow: 1px 0px 15px 5px #3e99678c;
+    box-shadow: 1px 0px 20px 2px #3e99678c;
   }
   50% {
-    box-shadow: 1px 0px 15px 5px #185b817c;
+    box-shadow: 1px 0px 20px 2px #185b817c;
   }
   75% {
-    box-shadow: 1px 0px 15px 5px #8a1e5977;
+    box-shadow: 1px 0px 20px 2px #8a1e5977;
   }
   100% {
-    box-shadow: 1px 0px 15px 5px #ce3943;
+    box-shadow: 1px 0px 15px 2px #ce3943;
   }
 }
 

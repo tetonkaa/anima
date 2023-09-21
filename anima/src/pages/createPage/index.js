@@ -51,22 +51,22 @@ export default function CreatePage(props) {
   };
 
   const renderCurrentInputField = () => {
+    const placeholderImages = [
+      "https://cdn.discordapp.com/attachments/1110618287924072449/1153925002815610893/tetonka._sillouhette_of_a_woman_akin_to_a_character_card_in_a_v_fb105f0a-a0c3-482c-b23a-662aecb2b317.png",
+      "https://cdn.discordapp.com/attachments/1110618287924072449/1153936178299543632/tetonka._character_sillouhette_in_modern_clothing_solid_white_b_35ff4178-58dc-4d7e-839a-4fa42ee81671.png",
+      "https://cdn.discordapp.com/attachments/1110618287924072449/1153936528205172746/tetonka._sillouhette_of_a_character_akin_to_a_character_card_in_afa4c2ed-e28f-4000-83a8-739907b20168.png",
+      "https://cdn.discordapp.com/attachments/1110618287924072449/1153937841240428554/tetonka._sillouhette_of_a_woman_akin_to_a_character_card_in_a_v_e31ccb07-3808-4895-985f-f64383a2e323.png",
+    ];
+
     switch (currentInputField) {
       case 1:
         return (
           <>
-            <h2>
-              <Typewriter
-                options={{
-                  strings: ["Create a Test"],
-                  autoStart: true,
-                  loop: false,
-                  deleteSpeed: 1000000000,
-                  cursor: "~",
-                  delay: 40
-                }}
-              />
-            </h2>
+            <h2>Create a test</h2>
+            <p>
+              Pick an interesting test name, describe what the test is about,
+              and list the possible personality results.
+            </p>
             <div className="createInputFieldContainer" id="testNameInput">
               <input
                 className=""
@@ -82,22 +82,28 @@ export default function CreatePage(props) {
         );
       case 2:
         return (
-          <div className="createInputFieldContainer" id="descriptionInput">
-            <h2>
-              {" "}
-              <Typewriter
-                options={{
-                  strings: ["Add a description"],
-                  autoStart: true,
-                  loop: false,
-                  deleteSpeed: 1000000000,
-                  cursor: "~",
-                  delay: 40
-                }}
+          <>
+            <div className="createInputFieldContainer" id="descriptionInput">
+              <img
+                src={
+                  testData.testPic ||
+                  "https://cdn.discordapp.com/attachments/1110618287924072449/1154237337694371914/tetonka._paper_and_pen_meant_to_represent_a_test_white_backgrou_2c40e828-46cf-4ba1-9fbb-2ddbf2a41a12.png"
+                }
               />
-            </h2>
+              <h2>Add image link</h2>
+              <textarea
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Enter link for test display image/icon"
+                required
+                type="text"
+                name="testPic"
+                value={testData.testPic}
+                onChange={handleTestPicInput}
+              />
+              <h2>Add a description</h2>
+            </div>
 
-            <input
+            <textarea
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="enter description for test... ie --This test is used to determine what kind of test you enjoy most!"
               required
@@ -106,120 +112,39 @@ export default function CreatePage(props) {
               value={testData.description}
               onChange={handleDescriptionInput}
             />
-          </div>
+          </>
         );
       case 3:
         return (
-          <div className="resultsFormContainer">
-            <h2>Cover Image:</h2>
-
-            <input
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Enter link for test display image/icon"
-              required
-              type="text"
-              name="testPic"
-              value={testData.testPic}
-              onChange={handleTestPicInput}
-            />
-          </div>
-        );
-      case 4:
-        return (
           <>
-            <h2>Results:</h2>
+            <h2> Personality Results:</h2>
             <div className="resultsFormContainer">
-              <div>
-                {/* Input for 'a' */}
-                <input
-                  type="text"
-                  name="a"
-                  value={testData.results[0].a}
-                  onChange={(e) => handleFormInput(e, 0)}
-                  placeholder="Enter value for 'a'"
-                  required
-                />
-                {/* Input for 'image' */}
-                <input
-                  type="text"
-                  name="image"
-                  value={testData.results[0].image}
-                  onChange={(e) => handleFormInput(e, 0)}
-                  placeholder="Enter image link"
-                  required
-                />
-              </div>
-
-              <div class="mb-6">
-                {/* Input for 'b' */}
-                <input
-                  type="text"
-                  name="b"
-                  value={testData.results[1].b}
-                  onChange={(e) => handleFormInput(e, 1)}
-                  placeholder="Enter value for 'b'"
-                  required
-                />
-
-                {/* Input for 'image' */}
-                <input
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  type="text"
-                  name="image"
-                  value={testData.results[1].image}
-                  onChange={(e) => handleFormInput(e, 1)}
-                  placeholder="Enter image link"
-                  required
-                />
-              </div>
-
-              <div class="mb-6">
-                {/* Input for 'c' */}
-                <input
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  type="text"
-                  name="c"
-                  value={testData.results[2].c}
-                  onChange={(e) => handleFormInput(e, 2)}
-                  placeholder="Enter value for 'c'"
-                  required
-                />
-
-                {/* Input for 'image' */}
-                <input
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  type="text"
-                  name="image"
-                  value={testData.results[2].image}
-                  onChange={(e) => handleFormInput(e, 2)}
-                  placeholder="Enter image link"
-                  required
-                />
-              </div>
-
-              <div>
-                {/* Input for 'd' */}
-                <input
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  type="text"
-                  name="d"
-                  value={testData.results[3].d}
-                  onChange={(e) => handleFormInput(e, 3)}
-                  placeholder="Enter value for 'd'"
-                  required
-                />
-
-                {/* Input for 'image' */}
-                <input
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  type="text"
-                  name="image"
-                  value={testData.results[3].image}
-                  onChange={(e) => handleFormInput(e, 3)}
-                  placeholder="Enter image link"
-                  required
-                />
-              </div>
+              {testData.results.map((result, index) => (
+                <div key={index}>
+                  {/* Input for 'a' */}
+                  <img
+                    className="placeholderImage"
+                    src={result.image || placeholderImages[index]}
+                  />
+                  <input
+                    type="text"
+                    name="a"
+                    value={result.a}
+                    onChange={(e) => handleFormInput(e, index)}
+                    placeholder="Enter name for result"
+                    required
+                  />
+                  {/* Input for 'image' */}
+                  <input
+                    type="text"
+                    name="image"
+                    value={result.image}
+                    onChange={(e) => handleFormInput(e, index)}
+                    placeholder="Enter image link"
+                    required
+                  />
+                </div>
+              ))}
             </div>
           </>
         );
@@ -276,8 +201,7 @@ export default function CreatePage(props) {
         {/* Render the current step */}
         {renderCurrentInputField()}
 
-        {/* NEXT button */}
-        {currentInputField < 4 && (
+        {currentInputField < 3 && (
           <button
             className="boldThing text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
             onClick={handleNextClick}
@@ -288,9 +212,9 @@ export default function CreatePage(props) {
         )}
 
         {/* Submit button */}
-        {currentInputField === 4 && (
+        {currentInputField === 3 && (
           <button
-            className="submit-button"
+            className="boldThing text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
             type="submit"
             disabled={!isNextButtonEnabled}
           >
