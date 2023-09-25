@@ -3,6 +3,11 @@ import axios from "axios";
 import "./main.css";
 
 export default function QuestionCreateComponent(URL, props,addQuestion) {
+  const resultsData = localStorage.getItem("createdResults");
+  const parsedResults = JSON.parse(resultsData);
+  const firstResult = parsedResults[0]
+  console.log(localStorage.getItem("createdResults"))
+
   const [createdQuestion, setCreatedQuestion] = useState({
     question: "",
     answerChoices: [
@@ -94,7 +99,7 @@ export default function QuestionCreateComponent(URL, props,addQuestion) {
             </div>
           ))}
         </div>
-        <button type="button" onClick={handleCreateQuestion}>Submit</button>
+        {/* <button type="button" onClick={handleCreateQuestion}>Submitfsfsfs</button> */}
       </form>
     </div>
   );

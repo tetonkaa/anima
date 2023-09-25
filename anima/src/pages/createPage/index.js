@@ -85,6 +85,7 @@ export default function CreatePage(props) {
           <>
             <div className="createInputFieldContainer" id="descriptionInput">
               <img
+                id="imageEffect"
                 src={
                   testData.testPic ||
                   "https://cdn.discordapp.com/attachments/1110618287924072449/1154237337694371914/tetonka._paper_and_pen_meant_to_represent_a_test_white_backgrou_2c40e828-46cf-4ba1-9fbb-2ddbf2a41a12.png"
@@ -94,24 +95,24 @@ export default function CreatePage(props) {
               <textarea
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Enter link for test display image/icon"
-                required
                 type="text"
                 name="testPic"
                 value={testData.testPic}
                 onChange={handleTestPicInput}
+                required
               />
               <h2>Add a description</h2>
-            </div>
 
-            <textarea
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="enter description for test... ie --This test is used to determine what kind of test you enjoy most!"
-              required
-              type="text"
-              name="description"
-              value={testData.description}
-              onChange={handleDescriptionInput}
-            />
+              <textarea
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="enter description for test... ie --This test is used to determine what kind of test you enjoy most!"
+                type="text"
+                name="description"
+                value={testData.description}
+                onChange={handleDescriptionInput}
+                required
+              />
+            </div>
           </>
         );
       case 3:
@@ -119,32 +120,116 @@ export default function CreatePage(props) {
           <>
             <h2> Personality Results:</h2>
             <div className="resultsFormContainer">
-              {testData.results.map((result, index) => (
-                <div key={index}>
-                  {/* Input for 'a' */}
-                  <img
-                    className="placeholderImage"
-                    src={result.image || placeholderImages[index]}
-                  />
+              <div>
+                <img
+                  className="placeholderImage"
+                  src={testData.results[0].image || placeholderImages[0]}
+                />
+                {/* Input for 'a' */}
+                <div className="resultInputContainer">
                   <input
                     type="text"
                     name="a"
-                    value={result.a}
-                    onChange={(e) => handleFormInput(e, index)}
-                    placeholder="Enter name for result"
+                    value={testData.results[0].a}
+                    onChange={(e) => handleFormInput(e, 0)}
+                    placeholder="Enter value for 'a'"
                     required
                   />
                   {/* Input for 'image' */}
                   <input
                     type="text"
                     name="image"
-                    value={result.image}
-                    onChange={(e) => handleFormInput(e, index)}
+                    value={testData.results[0].image}
+                    onChange={(e) => handleFormInput(e, 0)}
                     placeholder="Enter image link"
                     required
                   />
                 </div>
-              ))}
+              </div>
+
+              <div>
+                {/* Input for 'b' */}
+                <img
+                  className="placeholderImage"
+                  src={testData.results[1].image || placeholderImages[1]}
+                />
+                <div className="resultInputContainer">
+                  <input
+                    type="text"
+                    name="b"
+                    value={testData.results[1].b}
+                    onChange={(e) => handleFormInput(e, 1)}
+                    placeholder="Enter value for 'b'"
+                    required
+                  />
+
+                  {/* Input for 'image' */}
+                  <input
+                    type="text"
+                    name="image"
+                    value={testData.results[1].image}
+                    onChange={(e) => handleFormInput(e, 1)}
+                    placeholder="Enter image link"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                {/* Input for 'c' */}
+                <img
+                  className="placeholderImage"
+                  src={testData.results[2].image || placeholderImages[2]}
+                />
+                <div className="resultInputContainer">
+                  <input
+                    type="text"
+                    name="c"
+                    value={testData.results[2].c}
+                    onChange={(e) => handleFormInput(e, 2)}
+                    placeholder="Enter value for 'c'"
+                    required
+                  />
+
+                  {/* Input for 'image' */}
+                  <input
+                    type="text"
+                    name="image"
+                    value={testData.results[2].image}
+                    onChange={(e) => handleFormInput(e, 2)}
+                    placeholder="Enter image link"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                {/* Input for 'd' */}
+                <img
+                  className="placeholderImage"
+                  src={testData.results[3].image || placeholderImages[3]}
+                />
+                <div className="resultInputContainer">
+                  <input
+                    type="text"
+                    name="d"
+                    value={testData.results[3].d}
+                    onChange={(e) => handleFormInput(e, 3)}
+                    placeholder="Enter value for 'd'"
+                    required
+                  />
+
+                  {/* Input for 'image' */}
+                  <input
+                    type="text"
+                    name="image"
+                    value={testData.results[3].image}
+                    onChange={(e) => handleFormInput(e, 3)}
+                    placeholder="Enter image link"
+                    required
+                  />
+                </div>
+              </div>
             </div>
           </>
         );
@@ -160,6 +245,8 @@ export default function CreatePage(props) {
       const response = await axios.post(props.URL + "create", testData);
       console.log("test post successful", response);
       localStorage.setItem("newTestId", response.data._id);
+      localStorage.setItem("createdResults", testData.results);
+      console.log(testData.results);
       navigate("/question-add");
     } catch (error) {
       console.error("error posting test", error);
@@ -194,6 +281,7 @@ export default function CreatePage(props) {
     });
     setIsNextButtonEnabled(value.length > 1);
   };
+  console.log(testData);
 
   return (
     <div className="masterPageContainer createPage">

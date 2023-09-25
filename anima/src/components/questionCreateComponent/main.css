@@ -1,9 +1,9 @@
-.questionCreateContainer{
-    border: red dotted 2px;
-    display:flex;
-    justify-content: center;
-    flex-direction:column;
-    
-    padding-top: 25vh;
-    border: dotted red;
+.questionCreateContainer {
+  border: red dotted 2px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 5vh;
+  width: 50;
+  padding-left: 30vw;
 }

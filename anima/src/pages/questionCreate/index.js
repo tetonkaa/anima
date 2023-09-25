@@ -3,21 +3,24 @@ import axios from "axios";
 import "./main.css";
 import QuestionCreateComponent from "../../components/questionCreateComponent/questionCreateComponent";
 
-
 export default function QuestionCreate(props) {
-const [questionForms, setQuestionForms] = useState([<QuestionCreateComponent URL={props.URL} key={0} />])
-const [createdQuestions, setCreatedQuestions] = useState([]);
+  const [questionForms, setQuestionForms] = useState([
+    <QuestionCreateComponent URL={props.URL} key={0} />,
+  ]);
+  const [createdQuestions, setCreatedQuestions] = useState([]);
 
-// const addQuestion = (createdQuestion) => {
-//   // Add the question to the createdQuestions array
-//   setCreatedQuestions({...createdQuestions, createdQuestion});
-// };
+  // const addQuestion = (createdQuestion) => {
+  //   // Add the question to the createdQuestions array
+  //   setCreatedQuestions({...createdQuestions, createdQuestion});
+  // };
 
-
-let handleAddForm = (e) => {
-  e.preventDefault()
-  setQuestionForms([...questionForms,<QuestionCreateComponent key={questionForms.length}/>]);
-}
+  let handleAddForm = (e) => {
+    e.preventDefault();
+    setQuestionForms([
+      ...questionForms,
+      <QuestionCreateComponent key={questionForms.length} />,
+    ]);
+  };
 
   // const handleFormSubmit = async (event) => {
   //   event.preventDefault();
@@ -33,7 +36,6 @@ let handleAddForm = (e) => {
   //   }
   // };
 
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -43,14 +45,12 @@ let handleAddForm = (e) => {
 
       // Use axios to post the questions to the server here
       // ...
-
     } catch (error) {
       console.error("Error posting questions", error);
     }
   };
 
-
-  console.log(createdQuestions)
+  console.log(createdQuestions);
 
   return (
     <div class="questionAddPageContainer">
@@ -59,7 +59,9 @@ let handleAddForm = (e) => {
         {questionForms}
         <button onClick={handleAddForm}>ADD QUESTION</button>
       </form>
-      <button type="submit" onClick={handleFormSubmit}>Finish Questions</button>
+      <button type="submit" className="boldThing text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 " onClick={handleFormSubmit}>
+        Finish Questions
+      </button>
     </div>
   );
 }

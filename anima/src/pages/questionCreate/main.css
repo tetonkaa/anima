@@ -2,5 +2,6 @@
     border: dottted yellow ;
     display: flex;
     flex-direction: column;
-    
+    padding-top: 10vh;
+    justify-content: center;
 }
