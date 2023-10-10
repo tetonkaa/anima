@@ -3,6 +3,7 @@ import axios from "axios";
 import "./main.css";
 import Typewriter from "typewriter-effect";
 import { ReactComponent as Loading } from "../../assets/loading.svg";
+import { redirect } from "react-router-dom";
 export default function ResultsPage(props) {
   const [renderedResult, setRenderedResult] = useState({});
   const thisTest = localStorage.getItem("currentTestId");

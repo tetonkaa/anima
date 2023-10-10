@@ -2,11 +2,21 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./main.css";
 
-export default function QuestionCreateComponent(URL, props,addQuestion) {
+export default function QuestionCreateComponent({URL, props, addQuestion, sendDataToParent} ) {
   const resultsData = localStorage.getItem("createdResults");
   const parsedResults = JSON.parse(resultsData);
-  const firstResult = parsedResults[0]
-  console.log(localStorage.getItem("createdResults"))
+
+  const firstResult = parsedResults[0];
+  const secondResult = parsedResults[1];
+  const thirdResult = parsedResults[2];
+  const fourthResult = parsedResults[3];
+  const keysOfFirstResult = Object.keys(firstResult);
+  const placerHolderText0 = keysOfFirstResult[0];
+
+  const keysOfSecondResult = Object.keys(secondResult);
+  const placerHolderText1 = keysOfSecondResult[0];
+
+  console.log(parsedResults);
 
   const [createdQuestion, setCreatedQuestion] = useState({
     question: "",
@@ -33,7 +43,6 @@ export default function QuestionCreateComponent(URL, props,addQuestion) {
   //   }
   // };
 
-  
   const handleQuestionInput = (event) => {
     const { name, value } = event.target;
     setCreatedQuestion((previousData) => ({
@@ -41,27 +50,28 @@ export default function QuestionCreateComponent(URL, props,addQuestion) {
       [name]: value,
     }));
   };
-  
+
   // console.log(createdQuestion)
   console.log(URL.URL);
-  
+
   const handleAnswerChoiceChange = (index, field, value) => {
     const updatedAnswerChoices = [...createdQuestion.answerChoices];
     updatedAnswerChoices[index][field] = value;
-    
+
     setCreatedQuestion((previousData) => ({
       ...previousData,
       answerChoices: updatedAnswerChoices,
     }));
   };
-  
-  const handleCreateQuestion = (e) =>{
-    // addQuestion(createdQuestion)
-  }
+
+  const setQuestionClick = (e) => {
+    e.preventDefault();
+    sendDataToParent (createdQuestion);
+  };
   return (
     <div className="questionCreateContainer">
       <h1>Question</h1>
-      <form >
+      <form>
         <input
           type="text"
           name="question"
@@ -71,35 +81,113 @@ export default function QuestionCreateComponent(URL, props,addQuestion) {
           readonly
         />
         <div>
-          {createdQuestion.answerChoices.map((choice, index) => (
-            <div key={index}>
-              <input type="text" value={choice.Label} readonly disabled />
-              <input
-                type="number"
-                placeholder={`Score for Choice ${choice.Label}`}
-                value={choice.Score}
-                onChange={(e) =>
-                  handleAnswerChoiceChange(
-                    index,
-                    "Score",
-                    parseInt(e.target.value)
-                  )
-                }
-                required
-              />
-              <input
-                type="text"
-                placeholder={`Answer for Choice ${choice.Label}`}
-                value={choice.Answer}
-                onChange={(e) =>
-                  handleAnswerChoiceChange(index, "Answer", e.target.value)
-                }
-                required
-              />
-            </div>
-          ))}
+          <input
+            type="text"
+            value={createdQuestion.answerChoices[0].Label}
+            readonly
+            disabled
+          />
+          <input
+            type="number"
+            placeholder={`Score for Choice ${createdQuestion.answerChoices[0].Label}`}
+            value={createdQuestion.answerChoices[0].Score}
+            onChange={(e) =>
+              handleAnswerChoiceChange(0, "Score", parseInt(e.target.value))
+            }
+            required
+          />
+          <input
+            type="text"
+            placeholder={`Answer for Choice ${firstResult.a}`}
+            value={createdQuestion.answerChoices[0].Answer}
+            onChange={(e) =>
+              handleAnswerChoiceChange(0, "Answer", e.target.value)
+            }
+            required
+          />
         </div>
-        {/* <button type="button" onClick={handleCreateQuestion}>Submitfsfsfs</button> */}
+
+        <div>
+          <input
+            type="text"
+            value={createdQuestion.answerChoices[1].Label}
+            readonly
+            disabled
+          />
+          <input
+            type="number"
+            placeholder={`Score for Choice ${createdQuestion.answerChoices[1].Label}`}
+            value={createdQuestion.answerChoices[1].Score}
+            onChange={(e) =>
+              handleAnswerChoiceChange(1, "Score", parseInt(e.target.value))
+            }
+            required
+          />
+          <input
+            type="text"
+            placeholder={`Answer for Choice ${secondResult.b}`}
+            value={createdQuestion.answerChoices[1].Answer}
+            onChange={(e) =>
+              handleAnswerChoiceChange(1, "Answer", e.target.value)
+            }
+            required
+          />
+        </div>
+
+        <div>
+          <input
+            type="text"
+            value={createdQuestion.answerChoices[2].Label}
+            readonly
+            disabled
+          />
+          <input
+            type="number"
+            placeholder={`Score for Choice ${createdQuestion.answerChoices[2].Label}`}
+            value={createdQuestion.answerChoices[2].Score}
+            onChange={(e) =>
+              handleAnswerChoiceChange(2, "Score", parseInt(e.target.value))
+            }
+            required
+          />
+          <input
+            type="text"
+            placeholder={`Answer for Choice ${thirdResult.c}`}
+            value={createdQuestion.answerChoices[2].Answer}
+            onChange={(e) =>
+              handleAnswerChoiceChange(2, "Answer", e.target.value)
+            }
+            required
+          />
+        </div>
+
+        <div>
+          <input
+            type="text"
+            value={createdQuestion.answerChoices[3].Label}
+            readonly
+            disabled
+          />
+          <input
+            type="number"
+            placeholder={`Score for Choice ${createdQuestion.answerChoices[3].Label}`}
+            value={createdQuestion.answerChoices[3].Score}
+            onChange={(e) =>
+              handleAnswerChoiceChange(3, "Score", parseInt(e.target.value))
+            }
+            required
+          />
+          <input
+            type="text"
+            placeholder={`Answer for Choice ${fourthResult.d}`}
+            value={createdQuestion.answerChoices[3].Answer}
+            onChange={(e) =>
+              handleAnswerChoiceChange(3, "Answer", e.target.value)
+            }
+            required
+          />
+        </div>
+        <button onClick={setQuestionClick}>Send Data to Parent</button>
       </form>
     </div>
   );

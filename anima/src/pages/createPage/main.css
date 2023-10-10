@@ -2,7 +2,7 @@
   background-color: #ffffff;
   margin-top: 5vw;
   /* animation: 14s ease-in marginBgColorizer infinite alternate-reverse; */
-  animation: fadeIn ease-in 1s;
+  animation: fadeIn ease-in 0.3s;
 }
 
 .createPage {
@@ -64,16 +64,29 @@
   margin-top: 2vh;
   padding-bottom: 2vh;
   padding-left: 2vw;
+  padding-right: 2vw;
 }
 .resultInputContainer {
+  display: flex;
+  flex-direction: row;
 }
 
 .placeholderImage {
   height: 40vh;
   width: 100%;
-  animation: fadeIn ease-in 1.5s;
+  animation: fadeIn ease-in 1s;
+  box-shadow: 1px 1px 10px 1px;
+  border-radius: 50% / 10%;
 }
 
+.placeholderImage:hover {
+  scale: 1.1;
+  transition: ease-in 0.3s;
+}
+
+#testNameInput input {
+  text-align: center;
+}
 .resultsFormContainer input {
   width: 8vw;
   font-size: 1em;
@@ -138,7 +151,7 @@ h2 {
 }
 
 #imageEffect {
-  animation: fadeIn ease-in 2s !important;
+  animation: fadeIn ease-in 1s !important;
 }
 
 #descriptionInput textarea:nth-of-type(2) {
@@ -162,19 +175,13 @@ h2 {
 
 @keyframes createBgColorizer {
   0% {
-    box-shadow: 1px 0px 80px 2px #13742be4;
-  }
-  25% {
-    box-shadow: 1px 0px 80px 2px #3e99678c;
+    box-shadow: 0px 0px 0px 2px #171717e4, 8px 8px 0px 0px #6c6c6c51;
   }
   50% {
-    box-shadow: 1px 0px 80px 2px #185b817c;
-  }
-  75% {
-    box-shadow: 1px 0px 80px 2px #8a1e5977;
+    box-shadow: 0px 0px 0px 2px #0000007c, 8px 8px 0px 0px #56565600;
   }
   100% {
-    box-shadow: 1px 0px 80px 2px #ce3943;
+    box-shadow: 0px 0px 0px 2px #000000, 8px 8px 0px 0px #7070707a;
   }
 }
 

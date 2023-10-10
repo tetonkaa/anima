@@ -16,7 +16,7 @@ export default function HomePage() {
   return (
     <div class="homePageContainer">
       <a>
-        Define<br></br>Your
+        Define Your
         <span className="typeFont">
           <Typewriter
             options={{

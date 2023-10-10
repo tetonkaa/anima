@@ -1,29 +1,33 @@
-resultCard{
-    animation: bgshift 14s linear infinite alternate;
-    
+resultCard {
+  animation: bgshift 14s linear infinite alternate;
 }
 
-
-@keyframes bgshift{
-    0% { background-position: top left; }
-    100% { background-position: bottom right; }
+@keyframes bgshift {
+  0% {
+    background-position: top left;
   }
-
-  #resultsItems{
-    background-color: rgba(255, 255, 255, 0.682) !important;
-    display:flex;
-    flex-direction: column;
-    width: 15vw;
-    margin:auto;
-    border-radius: 20px;
+  100% {
+    background-position: bottom right;
   }
-
-  #retakeButton{
-    width: fit-content;
-    margin: auto;
 }
 
-.loadingSvg{
+#resultsItems {
+  background-color: rgba(255, 255, 255, 0.682) !important;
+  display: flex;
+  flex-direction: column;
+  width: 22vw;
+  margin: auto;
+  border-radius: 20px;
+  backdrop-filter: invert(80%);
+  filter: none !important
+}
+
+#retakeButton {
+  width: fit-content;
+  margin: auto;
+}
+
+.loadingSvg {
   fill: red;
   padding: auto;
   margin: auto;
@@ -31,13 +35,23 @@ resultCard{
   justify-content: center;
   align-items: center;
   height: 100vh;
-  animation: 3s ease-in svgColorizer infinite; 
+  animation: 3s ease-in svgColorizer infinite;
 }
 
-@keyframes svgColorizer{
-  0%{fill: #013b31}
-  25%{fill :#378058}
-  50%{fill :#185a81}
-  75%{fill :#8a1e5a}
-  100%{fill: #4d1e20}
+@keyframes svgColorizer {
+  0% {
+    fill: #013b31;
+  }
+  25% {
+    fill: #378058;
+  }
+  50% {
+    fill: #185a81;
+  }
+  75% {
+    fill: #8a1e5a;
+  }
+  100% {
+    fill: #4d1e20;
+  }
 }

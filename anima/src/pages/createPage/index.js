@@ -132,7 +132,7 @@ export default function CreatePage(props) {
                     name="a"
                     value={testData.results[0].a}
                     onChange={(e) => handleFormInput(e, 0)}
-                    placeholder="Enter value for 'a'"
+                    placeholder="Personality name"
                     required
                   />
                   {/* Input for 'image' */}
@@ -159,7 +159,7 @@ export default function CreatePage(props) {
                     name="b"
                     value={testData.results[1].b}
                     onChange={(e) => handleFormInput(e, 1)}
-                    placeholder="Enter value for 'b'"
+                    placeholder="Personality name"
                     required
                   />
 
@@ -187,7 +187,7 @@ export default function CreatePage(props) {
                     name="c"
                     value={testData.results[2].c}
                     onChange={(e) => handleFormInput(e, 2)}
-                    placeholder="Enter value for 'c'"
+                    placeholder="Personality name"
                     required
                   />
 
@@ -215,7 +215,7 @@ export default function CreatePage(props) {
                     name="d"
                     value={testData.results[3].d}
                     onChange={(e) => handleFormInput(e, 3)}
-                    placeholder="Enter value for 'd'"
+                    placeholder="Personality name"
                     required
                   />
 
@@ -245,7 +245,8 @@ export default function CreatePage(props) {
       const response = await axios.post(props.URL + "create", testData);
       console.log("test post successful", response);
       localStorage.setItem("newTestId", response.data._id);
-      localStorage.setItem("createdResults", testData.results);
+      var resultsJsonString = JSON.stringify(testData.results)
+      localStorage.setItem("createdResults", resultsJsonString);
       console.log(testData.results);
       navigate("/question-add");
     } catch (error) {

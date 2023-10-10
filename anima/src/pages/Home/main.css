@@ -7,7 +7,8 @@
 }
 
 .homePageContainer img {
-
+  padding-right: 10vw;
+  padding-top:3vw
 }
 
 .homePageContainer p {
@@ -20,10 +21,9 @@
 
 .homePageContainer a {
   color: rgb(0, 0, 0);
-  font-size: 6em !important;
+  font-size: 4em !important;
   padding-left: 15vw;
-
-  padding-top: 15vh;
+  margin:auto;
   width: 50vw;
   font-family: "Julius Sans One", sans-serif;
   font-weight: bold;
