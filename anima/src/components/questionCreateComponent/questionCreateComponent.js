@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./main.css";
 
-export default function QuestionCreateComponent({URL, props, addQuestion, sendDataToParent} ) {
+export default function QuestionCreateComponent({
+  URL,
+  props,
+  addQuestion,
+  sendDataToParent,
+}) {
   const resultsData = localStorage.getItem("createdResults");
   const parsedResults = JSON.parse(resultsData);
 
@@ -29,19 +34,7 @@ export default function QuestionCreateComponent({URL, props, addQuestion, sendDa
     testId: localStorage.getItem("newTestId"),
   });
 
-  // const handleFormSubmit = async (event) => {
-  //   event.preventDefault();
-
-  //   try {
-  //     const response = await axios.post(
-  //       URL.URL + "questions/add-question",
-  //       createdQuestion
-  //     );
-  //     console.log("Question post successful", response);
-  //   } catch (error) {
-  //     console.error("Error posting question", error);
-  //   }
-  // };
+  const [isNextButtonEnabled, setIsNextButtonEnabled] = useState(false);
 
   const handleQuestionInput = (event) => {
     const { name, value } = event.target;
@@ -57,7 +50,7 @@ export default function QuestionCreateComponent({URL, props, addQuestion, sendDa
   const handleAnswerChoiceChange = (index, field, value) => {
     const updatedAnswerChoices = [...createdQuestion.answerChoices];
     updatedAnswerChoices[index][field] = value;
-
+    setIsNextButtonEnabled(value.length > 1);
     setCreatedQuestion((previousData) => ({
       ...previousData,
       answerChoices: updatedAnswerChoices,
@@ -66,7 +59,7 @@ export default function QuestionCreateComponent({URL, props, addQuestion, sendDa
 
   const setQuestionClick = (e) => {
     e.preventDefault();
-    sendDataToParent (createdQuestion);
+    sendDataToParent(createdQuestion);
   };
   return (
     <div className="questionCreateContainer">
@@ -187,7 +180,9 @@ export default function QuestionCreateComponent({URL, props, addQuestion, sendDa
             required
           />
         </div>
-        <button onClick={setQuestionClick}>Send Data to Parent</button>
+        <button disabled={!isNextButtonEnabled} onClick={setQuestionClick}>
+          Finish Question
+        </button>
       </form>
     </div>
   );
