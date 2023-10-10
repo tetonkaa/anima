@@ -40,33 +40,33 @@ export default function QuestionCreate(props) {
     ]);
   };
 
-  // const handleFormSubmit = async (event) => {
-  //   event.preventDefault();
-
-  //   try {
-  //     const response = await axios.post(
-  //       props.URL + "questions/add-question",
-  //       createdQuestion
-  //     );
-  //     console.log("Question post successful", response);
-  //   } catch (error) {
-  //     console.error("Error posting question", error);
-  //   }
-  // };
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      // You can now access the createdQuestions state here
-      console.log("Created Questions:", createdQuestions);
-
-      // Use axios to post the questions to the server here
-      // ...
+      const response = await axios.post(
+        props.URL + "questions/add-question",
+        createdQuestions
+      );
+      console.log("Question post successful", response);
     } catch (error) {
-      console.error("Error posting questions", error);
+      console.error("Error posting question", error);
     }
   };
+
+  // const handleFormSubmit = async (event) => {
+  //   event.preventDefault();
+
+  //   try {
+  //     // You can now access the createdQuestions state here
+  //     console.log("Created Questions:", createdQuestions);
+
+  //     // Use axios to post the questions to the server here
+  //     // ...
+  //   } catch (error) {
+  //     console.error("Error posting questions", error);
+  //   }
+  // };
 
   console.log(createdQuestions);
 
