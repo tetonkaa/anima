@@ -135,6 +135,7 @@ export default function CreatePage(props) {
                     onChange={(e) => handleFormInput(e, 0)}
                     placeholder="Personality name"
                     required
+                    maxlength="14"
                   />
                   {/* Input for 'image' */}
                   <input
@@ -161,6 +162,7 @@ export default function CreatePage(props) {
                     value={testData.results[1].b}
                     onChange={(e) => handleFormInput(e, 1)}
                     placeholder="Personality name"
+                    maxlength="14"
                     required
                   />
 
@@ -189,6 +191,7 @@ export default function CreatePage(props) {
                     value={testData.results[2].c}
                     onChange={(e) => handleFormInput(e, 2)}
                     placeholder="Personality name"
+                    maxlength="14"
                     required
                   />
 
@@ -217,6 +220,7 @@ export default function CreatePage(props) {
                     value={testData.results[3].d}
                     onChange={(e) => handleFormInput(e, 3)}
                     placeholder="Personality name"
+                    maxlength="14"
                     required
                   />
 

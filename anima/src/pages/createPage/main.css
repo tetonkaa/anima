@@ -50,6 +50,7 @@
 .resultsH2 {
   font-size: 3em !important;
   margin-top: 20vh;
+  padding-bottom: 2vh;
 }
 .createTestForm input:focus {
   color: #1b5de6;
@@ -71,6 +72,9 @@
   padding-top: 1vh;
   background: rgba(0, 0, 0, 0.058);
   color: rgb(0, 0, 0);
+  max-height: 60vh;
+  width: 25vw;
+  max-width: 25vw;
 }
 
 .resultsFormContainer {
@@ -89,15 +93,17 @@
 
 .customCard h3 {
   text-align: center;
-  font-size: large;
+  font-size: 1.5em !important;
   font-family: moto-verse;
   padding: 1vh;
+  height: 2.5vh;
+  padding-top:2vh;
 }
 
 .placeholderImage {
   height: 40vh;
   width: 100%;
-  margin-top: 3vh;
+  margin-top: 4vh;
   box-shadow: 1px 5px 18px 2px rgba(0, 0, 0, 0.419);
   /* border-radius: 10px; */
   animation: cardEffect ease-in 4s infinite;
