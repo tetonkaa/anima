@@ -1,15 +1,11 @@
 .masterPageContainer {
   background-color: #ffffff;
-  margin-top: 5vw;
-  /* animation: 14s ease-in marginBgColorizer infinite alternate-reverse; */
   animation: fadeIn ease-in 0.3s;
+
+  height: 90vh;
 }
 
 .createPage {
-}
-
-.createInputFieldContainer {
-  height: 50vh;
 }
 
 .masterPageContainer button {
@@ -29,23 +25,32 @@
   flex-direction: column;
   justify-content: center;
   border-radius: 18px;
+  border: none !important;
   animation: 14s ease-in createBgColorizer infinite alternate-reverse;
+  border: dotted blue;
 }
 
 .createTestForm input {
-  border-radius: 4px;
+  /* border-radius: 4px;
   width: 45vw;
   margin-left: 20vw;
-  font-size: 4em;
+  font-size: 1em;
   margin-top: 5vw;
   background-color: rgba(255, 255, 255, 0.656);
-  /* box-shadow: 1px 0px 3px 2px rgba(0, 0, 0, 0.379);  */
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: 2px black solid;
+  border-bottom: 2px black solid; */
 }
 
+.createInputFieldContainer {
+  height: 50vh;
+}
+
+.resultsH2 {
+  font-size: 3em !important;
+  margin-top: 20vh;
+}
 .createTestForm input:focus {
   color: #1b5de6;
   outline: none !important;
@@ -56,43 +61,78 @@
   box-shadow: none;
 }
 
+.customCard {
+  /* box-shadow: 1px 1px 10px 1px; */
+  height: 60vh;
+  right: 2vw;
+  border: thick 3em;
+  border-radius: 10px;
+  animation: linear 4s infinite alternate techBorderizer;
+  padding-top: 1vh;
+  background: rgba(0, 0, 0, 0.058);
+  color: rgb(0, 0, 0);
+}
+
 .resultsFormContainer {
   display: flex;
-  height: 70vh;
-  width: 85vw;
+  height: 90vh !important;
+  width: 90vw;
   flex-direction: row;
-  margin-top: 2vh;
   padding-bottom: 2vh;
-  padding-left: 2vw;
-  padding-right: 2vw;
+  justify-content: space-between !important;
 }
 .resultInputContainer {
   display: flex;
   flex-direction: row;
+  width: 8vw !important;
+}
+
+.customCard h3 {
+  text-align: center;
+  font-size: large;
+  font-family: moto-verse;
+  padding: 1vh;
 }
 
 .placeholderImage {
   height: 40vh;
   width: 100%;
-  animation: fadeIn ease-in 1s;
-  box-shadow: 1px 1px 10px 1px;
-  border-radius: 50% / 10%;
-}
-
-.placeholderImage:hover {
-  scale: 1.1;
-  transition: ease-in 0.3s;
+  margin-top: 3vh;
+  box-shadow: 1px 5px 18px 2px rgba(0, 0, 0, 0.419);
+  /* border-radius: 10px; */
+  animation: cardEffect ease-in 4s infinite;
 }
 
 #testNameInput input {
   text-align: center;
 }
-.resultsFormContainer input {
-  width: 8vw;
-  font-size: 1em;
-  margin-left: 1vw !important;
-  margin-top: 5vh !important;
+.resultInputContainer {
+  width: 4vw !important;
+  margin-top: 2vh !important;
   margin: 0;
+  opacity: 0;
+  margin-left: 2vw;
+  transform: translateY(100%);
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.customCard:hover .resultInputContainer {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.resultInputContainer input {
+  width: 8vw !important;
+  height: 4vh;
+  border: none;
+  background-color: rgba(180, 180, 180, 0.326);
+  border-radius: 5px;
+  margin-right: 0.5vw;
+  color: rgb(0, 0, 0);
+}
+
+.resultInputContainer input::placeholder {
+  color: rgb(0, 0, 0);
 }
 
 h2 {
@@ -110,7 +150,7 @@ h2 {
 }
 
 .createTestForm h2 {
-  font-size: larger;
+  font-size: 3em;
   text-align: center;
 }
 
@@ -119,6 +159,7 @@ h2 {
   flex-direction: column;
   height: 80vh;
   padding-bottom: 2vh;
+  margin-top: 10vh;
 }
 #descriptionInput h2 {
   font-size: 2em !important;
@@ -144,14 +185,16 @@ h2 {
 }
 
 #descriptionInput img {
-  height: 40vh;
   margin: auto;
-  border-radius: 10px;
-  box-shadow: 0px 0px 2px 1px black;
+  margin-top: 10vh;
+  width: 40vw;
 }
 
 #imageEffect {
-  animation: fadeIn ease-in 1s !important;
+  height: 40vh;
+  border-radius: 10px;
+  animation: fadeIn ease-in-out infinite;
+  animation-direction: alternate;
 }
 
 #descriptionInput textarea:nth-of-type(2) {
@@ -173,7 +216,7 @@ h2 {
   margin: auto;
 }
 
-@keyframes createBgColorizer {
+/* @keyframes createBgColorizer {
   0% {
     box-shadow: 0px 0px 0px 2px #171717e4, 8px 8px 0px 0px #6c6c6c51;
   }
@@ -183,7 +226,7 @@ h2 {
   100% {
     box-shadow: 0px 0px 0px 2px #000000, 8px 8px 0px 0px #7070707a;
   }
-}
+} */
 
 @keyframes marginBgColorizer {
   0% {
@@ -202,5 +245,17 @@ h2 {
   100% {
     background-image: radial-gradient(#474bff 5px, transparent 11px);
     background-position: 50px 50px;
+  }
+}
+
+@keyframes cardEffect {
+  0% {
+    box-shadow: 1px 5px 18px 2px rgba(0, 0, 0, 0.419);
+  }
+  50% {
+    box-shadow: 10px 24px 24px 5px rgba(0, 0, 0, 0.419);
+  }
+  100% {
+    box-shadow: 1px 5px 18px 2px rgba(0, 0, 0, 0.419);
   }
 }

@@ -2,18 +2,25 @@ import axios from "axios";
 import "./main.css";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import {ReactComponent as Loading} from '../../assets/loading.svg'
+import { ReactComponent as Loading } from "../../assets/loading.svg";
 export default function TestPage(props) {
-  const thisTest = localStorage.getItem("currentTestId"); //define testId from local storage
+  const [thisTest, setThisTest] = useState(
+    localStorage.getItem("currentTestId")
+  ); //define testId from local storage
   const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
   const [userAnswers, setUserAnswers] = useState({
     testId: thisTest,
     userAnswers: {},
-    user: props.user ? props.user.uid : 'guest'
+    user: props.user ? props.user.uid : "guest",
   }); //define user answers as object, using thisTest as key and answers as object for value
 
-  const [answeredQuestions, setAnsweredQuestions] = useState({})
+  const [answeredQuestions, setAnsweredQuestions] = useState({});
+  const [inviteLink, setInviteLink] = useState();
+  const urlTestId = window.location.hash.replace("#", "");
+  useEffect(() => {
+    setInviteLink(process.env.REACT_APP_FRONTEND_URL + `test/#${thisTest}`);
+  });
 
   async function getQuestions() {
     const { data } = await axios.get(props.URL + "test-questions/" + thisTest);
@@ -22,12 +29,18 @@ export default function TestPage(props) {
   }
 
   useEffect(() => {
-    getQuestions();
-  }, []);
+    if (urlTestId !== "") {
+      localStorage.setItem("currentTestId", urlTestId);
+      setThisTest(urlTestId)
+      getQuestions();
+    } else {
+      getQuestions();
+    }
+  });
 
   useEffect(() => {
-    console.log(questions);
-  }, [questions]);
+    console.log(urlTestId);
+  }, []);
 
   const handleAnswerValue = (event, answerValue) => {
     const questionId = event.target.name;
@@ -38,7 +51,9 @@ export default function TestPage(props) {
 
     setAnsweredQuestions({ ...answeredQuestions, [questionId]: true });
   };
-  /////////////////////
+  const handleShare = () => {
+    console.log(inviteLink);
+  };
 
   async function handleAnswerSubmit() {
     const updateProps = (response) => {
@@ -55,35 +70,38 @@ export default function TestPage(props) {
       {questions.map((questionItem, i) => {
         return (
           <div class="masterPageContainer">
-          <div
-            key={questionItem._id}
-            className="flex mainPageCards flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
-          >
-            <div className="flex flex-col justify-between p-4 leading-normal">
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {questionItem.question}
-              </h5>
-              <ul>
-                {questionItem.answerChoices.map((answer) => (
-                  <li key={answer._id}>
-                    <label>
-                      <input
-                        type="radio"
-                        name={questionItem._id}
-                        value={answer.Score}
-                        id={answer.Label}
-                        onClick={(event) =>
-                          // handleAnswerChange(event, questionItem._id)
-                          handleAnswerValue(event, answer)
-                        }
-                      />
-                      <span class="answer">{answer.Answer}</span>
-                    </label>
-                  </li>
-                ))}
-              </ul>
+            <button className="mt-20" type="button" onClick={handleShare}>
+              Share This Test
+            </button>
+            <div
+              key={questionItem._id}
+              className="flex mainPageCards flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+            >
+              <div className="flex flex-col justify-between p-4 leading-normal">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  {questionItem.question}
+                </h5>
+                <ul>
+                  {questionItem.answerChoices.map((answer) => (
+                    <li key={answer._id}>
+                      <label>
+                        <input
+                          type="radio"
+                          name={questionItem._id}
+                          value={answer.Score}
+                          id={answer.Label}
+                          onClick={(event) =>
+                            // handleAnswerChange(event, questionItem._id)
+                            handleAnswerValue(event, answer)
+                          }
+                        />
+                        <span class="answer">{answer.Answer}</span>
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
           </div>
         );
       })}
@@ -99,7 +117,7 @@ export default function TestPage(props) {
   ) : (
     <div className="loadingSvg">
       {/* <h1 className=" loader animate__animated animate__pulse animate__infinite 	infinite"> Loading...</h1> */}
-    <Loading />
+      <Loading />
     </div>
   );
 }

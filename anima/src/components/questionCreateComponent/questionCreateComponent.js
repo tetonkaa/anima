@@ -3,7 +3,6 @@ import axios from "axios";
 import "./main.css";
 
 export default function QuestionCreateComponent({
-  URL,
   props,
   addQuestion,
   sendDataToParent,
@@ -35,6 +34,7 @@ export default function QuestionCreateComponent({
   });
 
   const [isNextButtonEnabled, setIsNextButtonEnabled] = useState(false);
+  const [isFormEnabled, setIsFormEnabled] = useState(true);
 
   const handleQuestionInput = (event) => {
     const { name, value } = event.target;
@@ -60,129 +60,132 @@ export default function QuestionCreateComponent({
   const setQuestionClick = (e) => {
     e.preventDefault();
     sendDataToParent(createdQuestion);
+    setIsFormEnabled(false);
   };
   return (
     <div className="questionCreateContainer">
       <h1>Question</h1>
       <form>
-        <input
-          type="text"
-          name="question"
-          placeholder="Enter a question"
-          value={createdQuestion.question}
-          onChange={handleQuestionInput}
-          readonly
-        />
-        <div>
-          <input
+        <fieldset disabled={!isFormEnabled}>
+          <input className="questionInput"
             type="text"
-            value={createdQuestion.answerChoices[0].Label}
+            name="question"
+            placeholder="Enter a question"
+            value={createdQuestion.question}
+            onChange={handleQuestionInput}
             readonly
-            disabled
           />
-          <input
-            type="number"
-            placeholder={`Score for Choice ${createdQuestion.answerChoices[0].Label}`}
-            value={createdQuestion.answerChoices[0].Score}
-            onChange={(e) =>
-              handleAnswerChoiceChange(0, "Score", parseInt(e.target.value))
-            }
-            required
-          />
-          <input
-            type="text"
-            placeholder={`Answer for Choice ${firstResult.a}`}
-            value={createdQuestion.answerChoices[0].Answer}
-            onChange={(e) =>
-              handleAnswerChoiceChange(0, "Answer", e.target.value)
-            }
-            required
-          />
-        </div>
+          <div>
+            <input
+              type="text"
+              value={createdQuestion.answerChoices[0].Label}
+              readonly
+              disabled
+            />
+            <input
+              type="number"
+              placeholder={`Score for Choice ${createdQuestion.answerChoices[0].Label}`}
+              value={createdQuestion.answerChoices[0].Score}
+              onChange={(e) =>
+                handleAnswerChoiceChange(0, "Score", parseInt(e.target.value))
+              }
+              required
+            />
+            <input
+              type="text"
+              placeholder={`Answer for Choice ${firstResult.a}`}
+              value={createdQuestion.answerChoices[0].Answer}
+              onChange={(e) =>
+                handleAnswerChoiceChange(0, "Answer", e.target.value)
+              }
+              required
+            />
+          </div>
 
-        <div>
-          <input
-            type="text"
-            value={createdQuestion.answerChoices[1].Label}
-            readonly
-            disabled
-          />
-          <input
-            type="number"
-            placeholder={`Score for Choice ${createdQuestion.answerChoices[1].Label}`}
-            value={createdQuestion.answerChoices[1].Score}
-            onChange={(e) =>
-              handleAnswerChoiceChange(1, "Score", parseInt(e.target.value))
-            }
-            required
-          />
-          <input
-            type="text"
-            placeholder={`Answer for Choice ${secondResult.b}`}
-            value={createdQuestion.answerChoices[1].Answer}
-            onChange={(e) =>
-              handleAnswerChoiceChange(1, "Answer", e.target.value)
-            }
-            required
-          />
-        </div>
+          <div>
+            <input
+              type="text"
+              value={createdQuestion.answerChoices[1].Label}
+              readonly
+              disabled
+            />
+            <input
+              type="number"
+              placeholder={`Score for Choice ${createdQuestion.answerChoices[1].Label}`}
+              value={createdQuestion.answerChoices[1].Score}
+              onChange={(e) =>
+                handleAnswerChoiceChange(1, "Score", parseInt(e.target.value))
+              }
+              required
+            />
+            <input
+              type="text"
+              placeholder={`Answer for Choice ${secondResult.b}`}
+              value={createdQuestion.answerChoices[1].Answer}
+              onChange={(e) =>
+                handleAnswerChoiceChange(1, "Answer", e.target.value)
+              }
+              required
+            />
+          </div>
 
-        <div>
-          <input
-            type="text"
-            value={createdQuestion.answerChoices[2].Label}
-            readonly
-            disabled
-          />
-          <input
-            type="number"
-            placeholder={`Score for Choice ${createdQuestion.answerChoices[2].Label}`}
-            value={createdQuestion.answerChoices[2].Score}
-            onChange={(e) =>
-              handleAnswerChoiceChange(2, "Score", parseInt(e.target.value))
-            }
-            required
-          />
-          <input
-            type="text"
-            placeholder={`Answer for Choice ${thirdResult.c}`}
-            value={createdQuestion.answerChoices[2].Answer}
-            onChange={(e) =>
-              handleAnswerChoiceChange(2, "Answer", e.target.value)
-            }
-            required
-          />
-        </div>
+          <div>
+            <input
+              type="text"
+              value={createdQuestion.answerChoices[2].Label}
+              readonly
+              disabled
+            />
+            <input
+              type="number"
+              placeholder={`Score for Choice ${createdQuestion.answerChoices[2].Label}`}
+              value={createdQuestion.answerChoices[2].Score}
+              onChange={(e) =>
+                handleAnswerChoiceChange(2, "Score", parseInt(e.target.value))
+              }
+              required
+            />
+            <input
+              type="text"
+              placeholder={`Answer for Choice ${thirdResult.c}`}
+              value={createdQuestion.answerChoices[2].Answer}
+              onChange={(e) =>
+                handleAnswerChoiceChange(2, "Answer", e.target.value)
+              }
+              required
+            />
+          </div>
 
-        <div>
-          <input
-            type="text"
-            value={createdQuestion.answerChoices[3].Label}
-            readonly
-            disabled
-          />
-          <input
-            type="number"
-            placeholder={`Score for Choice ${createdQuestion.answerChoices[3].Label}`}
-            value={createdQuestion.answerChoices[3].Score}
-            onChange={(e) =>
-              handleAnswerChoiceChange(3, "Score", parseInt(e.target.value))
-            }
-            required
-          />
-          <input
-            type="text"
-            placeholder={`Answer for Choice ${fourthResult.d}`}
-            value={createdQuestion.answerChoices[3].Answer}
-            onChange={(e) =>
-              handleAnswerChoiceChange(3, "Answer", e.target.value)
-            }
-            required
-          />
-        </div>
-        <button disabled={!isNextButtonEnabled} onClick={setQuestionClick}>
-          Finish Question
-        </button>
+          <div>
+            <input
+              type="text"
+              value={createdQuestion.answerChoices[3].Label}
+              readonly
+              disabled
+            />
+            <input
+              type="number"
+              placeholder={`Score for Choice ${createdQuestion.answerChoices[3].Label}`}
+              value={createdQuestion.answerChoices[3].Score}
+              onChange={(e) =>
+                handleAnswerChoiceChange(3, "Score", parseInt(e.target.value))
+              }
+              required
+            />
+            <input
+              type="text"
+              placeholder={`Answer for Choice ${fourthResult.d}`}
+              value={createdQuestion.answerChoices[3].Answer}
+              onChange={(e) =>
+                handleAnswerChoiceChange(3, "Answer", e.target.value)
+              }
+              required
+            />
+          </div>
+          <button disabled={!isNextButtonEnabled} onClick={setQuestionClick}>
+            Finish Question
+          </button>
+        </fieldset>
       </form>
     </div>
   );

@@ -11,10 +11,10 @@ export default function CreatePage(props) {
     testName: "",
     description: "",
     results: [
-      { a: "", image: "" },
-      { b: "", image: "" },
-      { c: "", image: "" },
-      { d: "", image: "" },
+      { a: "Persona 1", image: "" },
+      { b: "Persona 2", image: "" },
+      { c: "Persona 3", image: "" },
+      { d: "Persona 4", image: "" },
     ],
     testPic: "",
     user: "",
@@ -38,15 +38,15 @@ export default function CreatePage(props) {
     }
   }, [props.user]);
 
-  const handleNextClick = () => {
-    // You can add validation logic here if needed
-    // For example, if the current step is the description and you want to ensure it's not empty.
-
-    // Move to the next step
+  const handleNextClick = (e) => {
+    e.preventDefault();
     setCurrentInputField(currentInputField + 1);
   };
 
-  const handleBackClick = () => {
+  console.log(currentInputField + "current input field value");
+
+  const handleBackClick = (e) => {
+    e.preventDefault();
     setCurrentInputField(currentInputField - 1);
   };
 
@@ -118,9 +118,10 @@ export default function CreatePage(props) {
       case 3:
         return (
           <>
-            <h2> Personality Results:</h2>
+            <h2 className="resultsH2"> Personality Results:</h2>
             <div className="resultsFormContainer">
-              <div>
+              <div className="customCard">
+                <h3>{testData.results[0].a}</h3>
                 <img
                   className="placeholderImage"
                   src={testData.results[0].image || placeholderImages[0]}
@@ -147,8 +148,8 @@ export default function CreatePage(props) {
                 </div>
               </div>
 
-              <div>
-                {/* Input for 'b' */}
+              <div className="customCard">
+                <h3>{testData.results[1].b}</h3>
                 <img
                   className="placeholderImage"
                   src={testData.results[1].image || placeholderImages[1]}
@@ -175,8 +176,8 @@ export default function CreatePage(props) {
                 </div>
               </div>
 
-              <div>
-                {/* Input for 'c' */}
+              <div className="customCard">
+                <h3>{testData.results[2].c}</h3>
                 <img
                   className="placeholderImage"
                   src={testData.results[2].image || placeholderImages[2]}
@@ -203,8 +204,8 @@ export default function CreatePage(props) {
                 </div>
               </div>
 
-              <div>
-                {/* Input for 'd' */}
+              <div className="customCard">
+                <h3>{testData.results[3].d}</h3>
                 <img
                   className="placeholderImage"
                   src={testData.results[3].image || placeholderImages[3]}
@@ -245,7 +246,7 @@ export default function CreatePage(props) {
       const response = await axios.post(props.URL + "create", testData);
       console.log("test post successful", response);
       localStorage.setItem("newTestId", response.data._id);
-      var resultsJsonString = JSON.stringify(testData.results)
+      var resultsJsonString = JSON.stringify(testData.results);
       localStorage.setItem("createdResults", resultsJsonString);
       console.log(testData.results);
       navigate("/question-add");
@@ -309,6 +310,9 @@ export default function CreatePage(props) {
           >
             Add Questions
           </button>
+        )}
+        {currentInputField > 1 && (
+          <button onClick={handleBackClick}>BACK</button>
         )}
       </form>
     </div>

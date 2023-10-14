@@ -4,6 +4,25 @@
   justify-content: center;
   flex-direction: column;
   padding-top: 5vh;
+  padding-bottom:5vh;
   width: 50;
   padding-left: 30vw;
+}
+
+.questionInput{
+  width: 36vw !important;
+  margin-bottom: 2vw;
+}
+
+
+.questionCreateContainer input{
+  border: none;
+  width: 12vw;
+  border-bottom: black solid !important;
+}
+
+input:disabled {
+  background-color: rgba(105, 105, 105, 0.395);
+  opacity: 1;
+  color: linen;
 }
