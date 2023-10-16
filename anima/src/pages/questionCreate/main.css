@@ -4,4 +4,21 @@
     flex-direction: column;
     padding-top: 10vh;
     justify-content: center;
+      background: linear-gradient(
+    300deg,
+    #013b31,
+    #378058,
+    #185a81,
+    #8a1e5a,
+    #a9141b
+  );
+  background-size: 300% 300%;
+  animation: gradient-animation 30s ease infinite;
+}
+
+.questionAddPageContainer button{
+    margin: auto;
+    margin-bottom: 5vh;
+    font-weight: bolder;
+
 }

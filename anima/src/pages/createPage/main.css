@@ -67,7 +67,7 @@
   height: 65vh;
   right: 2vw;
   border-top: none !important;
-  border-radius: 70px;
+  border-radius: 10px 10px 40px 40px;
   animation: cardEffect ease-in 20s infinite alternate-reverse;
   background: rgba(0, 0, 0, 0.058);
   color: rgb(255, 255, 255);
@@ -116,7 +116,7 @@
   flex-direction: row;
   padding-bottom: 2vh;
   justify-content: space-between !important;
-  animation: fadeIn 1s ease-in
+  animation: fadeIn 1s ease-in;
 }
 .resultInputContainer {
   display: flex;
@@ -139,6 +139,7 @@
   width: 100%;
   box-shadow: 1px 5px 18px 2px rgba(0, 0, 0, 0.419);
   border-radius: 10px 10px 0px 0px;
+  background-color: rgba(255, 255, 255, 0.464);
 }
 
 #testNameInput input {
@@ -229,7 +230,7 @@ h2 {
   border-bottom: #ff7474 2mm solid;
   transition: border 0.2s ease-in;
   box-shadow: none;
-  transform: scale(1.2)
+  transform: scale(1.2);
 }
 
 #descriptionInput img {

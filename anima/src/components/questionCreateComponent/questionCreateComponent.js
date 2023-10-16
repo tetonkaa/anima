@@ -67,7 +67,8 @@ export default function QuestionCreateComponent({
       <h1>Question</h1>
       <form>
         <fieldset disabled={!isFormEnabled}>
-          <input className="questionInput"
+          <input
+            className="questionInput"
             type="text"
             name="question"
             placeholder="Enter a question"
@@ -75,23 +76,13 @@ export default function QuestionCreateComponent({
             onChange={handleQuestionInput}
             readonly
           />
+          <div className="answerLabels">
+            <h3>Answer</h3>
+            <h3>Score</h3>
+          </div>
           <div>
             <input
-              type="text"
-              value={createdQuestion.answerChoices[0].Label}
-              readonly
-              disabled
-            />
-            <input
-              type="number"
-              placeholder={`Score for Choice ${createdQuestion.answerChoices[0].Label}`}
-              value={createdQuestion.answerChoices[0].Score}
-              onChange={(e) =>
-                handleAnswerChoiceChange(0, "Score", parseInt(e.target.value))
-              }
-              required
-            />
-            <input
+              className="answerInput"
               type="text"
               placeholder={`Answer for Choice ${firstResult.a}`}
               value={createdQuestion.answerChoices[0].Answer}
@@ -100,25 +91,21 @@ export default function QuestionCreateComponent({
               }
               required
             />
+            <input
+            className="scoreInput"
+              type="number"
+              placeholder={`Score for Choice ${createdQuestion.answerChoices[0].Label}`}
+              value={createdQuestion.answerChoices[0].Score}
+              onChange={(e) =>
+                handleAnswerChoiceChange(0, "Score", parseInt(e.target.value))
+              }
+              required
+            />
           </div>
 
           <div>
             <input
-              type="text"
-              value={createdQuestion.answerChoices[1].Label}
-              readonly
-              disabled
-            />
-            <input
-              type="number"
-              placeholder={`Score for Choice ${createdQuestion.answerChoices[1].Label}`}
-              value={createdQuestion.answerChoices[1].Score}
-              onChange={(e) =>
-                handleAnswerChoiceChange(1, "Score", parseInt(e.target.value))
-              }
-              required
-            />
-            <input
+              className="answerInput"
               type="text"
               placeholder={`Answer for Choice ${secondResult.b}`}
               value={createdQuestion.answerChoices[1].Answer}
@@ -127,25 +114,21 @@ export default function QuestionCreateComponent({
               }
               required
             />
+            <input
+            className="scoreInput"
+              type="number"
+              placeholder={`Score for Choice ${createdQuestion.answerChoices[1].Label}`}
+              value={createdQuestion.answerChoices[1].Score}
+              onChange={(e) =>
+                handleAnswerChoiceChange(1, "Score", parseInt(e.target.value))
+              }
+              required
+            />
           </div>
 
           <div>
             <input
-              type="text"
-              value={createdQuestion.answerChoices[2].Label}
-              readonly
-              disabled
-            />
-            <input
-              type="number"
-              placeholder={`Score for Choice ${createdQuestion.answerChoices[2].Label}`}
-              value={createdQuestion.answerChoices[2].Score}
-              onChange={(e) =>
-                handleAnswerChoiceChange(2, "Score", parseInt(e.target.value))
-              }
-              required
-            />
-            <input
+              className="answerInput"
               type="text"
               placeholder={`Answer for Choice ${thirdResult.c}`}
               value={createdQuestion.answerChoices[2].Answer}
@@ -154,30 +137,36 @@ export default function QuestionCreateComponent({
               }
               required
             />
+            <input
+            className="scoreInput"
+              type="number"
+              placeholder={`Score for Choice ${createdQuestion.answerChoices[2].Label}`}
+              value={createdQuestion.answerChoices[2].Score}
+              onChange={(e) =>
+                handleAnswerChoiceChange(2, "Score", parseInt(e.target.value))
+              }
+              required
+            />
           </div>
 
           <div>
             <input
-              type="text"
-              value={createdQuestion.answerChoices[3].Label}
-              readonly
-              disabled
-            />
-            <input
-              type="number"
-              placeholder={`Score for Choice ${createdQuestion.answerChoices[3].Label}`}
-              value={createdQuestion.answerChoices[3].Score}
-              onChange={(e) =>
-                handleAnswerChoiceChange(3, "Score", parseInt(e.target.value))
-              }
-              required
-            />
-            <input
+              className="answerInput"
               type="text"
               placeholder={`Answer for Choice ${fourthResult.d}`}
               value={createdQuestion.answerChoices[3].Answer}
               onChange={(e) =>
                 handleAnswerChoiceChange(3, "Answer", e.target.value)
+              }
+              required
+            />
+            <input
+            className="scoreInput"
+              type="number"
+              placeholder={`Score for Choice ${createdQuestion.answerChoices[3].Label}`}
+              value={createdQuestion.answerChoices[3].Score}
+              onChange={(e) =>
+                handleAnswerChoiceChange(3, "Score", parseInt(e.target.value))
               }
               required
             />

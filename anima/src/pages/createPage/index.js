@@ -39,7 +39,7 @@ export default function CreatePage(props) {
   }, [props.user]);
 
   const handleNextClick = (e) => {
-    e.preventDefault();
+    e.preventDefault(e);
     setCurrentInputField(currentInputField + 1);
   };
 
@@ -63,11 +63,11 @@ export default function CreatePage(props) {
         return (
           <>
             <div className="createInputFieldContainer" id="testNameInput">
-            <h2>Create a test</h2>
-            <p>
-              Pick an interesting test name, describe what the test is about,
-              and list the possible personality results.
-            </p>
+              <h2>Create a test</h2>
+              <p>
+                Pick an interesting test name, describe what the test is about,
+                and list the possible personality results.
+              </p>
               <input
                 className=""
                 placeholder="Enter Test name"
@@ -124,8 +124,8 @@ export default function CreatePage(props) {
                 <img
                   className="placeholderImage"
                   src={testData.results[0].image || placeholderImages[0]}
-                  />
-                  <h3>{testData.results[0].a}</h3>
+                />
+                <h3>{testData.results[0].a}</h3>
                 {/* Input for 'a' */}
                 <div className="resultInputContainer">
                   <input
@@ -153,8 +153,8 @@ export default function CreatePage(props) {
                 <img
                   className="placeholderImage"
                   src={testData.results[1].image || placeholderImages[1]}
-                  />
-                  <h3>{testData.results[1].b}</h3>
+                />
+                <h3>{testData.results[1].b}</h3>
                 <div className="resultInputContainer">
                   <input
                     type="text"
@@ -182,8 +182,8 @@ export default function CreatePage(props) {
                 <img
                   className="placeholderImage"
                   src={testData.results[2].image || placeholderImages[2]}
-                  />
-                  <h3>{testData.results[2].c}</h3>
+                />
+                <h3>{testData.results[2].c}</h3>
                 <div className="resultInputContainer">
                   <input
                     type="text"
@@ -211,8 +211,8 @@ export default function CreatePage(props) {
                 <img
                   className="placeholderImage"
                   src={testData.results[3].image || placeholderImages[3]}
-                  />
-                  <h3>{testData.results[3].d}</h3>
+                />
+                <h3>{testData.results[3].d}</h3>
                 <div className="resultInputContainer">
                   <input
                     type="text"
@@ -268,13 +268,13 @@ export default function CreatePage(props) {
   const handleDescriptionInput = (event) => {
     const { value } = event.target;
     setTestData((previousData) => ({ ...previousData, description: value }));
-    setIsNextButtonEnabled(value.length > 1);
+    setIsNextButtonEnabled(value.length > 1 && testData.testPic.length > 8);
   };
 
   const handleTestPicInput = (event) => {
     const { value } = event.target;
     setTestData((previousData) => ({ ...previousData, testPic: value }));
-    setIsNextButtonEnabled(value.length > 8);
+    setIsNextButtonEnabled(value.length > 8 && testData.description.length > 1);
   };
 
   const handleFormInput = (event, index) => {
