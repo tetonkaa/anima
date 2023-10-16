@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./main.css";
+import { useNavigate} from "react-router-dom";
 import QuestionCreateComponent from "../../components/questionCreateComponent/questionCreateComponent";
 
 export default function QuestionCreate(props) {
@@ -23,11 +24,8 @@ export default function QuestionCreate(props) {
     />,
   ]);
   const [createdQuestions, setCreatedQuestions] = useState([]);
-
-  // const addQuestion = (createdQuestion) => {
-  //   // Add the question to the createdQuestions array
-  //   setCreatedQuestions({...createdQuestions, createdQuestion});
-  // };
+  const newTestId = localStorage.getItem("newTestId")
+  const navigate = useNavigate();
 
   let handleAddForm = (e) => {
     e.preventDefault();
@@ -49,6 +47,8 @@ export default function QuestionCreate(props) {
         createdQuestions
       );
       console.log("Question post successful", response);
+      localStorage.setItem("currentTestId", newTestId);
+      navigate("/test")
     } catch (error) {
       console.error("Error posting question", error);
     }

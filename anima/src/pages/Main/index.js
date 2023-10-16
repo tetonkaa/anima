@@ -35,7 +35,7 @@ export default function MainPage(props) {
       <>
         {tests.map((test, i) => {
           return (
-            <div class="masterPageContainer">
+            <div class="">
             <Link
               to="/test"
               key={test._id}
