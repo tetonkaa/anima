@@ -13,20 +13,19 @@
 
 .homePageContainer p {
   color: rgb(97, 96, 96);
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   font-weight: lighter;
   text-shadow: none;
   -webkit-text-fill-color: rgb(97, 96, 96) !important;
 }
 
 .homePageContainer a {
-  color: rgb(0, 0, 0);
-  font-size: 4em !important;
-  padding-left: 15vw;
+  color: rgb(177, 176, 176);
+  font-size: 5em !important;
+  padding-left: 12vw;
   margin:auto;
   width: 50vw;
   font-family: "Julius Sans One", sans-serif;
-  font-weight: bold;
   text-shadow: rgb(32, 32, 32) 2px 0 2px;
 }
 

@@ -31,7 +31,7 @@ export default function TestPage(props) {
   useEffect(() => {
     if (urlTestId !== "") {
       localStorage.setItem("currentTestId", urlTestId);
-      setThisTest(urlTestId)
+      setThisTest(urlTestId);
       getQuestions();
     } else {
       getQuestions();
@@ -53,6 +53,18 @@ export default function TestPage(props) {
   };
   const handleShare = () => {
     console.log(inviteLink);
+    // Get the text field
+    var copyText = document.getElementById("linkShare");
+
+    // Select the text field
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
+
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(copyText.value);
+
+    // Alert the copied text
+    alert("Copied the text: " + copyText.value);
   };
 
   async function handleAnswerSubmit() {
@@ -67,12 +79,13 @@ export default function TestPage(props) {
 
   return questions.length > 0 ? (
     <>
+      <input type="text" value={inviteLink} id="linkShare"></input>
+      <button className="mt-20" type="button" onClick={handleShare}>
+        Share This Test
+      </button>
       {questions.map((questionItem, i) => {
         return (
-          <div class="masterPageContainer">
-            <button className="mt-20" type="button" onClick={handleShare}>
-              Share This Test
-            </button>
+          <div class="testPageContainer">
             <div
               key={questionItem._id}
               className="flex mainPageCards flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
