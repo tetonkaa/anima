@@ -3,6 +3,7 @@ import "./main.css";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ReactComponent as Loading } from "../../assets/loading.svg";
+import { toast, ToastContainer } from 'react-toastify';
 export default function TestPage(props) {
   const [thisTest, setThisTest] = useState(
     localStorage.getItem("currentTestId")
@@ -64,7 +65,7 @@ export default function TestPage(props) {
     navigator.clipboard.writeText(copyText.value);
 
     // Alert the copied text
-    alert("Copied the text: " + copyText.value);
+    toast.success(`Link copied: ${copyText.value}`);
   };
 
   async function handleAnswerSubmit() {
@@ -78,14 +79,15 @@ export default function TestPage(props) {
   }
 
   return questions.length > 0 ? (
-    <>
+    <div class="testPageContainer">
+      <ToastContainer />
       <input type="text" value={inviteLink} id="linkShare"></input>
-      <button className="mt-20" type="button" onClick={handleShare}>
+      <button class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="button" onClick={handleShare}>
         Share This Test
       </button>
-      {questions.map((questionItem, i) => {
+            {questions.map((questionItem, i) => {
         return (
-          <div class="testPageContainer">
+          <div>
             <div
               key={questionItem._id}
               className="flex mainPageCards flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
@@ -126,7 +128,7 @@ export default function TestPage(props) {
       >
         Submit
       </button>
-    </>
+    </div>
   ) : (
     <div className="loadingSvg">
       {/* <h1 className=" loader animate__animated animate__pulse animate__infinite 	infinite"> Loading...</h1> */}

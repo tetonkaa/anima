@@ -1,18 +1,23 @@
-.mainPageCards{
-    margin: auto;
-    margin-top: 5%;
+.mainPageCards {
+  margin: auto;
+  margin-top: 5%;
 }
 
-.answer{
-    
-    padding-left: .2em;
+.answer {
+  padding-left: 0.2em;
 }
 
-/* .answer:hover{
-    transform: scale(1.5)
+.testPageContainer {
+  display: flex;
+  flex-direction: column;
 }
 
-.mainPageCards:hover{
-    transform: scale(1.3);
-    transition: 1.5s
-} */
+#linkShare {
+  display: none;
+}
+.testPageContainer button {
+  width: 10vw;
+  margin: auto;
+  margin-top: 20vh;
+  font-size: 1.5em;
+}
