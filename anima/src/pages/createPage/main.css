@@ -8,32 +8,61 @@
 .createPage {
 }
 
+.svgLinesBg {
+  width: 100%;
+  z-index: 2;
+  margin-left: 20vw;
+  margin-top: 15vh;
+  transform: scale(2);
+  position: absolute;
+
+  background: linear-gradient(
+    300deg,
+    #013b31,
+    #378058,
+    #185a81,
+    #8a1e5a,
+    #a9141b
+  );
+  background-size: 300% 300%;
+  border-radius: 0px 0px 10px 10px;
+  animation: gradient-animation 30s ease infinite;
+  box-shadow: 1px 5px 18px 2px rgba(0, 0, 0, 0.419);
+}
+
 .masterPageContainer button {
   width: 15vw;
   margin-left: 35vw;
 }
 
 .createTestForm {
+  position: relative;
   margin: auto;
   padding-left: 0vw;
   height: 80vh;
   padding-top: 8vh;
   padding-bottom: 5vh;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0);
   width: 85vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-radius: 18px;
   border: none !important;
-  animation: 1s ease-in createBgColorizer infinite alternate-reverse;
-  border: dotted blue;
+  z-index: 3;
+  backdrop-filter: blur(2px);
+  color: white;
 }
 
 .createInputFieldContainer {
   height: 50vh;
   margin: auto;
   animation: fadeIn 1.5s;
+  color: white !important;
+}
+
+.createInputFieldContainer h2 {
+  color: white;
 }
 
 .createInputFieldContainer input {
@@ -45,15 +74,22 @@
   font-size: 4em;
   border-bottom: 2px black solid;
   border-radius: 4px;
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.createInputFieldContainer input::placeholder {
+  color: white;
 }
 
 .resultsH2 {
   font-size: 3em !important;
   margin-top: 20vh;
   padding-bottom: 2vh;
+  color: white;
 }
+
 .createTestForm input:focus {
-  color: #1b5de6;
   outline: none !important;
   border-bottom: #ff7474 2mm solid;
   border-radius: 5px;
@@ -144,6 +180,7 @@
 
 #testNameInput input {
   text-align: center;
+  color: white !important;
 }
 .resultInputContainer {
   width: 4vw !important;
@@ -271,18 +308,6 @@ textarea::placeholder {
   margin: auto;
 }
 
-/* @keyframes createBgColorizer {
-  0% {
-    box-shadow: 0px 0px 0px 2px #171717e4, 8px 8px 0px 0px #6c6c6c51;
-  }
-  50% {
-    box-shadow: 0px 0px 0px 2px #0000007c, 8px 8px 0px 0px #56565600;
-  }
-  100% {
-    box-shadow: 0px 0px 0px 2px #000000, 8px 8px 0px 0px #7070707a;
-  }
-} */
-
 @keyframes marginBgColorizer {
   0% {
     background-image: radial-gradient(#474bff 1px, transparent 1px);
@@ -339,5 +364,90 @@ textarea::placeholder {
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+#line1 {
+  animation: createBgAnimation1 30s linear infinite alternate;
+}
+
+#line2 {
+  animation: createBgAnimation2 30s linear infinite alternate;
+}
+
+#line3 {
+  animation: createBgAnimation3 30s linear infinite alternate;
+}
+
+#line4 {
+  animation: createBgAnimation4 30s linear infinite alternate;
+}
+
+#line5 {
+  animation: createBgAnimation5 30s linear infinite alternate;
+}
+
+@keyframes createBgAnimation1 {
+  0% {
+    d: path(
+      "M875.64-78.29C708.67-50.98 627.01 352.66 356.45 355.8 85.88 358.94-29.02 227.96-162.75 227"
+    );
+  }
+  100% {
+    d: path(
+      "M926.38-3.2C778.8 67.99 846.06 543.09 567.89 545.51 289.72 547.93 41.81 286.42-149.09 282.31"
+    );
+  }
+}
+
+@keyframes createBgAnimation2 {
+  0% {
+    d: path(
+      "M778.44-4.78C623.85 7.9 515.73 320.22 250.05 320.38-15.63 320.54-135.99 111.53-278.34 107.58"
+    );
+  }
+  100% {
+    d: path(
+      "M903.28-95.48C774.98-65.84 813.24 275.11 529.53 275.64 245.83 276.17-24.78 81.26-217.96 79.64"
+    );
+  }
+}
+
+@keyframes createBgAnimation3 {
+  0% {
+    d: path(
+      "M1234.37-62.69C1083.09-18.11 1048.4 399.84 816.84 410.19 585.28 420.54 608.08 340.19 399.32 340.19 190.55 340.19 87.63 409.95-18.21 410.19"
+    );
+  }
+  100% {
+    d: path(
+      "M1227.95-36.42C1117.97-34.48 1020.54 105.68 811.58 105.75 602.61 105.82 603.39 35.75 395.2 35.75 187.02 35.75 84.38 105.51-21.17 105.75"
+    );
+  }
+}
+
+@keyframes createBgAnimation4 {
+  0% {
+    d: path(
+      "M717.07-106.36C621.65-91.92 673.74 119.56 416.52 135.91 159.3 152.26-21.18 388.16-184.59 393.51"
+    );
+  }
+  100% {
+    d: path(
+      "M908.12-70.27C799.52-63.64 835.26 129.35 526.06 138.15 216.87 146.95-36.49 392.32-238.05 395.75"
+    );
+  }
+}
+
+@keyframes createBgAnimation5 {
+  0% {
+    d: path(
+      "M1108.82-3.9C969.92 12.83 891.46 322.39 655.99 324.91 420.53 327.43 429.58 254.91 203.17 254.91-23.25 254.91-135.11 324.7-249.66 324.91"
+    );
+  }
+  100% {
+    d: path(
+      "M1227.95-36.42C1117.97-34.48 1020.54 105.68 811.58 105.75 602.61 105.82 603.39 35.75 395.2 35.75 187.02 35.75 84.38 105.51-21.17 105.75"
+    );
   }
 }

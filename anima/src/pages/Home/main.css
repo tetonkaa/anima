@@ -20,13 +20,13 @@
 }
 
 .homePageContainer a {
-  color: rgb(177, 176, 176);
+  font-weight: lighter;
+  color: rgb(97, 96, 96);
   font-size: 5em !important;
   padding-left: 12vw;
   margin:auto;
   width: 50vw;
-  font-family: "Julius Sans One", sans-serif;
-  text-shadow: rgb(32, 32, 32) 2px 0 2px;
+  text-shadow: none;
 }
 
 

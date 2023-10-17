@@ -291,6 +291,54 @@ export default function CreatePage(props) {
 
   return (
     <div className="masterPageContainer createPage">
+      <div className="svgLinesBg">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          version="1.1"
+          width="1440"
+          height="560"
+          preserveAspectRatio="none"
+          viewBox="0 0 1440 560"
+        >
+          <g mask='url("#SvgjsMask1123")' fill="none">
+            <path
+              id="line1"
+              d="M875.64-78.29C708.67-50.98 627.01 352.66 356.45 355.8 85.88 358.94-29.02 227.96-162.75 227"
+              stroke="rgba(51, 121, 194, 0.58)"
+              stroke-width="1"
+            ></path>
+            <path
+              id="line2"
+              d="M778.44-4.78C623.85 7.9 515.73 320.22 250.05 320.38-15.63 320.54-135.99 111.53-278.34 107.58"
+              stroke="rgba(51, 121, 194, 0.58)"
+              stroke-width="3"
+            ></path>
+            <path
+              id="line3"
+              d="M1234.37-62.69C1083.09-18.11 1048.4 399.84 816.84 410.19 585.28 420.54 608.08 340.19 399.32 340.19 190.55 340.19 87.63 409.95-18.21 410.19"
+              stroke="rgba(51, 121, 194, 0.58)"
+              stroke-width="2"
+            ></path>
+            <path
+              id="line4"
+              d="M717.07-106.36C621.65-91.92 673.74 119.56 416.52 135.91 159.3 152.26-21.18 388.16-184.59 393.51"
+              stroke="rgba(51, 121, 194, 0.58)"
+              stroke-width=".7"
+            ></path>
+            <path
+              id="line5"
+              d="M1108.82-3.9C969.92 12.83 891.46 322.39 655.99 324.91 420.53 327.43 429.58 254.91 203.17 254.91-23.25 254.91-135.11 324.7-249.66 324.91"
+              stroke="rgba(51, 121, 194, 0.58)"
+              stroke-width="2"
+            ></path>
+          </g>
+          <defs>
+            <mask id="SvgjsMask1123">
+              <rect width="1440" height="560" fill="#ffffff"></rect>
+            </mask>
+          </defs>
+        </svg>
+      </div>
       <form onSubmit={handleFormSubmit} className="createTestForm">
         {/* Render the current step */}
         {renderCurrentInputField()}
