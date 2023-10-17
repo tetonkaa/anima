@@ -33,7 +33,7 @@ export default function MainPage(props) {
   function loaded() {
     return (
       <>
-        {tests.map((test, i) => {
+        {tests.slice(0, 4).map((test, i) => {
           return (
             <div class="">
             <Link

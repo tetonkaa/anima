@@ -37,11 +37,8 @@ export default function TestPage(props) {
     } else {
       getQuestions();
     }
-  });
+  },[]);
 
-  useEffect(() => {
-    console.log(urlTestId);
-  }, []);
 
   const handleAnswerValue = (event, answerValue) => {
     const questionId = event.target.name;
