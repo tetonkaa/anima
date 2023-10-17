@@ -212,11 +212,11 @@ export default function Signin(props) {
                   >
                     Sign in
                   </button>
-                  <img
+                  {/* <img
                     class="googleBtn"
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
                     onClick={googlesignin}
-                  />
+                  /> */}
                   <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
                     Not registered?{" "}
                     <button
