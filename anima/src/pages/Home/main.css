@@ -4,11 +4,12 @@
   align-items: column;
   height: 90.5vh; /* Use viewport height for better sizing */
   width: 100%;
+  animation: fadeIn 1.5 ease-in;
 }
 
 .homePageContainer img {
   padding-right: 10vw;
-  padding-top:3vw
+  padding-top: 3vw;
 }
 
 .homePageContainer p {
@@ -24,12 +25,10 @@
   color: rgb(97, 96, 96);
   font-size: 5em !important;
   padding-left: 12vw;
-  margin:auto;
+  margin: auto;
   width: 50vw;
   text-shadow: none;
 }
-
-
 
 .typeFont {
   animation: fontChanger 14s infinite ease-in;

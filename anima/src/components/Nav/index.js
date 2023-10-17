@@ -1,17 +1,17 @@
 import "./main.css";
 import Signin from "../../pages/AuthPage/Signin";
 
-const handleLogout =() => {
+const handleLogout = () => {
   localStorage.clear();
-  window.location.reload("/")
-}
+  window.location.reload("/");
+};
 
 export default function DefaultNavbar(props) {
   return (
     <>
       <nav class="bg-white navStyle dark:bg-gray-900 fixed w-full z-20 top-0 left-0  border-gray-200 dark:border-gray-600">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="http://localhost:3000/" class="flex items-center">
+          <a href="https://www.d3fine.me/" class="flex items-center">
             <img
               src="https://flowbite.com/docs/images/logo.svg"
               class="h-8 mr-3"
@@ -32,7 +32,8 @@ export default function DefaultNavbar(props) {
                 Get Started
               </button>
             ) : (
-              <button onClick={() => handleLogout()}
+              <button
+                onClick={() => handleLogout()}
                 type="button"
                 class="boldThing text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
               >
