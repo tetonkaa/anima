@@ -12,7 +12,6 @@
 
 .navItems:hover{
     animation: hoverAnimation 4s ease-in-out infinite;
-    color: white;
 }
 
 
@@ -28,7 +27,6 @@
 
 .animaTitle:hover{
     animation: hoverAnimation 4s ease-in-out infinite;
-    color: white;
 }
 @keyframes hoverAnimation {
     0%{text-decoration: underline solid #4ab5bd}
