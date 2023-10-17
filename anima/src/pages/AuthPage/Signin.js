@@ -37,7 +37,7 @@ export default function Signin(props) {
         );
         props.setUser(userCredential.user);
         setSuccess(true);
-        window.location.reload(true)
+        window.location.reload(true);
         console.log("pulled user object" + props.user.email);
       })
       .catch((error) => {
@@ -58,8 +58,7 @@ export default function Signin(props) {
         );
         props.setUser(userCredential.user);
         setSuccess(true);
-        window.location.reload(true)
-        ;
+        window.location.reload(true);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -78,10 +77,10 @@ export default function Signin(props) {
         // localStorage.setItem("userDetails", result.user);
         // props.setUser(result.user);
         localStorage.setItem("userDetails", JSON.stringify(credential));
-        props.setUser(credential.user)
+        props.setUser(credential.user);
         setSuccess(true);
         console.log(props.user);
-        window.location.reload(true)
+        window.location.reload(true);
         // console.log("pulled user object" + props.user);
       })
       .catch((error) => {
@@ -188,7 +187,6 @@ export default function Signin(props) {
                           type="checkbox"
                           value=""
                           class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-                          required
                         />
                       </div>
                       <label
