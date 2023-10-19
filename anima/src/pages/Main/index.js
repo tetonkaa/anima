@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./main.css";
 import { Routes, Route, Link } from "react-router-dom";
-import {ReactComponent as Loading} from '../../assets/loading.svg'
+import { ReactComponent as Loading } from "../../assets/loading.svg";
+import { ReactComponent as Blob1 } from "../../assets/blob-haikei(1).svg";
+import { ReactComponent as Blob2 } from "../../assets/blob-haikei(2).svg";
+import { ReactComponent as Blob3 } from "../../assets/blob-haikei(3).svg";
+import { ReactComponent as Blob4 } from "../../assets/blob-haikei(4).svg";
 export default function MainPage(props) {
   const [tests, setTests] = useState([]);
   const [testList, setTestList] = useState();
@@ -32,35 +36,41 @@ export default function MainPage(props) {
   console.log(props.testId);
   function loaded() {
     return (
-      <>
+      <div class="mainPageContainer">
+        <div className="mainPageSvg">
+          <Blob1 />
+          <Blob2 />
+          <Blob3 />
+          <Blob4 />
+        </div>
         {tests.slice(0, 4).map((test, i) => {
           return (
-            <div class="">
-            <Link
-              to="/test"
-              key={test._id}
-              href="#"
-              className="flex mainPageCards flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
-              onClick={() => handleTestNavigator(test._id)}
-            >
-              <img
-                className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-                src={test.testPic}
-                alt=""
-              />
-              <div className="flex flex-col justify-between p-4 leading-normal">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  {test.testName}
-                </h5>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  {test.description}
-                </p>
-              </div>
-            </Link>
+            <div className="mainCardContainer">
+              <Link
+                to="/test"
+                key={test._id}
+                href="#"
+                className="flex mainPageCards flex-col items-center bg-white rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+                onClick={() => handleTestNavigator(test._id)}
+              >
+                <img
+                  className="object-cover w-full rounded-t-lg  md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                  src={test.testPic}
+                  alt=""
+                />
+                <div className="flex flex-col justify-between pl-4 leading-normal">
+                  <h5 className="font-bold">
+                    {test.testName}
+                  </h5>
+                  <p className="mb-3">
+                    {test.description}
+                  </p>
+                </div>
+              </Link>
             </div>
           );
         })}
-      </>
+      </div>
     );
   }
 
@@ -68,8 +78,7 @@ export default function MainPage(props) {
     loaded()
   ) : (
     <div className="loadingSvg">
-      {/* <h1 className=" loader animate__animated animate__pulse animate__infinite 	infinite"> Loading...</h1> */}
-    <Loading />
+      <Loading />
     </div>
   );
 }
