@@ -27,7 +27,7 @@
   animation: gradient-animation 30s ease infinite;
 }
 
-.svgLinesBg svg{
+.svgLinesBg svg {
   width: 100%;
 }
 
@@ -450,5 +450,14 @@ textarea::placeholder {
     d: path(
       "M1227.95-36.42C1117.97-34.48 1020.54 105.68 811.58 105.75 602.61 105.82 603.39 35.75 395.2 35.75 187.02 35.75 84.38 105.51-21.17 105.75"
     );
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .masterPageContainer {
+    background-color: #ffffff;
+    animation: fadeIn ease-in 0.3s;
+
+    height: 90vh;
   }
 }

@@ -55,3 +55,24 @@ resultCard {
     fill: #4d1e20;
   }
 }
+@media screen and (max-width: 428px) {
+  .testPageContainer button {
+    width: 35vw;
+    margin: auto;
+    margin-top: 20vh;
+    font-size: 1.5em;
+  }
+  .mainPageCards:hover {
+    transform: none;
+  }
+  #resultsItems {
+    background-color: rgba(255, 255, 255, 0.682) !important;
+    display: flex;
+    flex-direction: column;
+    width: 45vw;
+    margin: auto;
+    border-radius: 10px;
+    backdrop-filter: invert(80%);
+    filter: none !important
+  }
+}

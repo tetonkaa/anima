@@ -21,3 +21,12 @@
   margin-top: 20vh;
   font-size: 1.5em;
 }
+
+@media screen and (max-width: 428px) {
+  .testPageContainer button {
+    width: 35vw;
+    margin: auto;
+    margin-top: 20vh;
+    font-size: 1.5em;
+  }
+}

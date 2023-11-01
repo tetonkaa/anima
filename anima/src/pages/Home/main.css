@@ -3,13 +3,11 @@
   display: flex;
   align-items: column;
   height: 90.5vh; /* Use viewport height for better sizing */
-  width: 90vw;
   animation: fadeIn 1.5 ease-in;
-  background-color: #ffffff;
+  background-color: #ffffff0a;
 }
 
 .homePageContainer img {
-  padding-right: 10vw;
   padding-top: 3vw;
   margin-left: 50%;
   position: absolute;
@@ -18,7 +16,7 @@
 }
 
 .homePageContainer p {
-  color: rgb(97, 96, 96);
+  color: rgb(0, 0, 0);
   font-size: 2.5rem;
   font-weight: lighter;
   text-shadow: none;
@@ -27,7 +25,7 @@
 
 .homePageContainer a {
   font-weight: lighter;
-  color: rgb(97, 96, 96);
+  color: rgb(0, 0, 0);
   font-size: 5em !important;
   padding-left: 12vw;
   padding-top: 10%;
@@ -63,5 +61,35 @@
   100% {
     font-family: "moto-verse";
     color: #cf3737fe;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .homePageContainer img {
+    margin-top: 3vh;
+    margin-left: 0%;
+    position: absolute;
+    filter: blur(1px);
+
+    z-index: -1;
+  }
+
+  .homePageContainer a {
+    margin-top: 15vh;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    padding-left: 12vw;
+    padding-top: 10%;
+    width: 80vw;
+    text-shadow: rgb(255, 255, 255) 2px 0 4px;
+    text-align: center;
+  }
+  .homePageContainer p {
+    color: rgb(199, 198, 198);
+    font-size: 1.5rem;
+    font-weight: bold;
+    -webkit-text-fill-color: rgb(0, 0, 0) !important;
+    text-shadow: rgb(255, 255, 255) 2px 0 4px;
+    text-align: center;
   }
 }

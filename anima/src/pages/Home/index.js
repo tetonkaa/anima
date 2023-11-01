@@ -17,6 +17,7 @@ export default function HomePage() {
   return (
     <div class="homePageContainer">
       <a>
+        <div>
         Define Your
         <span className="typeFont">
           <Typewriter
@@ -28,6 +29,7 @@ export default function HomePage() {
             }}
           />
         </span>
+        </div>
         <p>
           A personality test generator.
           <br /> Create and share assessments with <br />
