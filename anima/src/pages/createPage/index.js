@@ -69,7 +69,6 @@ export default function CreatePage(props) {
                 and list the possible personality results.
               </p>
               <input
-                className=""
                 placeholder="Enter Test name"
                 required
                 type="text"

@@ -76,12 +76,12 @@ export default function Signin(props) {
         // localStorage.setItem("token", token);
         // localStorage.setItem("userDetails", result.user);
         // props.setUser(result.user);
-        localStorage.setItem("userDetails", JSON.stringify(credential));
-        props.setUser(credential.user);
+        localStorage.setItem("userDetails", JSON.stringify(result.user));
+        props.setUser(result.user);
         setSuccess(true);
         console.log(props.user);
         window.location.reload(true);
-        // console.log("pulled user object" + props.user);
+        console.log("pulled user object" + props.user);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -212,11 +212,11 @@ export default function Signin(props) {
                   >
                     Sign in
                   </button>
-                  {/* <img
+                  <img
                     class="googleBtn"
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
                     onClick={googlesignin}
-                  /> */}
+                  />
                   <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
                     Not registered?{" "}
                     <button
@@ -339,7 +339,6 @@ export default function Signin(props) {
                           type="checkbox"
                           value=""
                           class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-                          required
                         />
                       </div>
                       <label

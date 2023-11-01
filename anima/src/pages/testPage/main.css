@@ -1,6 +1,11 @@
 .testPageCards {
   margin: auto;
   margin-top: 5%;
+  background: rgb(68, 94, 240);
+  color: white;
+}
+
+.testPageCards:hover {
 }
 
 .answer {
