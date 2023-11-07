@@ -244,7 +244,7 @@ h2 {
   margin: auto;
   color: white;
   background: rgb(68, 94, 240);
-  border:none;
+  border: none;
   background-size: 300% 300%;
   border-radius: 5px 5px 5px 5px;
   /* animation: gradient-animation 30s ease infinite; */
@@ -541,5 +541,84 @@ textarea::placeholder {
     color: white;
     height: 25vh;
     margin-bottom: 5vh;
+  }
+
+  .resultsFormContainer {
+    display: flex;
+    height: 90vh !important;
+    flex-direction: row;
+    padding-bottom: 2vh;
+    flex-direction: column;
+    justify-content: space-between !important;
+    animation: fadeIn 1s ease-in;
+  }
+  .customCard {
+    /* box-shadow: 1px 1px 10px 1px; */
+    height: 65vh;
+    right: 2vw;
+    border-top: none !important;
+    border-radius: 10px 10px 40px 40px;
+    animation: cardEffect ease-in 20s infinite alternate-reverse;
+    background: rgba(0, 0, 0, 0.058);
+    color: rgb(255, 255, 255);
+    max-height: 60vh;
+    width: 80vw;
+    max-width: 80vw;
+    margin-right: 1vw;
+    background: rgb(68, 94, 240);
+    background-size: 300% 300%;
+    animation: gradient-animation 20s ease infinite;
+    margin-top: 5vh;
+  }
+  .svgLinesBg {
+    z-index: 2;
+    margin-left: 20vw;
+    margin-top: 75vh;
+    transform: scale(2.5);
+    height: 100%;
+    position: absolute;
+    width: 52.7vw;
+    background: linear-gradient(
+      300deg,
+      #013b31,
+      #378058,
+      #185a81,
+      #8a1e5a,
+      #a9141b
+    );
+    background-size: cover;
+    animation: gradient-animation 30s ease infinite;
+  }
+  .customCard:hover {
+    transform: none;
+    transition: 0.5s;
+    z-index: 1;
+  }
+  .resultInputContainer {
+    width: 10vw !important;
+    margin-top: 2vh !important;
+    padding-bottom: 2vh;
+    margin: 0;
+    opacity: 1;
+    margin-left: 2vw;
+    transform: translateY(0%);
+    transition: transform 0.5s, opacity 0.5s;
+  }
+
+  .customCard:hover .resultInputContainer {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .resultInputContainer input {
+    width: 35vw !important;
+    height: 3vh;
+    margin-top: 5vh;
+    margin: auto;
+    border: none;
+    background-color: rgba(180, 180, 180, 0.326);
+    border-radius: 5px;
+    margin-right: 0.5vw;
+    color: rgb(255, 255, 255);
   }
 }
