@@ -1,8 +1,11 @@
 .aboutContainer {
   height: 100%;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
-  margin-top: 5%;
+  justify-content: center;
+  align-content: center;
+  margin: 0 1px;
 }
 
 .aboutContainer h1 {
@@ -14,6 +17,7 @@
 .aboutContainer h2 {
   text-align: center;
   font-size: 1.5em !important;
+  font-weight: bold;
 }
 
 .aboutBlurb {
@@ -29,6 +33,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  margin-top: 10px;
 }
 
 .teamMember {
@@ -136,5 +141,17 @@
   }
   100% {
     border: #a9141b solid 5px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .aboutBlurb {
+    font-size: 1em;
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  .techSvgs svg {
+    height: 7vh;
+    padding: 5px;
   }
 }

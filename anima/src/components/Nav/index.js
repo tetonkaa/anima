@@ -1,5 +1,4 @@
 import "./main.css";
-import Signin from "../../pages/AuthPage/Signin";
 
 const handleLogout = () => {
   localStorage.clear();
@@ -9,7 +8,7 @@ const handleLogout = () => {
 export default function DefaultNavbar(props) {
   return (
     <>
-      <nav class="bg-white navStyle dark:bg-gray-900 fixed w-full z-20 top-0 left-0  border-gray-200 dark:border-gray-600">
+      <nav class="bg-white navStyle dark:bg-gray-900 relative w-full z-20 top-0 left-0  border-gray-200 dark:border-gray-600">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="https://www.d3fine.me/" class="flex items-center">
             <img
