@@ -1,11 +1,13 @@
 .testPageCards {
   margin: auto;
   margin-top: 5%;
-  background: rgb(68, 94, 240);
-  color: white;
+  
+  color: rgb(0, 0, 0);
+  transition: .3s ease-in-out
 }
 
 .testPageCards:hover {
+  background: rgba(91, 115, 249, 0.817);
 }
 
 .answer {
