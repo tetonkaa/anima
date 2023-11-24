@@ -1,18 +1,18 @@
 .homePageContainer {
-  position: relative;
   display: flex;
   align-items: column;
-  height: 90.5vh; /* Use viewport height for better sizing */
+  height: 100%; /* Use viewport height for better sizing */
   animation: fadeIn 1.5 ease-in;
   background-color: #ffffff0a;
+  margin-top: -50px;
 }
 
 .homePageContainer img {
-  padding-top: 3vw;
-  margin-left: 50%;
-  position: absolute;
+  display: flex;
+  align-self: center;
   filter: blur(0.5px);
-  height: 90vh;
+  height: 100%;
+  max-width: 50vw;
 }
 
 .homePageContainer p {
@@ -23,7 +23,7 @@
   -webkit-text-fill-color: rgb(97, 96, 96) !important;
 }
 
-.homePageContainer a {
+.textSection {
   font-weight: lighter;
   color: rgb(0, 0, 0);
   font-size: 5em !important;
@@ -39,58 +39,64 @@
   font-weight: bolder;
 }
 
+.Typewriter {
+  width: 40vw;
+}
+
 @keyframes fontChanger {
   0% {
-    color: #023B30;
+    color: #023b30;
     /* font-family: "Techovier"; */
   }
-  30% {
-    color: #3B8057;
+  20% {
+    color: #3b8057;
     /* font-family: "Techovier"; */
   }
   40% {
-    color: #3397B6;
+    color: #3397b6;
   }
-  45% {
+  60% {
     /* font-family: "moto-verse"; */
     color: #863969;
   }
-  95% {
+  80% {
     /* font-family: "moto-verse"; */
-    color: #E84941;
+    color: #e84941;
   }
   100% {
     /* font-family: "moto-verse"; */
-    color: #9A4133;
+    color: #9a4133;
   }
 }
 
-@media screen and (max-width: 428px) {
-  .homePageContainer img {
-    margin-top: 3vh;
-    margin-left: 0%;
-    position: absolute;
-    filter: blur(1px);
-
-    z-index: -1;
+@media screen and (max-width: 768px) {
+  .homePageContainer {
+    margin-top: 0px;
   }
 
-  .homePageContainer a {
-    margin-top: 15vh;
-    font-weight: bold;
-    color: rgb(0, 0, 0);
-    padding-left: 12vw;
-    padding-top: 10%;
-    width: 80vw;
-    text-shadow: rgb(255, 255, 255) 2px 0 4px;
-    text-align: center;
+  .homePageContainer div {
+    font-size: 1.8rem;
   }
+
   .homePageContainer p {
-    color: rgb(199, 198, 198);
-    font-size: 1.5rem;
-    font-weight: bold;
-    -webkit-text-fill-color: rgb(0, 0, 0) !important;
-    text-shadow: rgb(255, 255, 255) 2px 0 4px;
-    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 1.1rem;
+    font-weight: lighter;
+    text-shadow: none;
+    -webkit-text-fill-color: rgb(97, 96, 96) !important;
+  }
+
+  .textSection {
+    padding-left: 20px;
+    width: 50vw;
+  }
+
+  .typeFont {
+    animation: fontChanger 14s infinite ease-in;
+    font-weight: bolder;
+  }
+  .Typewriter {
+    width: 45vw;
+    font-size: 1.8rem;
   }
 }
