@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
-
-import Signup from "./Signup";
+import React, { useState } from "react";
 
 import {
   getAuth,
@@ -9,19 +6,16 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
-  updateProfile,
 } from "firebase/auth";
 
 import "./main.css";
 
 export default function Signin(props) {
-  // const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const [confirmPwd, setConfirmPwd] = useState("");
   const [isRegistered, setIsRegistered] = useState(true);
   const [success, setSuccess] = useState(false);
-  const navigate = useNavigate();
 
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
@@ -30,7 +24,6 @@ export default function Signin(props) {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, pwd)
       .then((userCredential) => {
-        // localStorage.setItem("token", token);
         localStorage.setItem(
           "userDetails",
           JSON.stringify(userCredential.user)
@@ -50,7 +43,6 @@ export default function Signin(props) {
   const reg = async (e) => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, pwd)
-      //   .then(updateProfile(auth.currentUser, { displayName: displayName }))
       .then((userCredential) => {
         localStorage.setItem(
           "userDetails",
@@ -71,11 +63,8 @@ export default function Signin(props) {
     e.preventDefault();
     signInWithPopup(auth, provider)
       .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // localStorage.setItem("token", token);
-        // localStorage.setItem("userDetails", result.user);
-        // props.setUser(result.user);
+        // const credential = GoogleAuthProvider.credentialFromResult(result);
+        // const token = credential.accessToken;
         localStorage.setItem("userDetails", JSON.stringify(result.user));
         props.setUser(result.user);
         setSuccess(true);
@@ -197,7 +186,7 @@ export default function Signin(props) {
                       </label>
                     </div>
                     <a
-                      href="#"
+                      href="https://www.angel-puente.dev/contact"
                       class="text-sm text-blue-700 hover:underline dark:text-blue-500"
                     >
                       Lost Password?
@@ -215,6 +204,7 @@ export default function Signin(props) {
                   <img
                     class="googleBtn"
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
+                    alt="Google Sign-in Button"
                     onClick={googlesignin}
                   />
                   <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
@@ -362,6 +352,7 @@ export default function Signin(props) {
                   <img
                     class="googleBtn"
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
+                    alt="Google Sign-up Button"
                     onClick={googlesignin}
                   />
                   <div class="text-sm font-medium text-gray-500 dark:text-gray-300">

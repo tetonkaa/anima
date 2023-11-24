@@ -1,5 +1,4 @@
 import "./main.css";
-import Signin from "../../pages/AuthPage/Signin";
 
 const handleLogout = () => {
   localStorage.clear();
@@ -9,14 +8,9 @@ const handleLogout = () => {
 export default function DefaultNavbar(props) {
   return (
     <>
-      <nav class="bg-white navStyle dark:bg-gray-900 fixed w-full z-20 top-0 left-0  border-gray-200 dark:border-gray-600">
+      <nav class="bg-white navStyle dark:bg-gray-900 relative w-full z-20 top-0 left-0  border-gray-200 dark:border-gray-600">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="https://www.d3fine.me/" class="flex items-center">
-            <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              class="h-8 mr-3"
-              alt="Flowbite Logo"
-            />
+          <a href="/" class="flex items-center">
             <span class="self-center text-6xl whitespace-nowrap animaTitle">
               d3fine
             </span>

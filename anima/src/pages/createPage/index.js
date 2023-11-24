@@ -1,9 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "./main.css";
-import { Link, useNavigate } from "react-router-dom";
-import QuestionCreateComponent from "../../components/questionCreateComponent/questionCreateComponent";
-import Typewriter from "typewriter-effect";
+import { useNavigate } from "react-router-dom";
 
 export default function CreatePage(props) {
   const [testData, setTestData] = useState({
@@ -69,7 +67,7 @@ export default function CreatePage(props) {
                 and list the possible personality results.
               </p>
               <input
-                placeholder="Enter Test name"
+                placeholder="Enter test name"
                 required
                 type="text"
                 name="testName"
@@ -344,7 +342,7 @@ export default function CreatePage(props) {
 
         {currentInputField < 3 && (
           <button
-            className="boldThing text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
+            className="boldThing text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
             onClick={handleNextClick}
             disabled={!isNextButtonEnabled}
           >

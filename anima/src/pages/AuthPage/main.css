@@ -1,15 +1,12 @@
-.googleBtn{
-    height: 5vh !important;
-    
+.googleBtn {
+  height: 5vh !important;
 }
 
-.googleBtn:hover{
-    cursor: pointer;
+.googleBtn:hover {
+  cursor: pointer;
 }
 
-
-
-#authentication-modal{
-    background-color: rgba(0, 0, 0, 0.573);
-    height: 100%;
+#authentication-modal {
+  background-color: rgba(0, 0, 0, 0.573);
+  height: 100%;
 }
