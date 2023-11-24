@@ -1,16 +1,14 @@
 import "./main.css";
 import animaParticles from "../../components/ Particles";
 import Typewriter from "typewriter-effect";
-import Background from "../../assets/d3fineBG.png"
+import Background from "../../assets/d3fineBG.png";
 
 const typeWriterData = {
-  animated: {
-    first: "Self",
-    second: "Self",
-    third: "Self",
-    fourth: "Self",
-    fifth: "Self",
-  },
+    first: "Yourself",
+    second: "Tú mismo",
+    third: "Du selbst",
+    fourth: "Toi-même",
+    fifth: "Te stesso",
 };
 
 export default function HomePage() {
@@ -18,17 +16,17 @@ export default function HomePage() {
     <div class="homePageContainer">
       <a>
         <div>
-        Define Your
-        <span className="typeFont">
-          <Typewriter
-            options={{
-              strings: [typeWriterData.animated.first],
-              autoStart: true,
-              loop: true,
-              deleteSpeed: 10,
-            }}
-          />
-        </span>
+          Define
+          <span className="typeFont">
+            <Typewriter
+              options={{
+                strings: [typeWriterData.first, typeWriterData.second, typeWriterData.third, typeWriterData.fourth, typeWriterData.fifth],
+                autoStart: true,
+                loop: true,
+                deleteSpeed: 10,
+              }}
+            />
+          </span>
         </div>
         <p>
           A personality test generator.

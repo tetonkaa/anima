@@ -1,5 +1,5 @@
 .aboutContainer {
-  height: 80vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   margin-top: 5%;
@@ -69,7 +69,6 @@
 
 .techSvgs {
   padding: auto;
-  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,14 +76,16 @@
 
 .techSvgs svg {
   height: 10vh;
-  margin-top: 3vh;
-  border: red solid;
+  margin-top: 10px;
+  border: black solid;
+  margin-left: 2px;
+  margin-right: 2px;
   padding: 1vh;
-  animation: 3s linear 1s infinite alternate techBorderizer;
+  /* animation: 3s linear 1s infinite alternate techBorderizer; */
   border-radius: 24px;
 }
 
-.techSvgs svg:hover {
+/* .techSvgs svg:hover {
   transform: scale(1.5);
   background-color: rgba(208, 208, 208, 0.338);
   cursor: pointer;
@@ -118,7 +119,7 @@
   margin-top: 5vh;
   border: red solid;
   animation-delay: 0.5s;
-}
+} */
 
 @keyframes techBorderizer {
   0% {

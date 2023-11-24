@@ -36,31 +36,32 @@
 .typeFont {
   animation: fontChanger 14s infinite ease-in;
   padding-left: 2vw;
+  font-weight: bolder;
 }
 
 @keyframes fontChanger {
   0% {
-    color: #0d7252;
-    font-family: "Techovier";
+    color: #023B30;
+    /* font-family: "Techovier"; */
   }
   30% {
-    color: #52bba0;
-    font-family: "Techovier";
+    color: #3B8057;
+    /* font-family: "Techovier"; */
   }
   40% {
-    color: #3bb7d6;
+    color: #3397B6;
   }
   45% {
-    font-family: "moto-verse";
-    color: #e39bb7;
+    /* font-family: "moto-verse"; */
+    color: #863969;
   }
   95% {
-    font-family: "moto-verse";
-    color: #ca4444fe;
+    /* font-family: "moto-verse"; */
+    color: #E84941;
   }
   100% {
-    font-family: "moto-verse";
-    color: #cf3737fe;
+    /* font-family: "moto-verse"; */
+    color: #9A4133;
   }
 }
 
