@@ -10,7 +10,7 @@ export default function DefaultNavbar(props) {
     <>
       <nav class="bg-white navStyle dark:bg-gray-900 relative w-full z-20 top-0 left-0  border-gray-200 dark:border-gray-600">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="https://www.d3fine.me/" class="flex items-center">
+          <a href="/" class="flex items-center">
             <img
               src="https://flowbite.com/docs/images/logo.svg"
               class="h-8 mr-3"
