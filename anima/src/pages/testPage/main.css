@@ -29,6 +29,19 @@
   font-size: 1.5em;
 }
 
+.fadeIn{
+  
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn{
+  0%{ filter: opacity(0)
+  
+  }
+
+  100%{filter: opacity(1)}
+}
+
 @media screen and (max-width: 428px) {
   .testPageContainer button {
     width: 35vw;
