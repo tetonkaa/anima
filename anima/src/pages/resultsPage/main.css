@@ -38,6 +38,11 @@ resultCard {
   animation: 3s ease-in svgColorizer infinite;
 }
 
+.resultName{
+  border: dotted red;
+  text-align: center !important;
+}
+
 @keyframes svgColorizer {
   0% {
     fill: #013b31;

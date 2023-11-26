@@ -58,6 +58,7 @@ export default function ResultsPage(props) {
             id="resultsItems"
             class="p-5 flex-col justify-center align-center"
           >
+            <a href={renderedResult.link}>
             <p class="resultName text-center" href="#">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <Typewriter
@@ -70,6 +71,7 @@ export default function ResultsPage(props) {
                 />
               </h5>
             </p>
+            </a>
             <a
               href="/test-list"
               id="retakeButton"
