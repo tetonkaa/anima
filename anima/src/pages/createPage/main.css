@@ -586,18 +586,19 @@ textarea::placeholder {
     transform: translateY(0%);
     transition: transform 0.5s, opacity 0.5s;
   }
-
+  
   .customCard:hover .resultInputContainer {
     opacity: 1;
     transform: translateY(0);
   }
-
+  
   .resultInputContainer input {
+    border: dotted red !important;
     width: 35vw !important;
     height: 3vh;
     margin-top: 5vh;
     margin: auto;
-    border: none;
+    /* border: none; */
     background-color: rgba(180, 180, 180, 0.326);
     border-radius: 5px;
     margin-right: 0.5vw;

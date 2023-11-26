@@ -9,10 +9,10 @@ export default function CreatePage(props) {
     testName: "",
     description: "",
     results: [
-      { a: "Persona 1", image: "" },
-      { b: "Persona 2", image: "" },
-      { c: "Persona 3", image: "" },
-      { d: "Persona 4", image: "" },
+      { a: "Result 1", image: "", link: "" },
+      { b: "Result 2", image: "", link: "" },
+      { c: "Result 3", image: "", link: "" },
+      { d: "Result 4", image: "", link: "" },
     ],
     testPic: "",
     user: "",
@@ -143,6 +143,14 @@ export default function CreatePage(props) {
                     placeholder="Enter image link"
                     required
                   />
+                  <input
+                    type="text"
+                    name="link"
+                    value={testData.results[0].link}
+                    onChange={(e) => handleFormInput(e, 0)}
+                    placeholder="Enter description link"
+                    required
+                  />
                 </div>
               </div>
 
@@ -170,6 +178,14 @@ export default function CreatePage(props) {
                     value={testData.results[1].image}
                     onChange={(e) => handleFormInput(e, 1)}
                     placeholder="Enter image link"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="link"
+                    value={testData.results[1].link}
+                    onChange={(e) => handleFormInput(e, 1)}
+                    placeholder="Enter description link"
                     required
                   />
                 </div>
@@ -201,6 +217,14 @@ export default function CreatePage(props) {
                     placeholder="Enter image link"
                     required
                   />
+                  <input
+                    type="text"
+                    name="link"
+                    value={testData.results[2].link}
+                    onChange={(e) => handleFormInput(e, 2)}
+                    placeholder="Enter description link"
+                    required
+                  />
                 </div>
               </div>
 
@@ -228,6 +252,14 @@ export default function CreatePage(props) {
                     value={testData.results[3].image}
                     onChange={(e) => handleFormInput(e, 3)}
                     placeholder="Enter image link"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="link"
+                    value={testData.results[3].link}
+                    onChange={(e) => handleFormInput(e, 3)}
+                    placeholder="Enter description link"
                     required
                   />
                 </div>
