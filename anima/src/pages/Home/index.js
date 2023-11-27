@@ -17,7 +17,7 @@ export default function HomePage() {
         <div>
           Define
           <span className="typeFont">
-            <Typewriter
+            <Typewriter className="mainTypewriter"
               options={{
                 strings: [
                   typeWriterData.first,

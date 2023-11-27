@@ -47,7 +47,7 @@ export default function ResultsPage(props) {
             animation: "bgshift 14s linear infinite alternate",
           }}
         >
-          <a href="#">
+          <a href={renderedResult.link}>
             <img
               class="rounded-t-lg resultImage"
               src={renderedResult.image}
@@ -59,8 +59,8 @@ export default function ResultsPage(props) {
             class="p-5 flex-col justify-center align-center"
           >
             <a href={renderedResult.link}>
-            <p class="resultName text-center" href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <p class="resultName text-center">
+              <p class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <Typewriter
                   options={{
                     strings: [renderedResult[Object.keys(renderedResult)[0]]],
@@ -69,9 +69,12 @@ export default function ResultsPage(props) {
                     cursor: ""
                   }}
                 />
-              </h5>
+              </p>
             </p>
             </a>
+            <p className="text-center">
+            ↑↑↑ click to learn more ↑↑↑
+            </p>
             <a
               href="/test-list"
               id="retakeButton"
