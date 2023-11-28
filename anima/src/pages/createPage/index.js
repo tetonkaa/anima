@@ -7,6 +7,7 @@ export default function CreatePage(props) {
   const [testData, setTestData] = useState({
     //create default test state
     testName: "",
+    category:"null",
     description: "",
     results: [
       { a: "Result 1", image: "", link: "" },
@@ -60,20 +61,51 @@ export default function CreatePage(props) {
       case 1:
         return (
           <>
-            <div className="createInputFieldContainer" id="testNameInput">
-              <h2>Create a test</h2>
-              <p>
+            <h2>Create a test</h2>
+            <div className="startCreateTest" id="testNameInput">
+              <p className="text-center">
                 Pick an interesting test name, describe what the test is about,
                 and list the possible personality results.
               </p>
-              <input
-                placeholder="Enter test name"
-                required
-                type="text"
-                name="testName"
-                value={testData.testName}
-                onChange={handleTestNameInput}
-              />
+              <div className="createOptions">
+                <input
+                  placeholder="Enter test name"
+                  required
+                  type="text"
+                  name="testName"
+                  value={testData.testName}
+                  onChange={handleTestNameInput}
+                />
+
+                <select id="createCategories" name="cars" required onChange={handleCategoryInput}>
+                <option value="null" disabled selected>Select test Category</option>
+                  <option value="personality">Personality</option>
+                  <option value="food">Food</option>
+                  <option value="gaming">Gaming</option>
+                  <option value="fashion">Fashion</option>
+                  <option value="television">Television</option>
+                  <option value="technology">Technology</option>
+                  <option value="misc">Miscellaneous</option>
+                  
+                  
+                </select>
+
+              </div>
+            </div>
+
+            <div class="flex my-4 justify-between mb-4">
+              <span class="text-base font-medium text-white-700 dark:text-white">
+                Steps
+              </span>
+              <span class="text-sm font-medium text-white-700 dark:text-white">
+                1/4
+              </span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+              <div
+                class="bg-blue-600 h-2.5 rounded-full"
+                style={{ width: "25%" }}
+              ></div>
             </div>
           </>
         );
@@ -109,6 +141,21 @@ export default function CreatePage(props) {
                 onChange={handleDescriptionInput}
                 required
               />
+            </div>
+
+            <div class="flex my-4 justify-between mb-4">
+              <span class="text-base font-medium text-white-700 dark:text-white">
+                Steps
+              </span>
+              <span class="text-sm font-medium text-white-700 dark:text-white">
+                2/4
+              </span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+              <div
+                class="bg-blue-600 h-2.5 rounded-full"
+                style={{ width: "50%" }}
+              ></div>
             </div>
           </>
         );
@@ -265,6 +312,21 @@ export default function CreatePage(props) {
                 </div>
               </div>
             </div>
+
+            <div class="flex  justify-between mb-1">
+              <span class="text-base font-medium text-white-700 dark:text-white">
+                Steps
+              </span>
+              <span class="text-sm font-medium text-white-700 dark:text-white">
+                3/4
+              </span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+              <div
+                class="bg-blue-600 h-2.5 rounded-full"
+                style={{ width: "75%" }}
+              ></div>
+            </div>
           </>
         );
       default:
@@ -291,7 +353,13 @@ export default function CreatePage(props) {
   const handleTestNameInput = (event) => {
     const { value } = event.target;
     setTestData((previousData) => ({ ...previousData, testName: value }));
-    setIsNextButtonEnabled(value.length > 1);
+    setIsNextButtonEnabled(value.length > 1 && testData.category !== "null");
+  };
+  
+  const handleCategoryInput = (event) => {
+    const { value } = event.target;
+    setTestData((previousData) => ({ ...previousData, category: value }));
+    setIsNextButtonEnabled(value !== "null" && testData.testName.length >= 1);
   };
 
   const handleDescriptionInput = (event) => {
@@ -319,7 +387,7 @@ export default function CreatePage(props) {
   console.log(testData);
 
   return (
-    <div className="masterPageContainer createPage">
+    <div className="masterPageContainer">
       <div className="svgLinesBg">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -374,7 +442,7 @@ export default function CreatePage(props) {
 
         {currentInputField < 3 && (
           <button
-            className="boldThing text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            className="boldThing text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
             onClick={handleNextClick}
             disabled={!isNextButtonEnabled}
           >
@@ -385,7 +453,7 @@ export default function CreatePage(props) {
         {/* Submit button */}
         {currentInputField === 3 && (
           <button
-            className="boldThing text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
+            className="boldThing text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br   shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
             type="submit"
             disabled={!isNextButtonEnabled}
           >
