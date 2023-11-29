@@ -79,7 +79,7 @@ export default function CreatePage(props) {
 
                 <select
                   id="createCategories"
-                  name="cars"
+                  name="tags"
                   required
                   onChange={handleCategoryInput}
                 >
@@ -406,7 +406,7 @@ export default function CreatePage(props) {
         </svg>
       </div>
       <form onSubmit={handleFormSubmit} className="createTestForm">
-        {/* Render the current step */}
+
         {renderCurrentInputField()}
 
         {currentInputField < 3 && (
@@ -419,14 +419,13 @@ export default function CreatePage(props) {
           </button>
         )}
 
-        {/* Submit button */}
         {currentInputField === 3 && (
           <button
-            className=""
+            className="nextButton"
             type="submit"
             disabled={!isNextButtonEnabled}
           >
-            Add Questions
+           <p className="text-button">Next</p>
           </button>
         )}
         {currentInputField > 1 && (
