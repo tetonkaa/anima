@@ -7,7 +7,7 @@ export default function CreatePage(props) {
   const [testData, setTestData] = useState({
     //create default test state
     testName: "",
-    category:"null",
+    category: "null",
     description: "",
     results: [
       { a: "Result 1", image: "", link: "" },
@@ -77,8 +77,15 @@ export default function CreatePage(props) {
                   onChange={handleTestNameInput}
                 />
 
-                <select id="createCategories" name="cars" required onChange={handleCategoryInput}>
-                <option value="null" disabled selected>Select test Category</option>
+                <select
+                  id="createCategories"
+                  name="cars"
+                  required
+                  onChange={handleCategoryInput}
+                >
+                  <option value="null" disabled selected>
+                    Select test Category
+                  </option>
                   <option value="personality">Personality</option>
                   <option value="food">Food</option>
                   <option value="gaming">Gaming</option>
@@ -86,77 +93,53 @@ export default function CreatePage(props) {
                   <option value="television">Television</option>
                   <option value="technology">Technology</option>
                   <option value="misc">Miscellaneous</option>
-                  
-                  
                 </select>
-
               </div>
             </div>
 
-            <div class="flex my-4 justify-between mb-4">
-              <span class="text-base font-medium text-white-700 dark:text-white">
-                Steps
-              </span>
-              <span class="text-sm font-medium text-white-700 dark:text-white">
-                1/4
-              </span>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-              <div
-                class="bg-blue-600 h-2.5 rounded-full"
-                style={{ width: "25%" }}
-              ></div>
-            </div>
           </>
         );
       case 2:
         return (
           <>
-            <div className="createInputFieldContainer" id="descriptionInput">
-              <img
-                id="imageEffect"
-                src={
-                  testData.testPic ||
-                  "https://cdn.discordapp.com/attachments/1110618287924072449/1154237337694371914/tetonka._paper_and_pen_meant_to_represent_a_test_white_backgrou_2c40e828-46cf-4ba1-9fbb-2ddbf2a41a12.png"
-                }
-              />
-              <h2>Add image link</h2>
-              <textarea
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Enter link for test display image/icon"
-                type="text"
-                name="testPic"
-                value={testData.testPic}
-                onChange={handleTestPicInput}
-                required
-              />
-              <h2>Add a description</h2>
-
-              <textarea
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="enter description for test... ie --This test is used to determine what kind of test you enjoy most!"
-                type="text"
-                name="description"
-                value={testData.description}
-                onChange={handleDescriptionInput}
-                required
-              />
-            </div>
-
-            <div class="flex my-4 justify-between mb-4">
-              <span class="text-base font-medium text-white-700 dark:text-white">
-                Steps
-              </span>
-              <span class="text-sm font-medium text-white-700 dark:text-white">
-                2/4
-              </span>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+            <h2>Create a test</h2>
+            <div className="createDescription">
               <div
-                class="bg-blue-600 h-2.5 rounded-full"
-                style={{ width: "50%" }}
-              ></div>
+                className="createImage"
+                style={{
+                  backgroundImage: `url(${
+                    testData.testPic ||
+                    "https://cdn.discordapp.com/attachments/1110618287924072449/1154237337694371914/tetonka._paper_and_pen_meant_to_represent_a_test_white_backgrou_2c40e828-46cf-4ba1-9fbb-2ddbf2a41a12.png"
+                  })`,
+                }}
+              >
+                <h1>This is your test cover image</h1>
+              </div>
+              <div className="descriptionFields">
+                <h2>Add image link</h2>
+                <textarea
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter link for test display image/icon"
+                  type="text"
+                  name="testPic"
+                  value={testData.testPic}
+                  onChange={handleTestPicInput}
+                  required
+                />
+                <h2>Add a description</h2>
+
+                <textarea
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter description for your test. Example: This test is used to determine what kind of test you enjoy most!"
+                  type="text"
+                  name="description"
+                  value={testData.description}
+                  onChange={handleDescriptionInput}
+                  required
+                />
+              </div>
             </div>
+
           </>
         );
       case 3:
@@ -313,20 +296,6 @@ export default function CreatePage(props) {
               </div>
             </div>
 
-            <div class="flex  justify-between mb-1">
-              <span class="text-base font-medium text-white-700 dark:text-white">
-                Steps
-              </span>
-              <span class="text-sm font-medium text-white-700 dark:text-white">
-                3/4
-              </span>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-              <div
-                class="bg-blue-600 h-2.5 rounded-full"
-                style={{ width: "75%" }}
-              ></div>
-            </div>
           </>
         );
       default:
@@ -355,7 +324,7 @@ export default function CreatePage(props) {
     setTestData((previousData) => ({ ...previousData, testName: value }));
     setIsNextButtonEnabled(value.length > 1 && testData.category !== "null");
   };
-  
+
   const handleCategoryInput = (event) => {
     const { value } = event.target;
     setTestData((previousData) => ({ ...previousData, category: value }));
@@ -387,7 +356,7 @@ export default function CreatePage(props) {
   console.log(testData);
 
   return (
-    <div className="masterPageContainer">
+    <div className="">
       <div className="svgLinesBg">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -442,18 +411,18 @@ export default function CreatePage(props) {
 
         {currentInputField < 3 && (
           <button
-            className="boldThing text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            className="nextButton"
             onClick={handleNextClick}
             disabled={!isNextButtonEnabled}
           >
-            NEXT
+            <p className="text-button">NEXT</p>
           </button>
         )}
 
         {/* Submit button */}
         {currentInputField === 3 && (
           <button
-            className="boldThing text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br   shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
+            className=""
             type="submit"
             disabled={!isNextButtonEnabled}
           >

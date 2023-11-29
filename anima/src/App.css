@@ -22,6 +22,73 @@
   }
 
 
+  .nextButton{
+    box-shadow: 2px 5px 22px 1px rgba(0, 0, 0, 0.82);
+  -webkit-box-shadow: 2px 5px 22px 1px rgba(0, 0, 0, 0.82);
+  -moz-box-shadow: 2px 5px 22px 1px rgba(0, 0, 0, 0.82);
+    width: 5vw;
+    margin: auto;
+    margin-top: 2vh;
+  }
+
+
+
+  .nextButton{
+    position: relative;
+    width: 120px;
+    height: 45px;
+    overflow: hidden;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-top-left-radius: 20px;
+    cursor: pointer;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 0 10px rgb(104, 134, 218);
+  }
+  
+  .nextButton::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 200px;
+    margin-top: -92px;
+    background: linear-gradient(#00ccff,#d400d4);
+    animation: amm 4s linear infinite;
+  }
+  
+  @keyframes amm {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .text-button {
+    position: relative;
+    font-size: 1.0rem !important;
+    font-weight: bold;
+    z-index: 2;
+    top: -20%; /* Adjust as needed */
+  left: 1%; /* Adjust as needed */
+
+    color: white !important;
+  }
+  
+  .nextButton::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background-color: rgb(17, 17, 17);
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+
+
+
   
   ::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.656)

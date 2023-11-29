@@ -33,8 +33,6 @@
   text-align: center;
   margin: auto;
   max-width: 100vw;
-
-
 }
 
 .svgLinesBg svg {
@@ -54,8 +52,6 @@
   position: relative;
   margin: auto;
   height: 80vh;
-
-  padding-bottom: 5vh;
   background-color: rgba(255, 255, 255, 0);
   width: 85vw;
   display: flex;
@@ -67,7 +63,7 @@
   backdrop-filter: blur(2px);
   color: white;
 }
-.startCreateTest{
+.startCreateTest {
   box-shadow: 2px 5px 22px 1px rgba(0, 0, 0, 0.82);
   -webkit-box-shadow: 2px 5px 22px 1px rgba(0, 0, 0, 0.82);
   -moz-box-shadow: 2px 5px 22px 1px rgba(0, 0, 0, 0.82);
@@ -75,22 +71,21 @@
   height: 70vh;
   width: 85vw;
   flex-direction: row;
+  animation: fadeIn .7s ease-in;
 }
 
-
-.createOptions{
+.createOptions {
   display: flex;
   flex-direction: column;
   width: 50%;
-  background-color:#0c0f18 ;
+  background-color: #0c0f18;
 }
-
 
 .createInputFieldContainer h2 {
   color: white;
 }
 
-.startCreateTest p{
+.startCreateTest p {
   width: 50%;
   margin: auto;
 }
@@ -108,7 +103,7 @@
   background-color: rgba(0, 0, 0, 0.798);
 }
 
-#createCategories{
+#createCategories {
   border-top: none;
   border-left: none;
   border-right: none;
@@ -123,20 +118,25 @@
   text-align: center;
 }
 
+#createCategories-selected{
+  background-color: red;
+}
+
+
 .startCreateTest input::placeholder {
   color: white;
 }
 
 .resultsH2 {
   font-size: 3em !important;
-  margin-top: 20vh;
+  margin-top: 5vh;
   padding-bottom: 2vh;
   color: white;
 }
 
 .createTestForm input:focus {
   outline: none !important;
-  border-bottom:rgb(255, 255, 255) solid ;
+  border-bottom: rgb(255, 255, 255) solid;
   transition: border 0.2s ease-in;
   outline: none;
   box-shadow: none;
@@ -155,7 +155,7 @@
   width: 25vw;
   max-width: 25vw;
   margin-right: 1vw;
-  background: rgb(68, 94, 240);
+  background: #020305c6;
   background-size: 300% 300%;
   animation: gradient-animation 20s ease infinite;
 }
@@ -194,6 +194,7 @@
   display: flex;
   flex-direction: row;
   width: 8vw !important;
+  border: red;
 }
 
 .customCard h3 {
@@ -219,12 +220,17 @@
   color: white !important;
 }
 .resultInputContainer {
-  width: 4vw !important;
-  margin-top: 2vh !important;
-  margin: 0;
-  opacity: 0;
-  margin-left: 2vw;
-  transform: translateY(100%);
+  width: 20vw !important;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  
+  margin-top: 4vh !important;
+  margin: auto;
+  /* opacity: 0; */
+  /* transform: translateY(100%); */
   transition: transform 0.5s, opacity 0.5s;
 }
 
@@ -236,16 +242,25 @@
 .resultInputContainer input {
   width: 8vw !important;
   height: 4vh;
-  margin-top: 5vh;
   border: none;
-  background-color: rgba(180, 180, 180, 0.326);
+  background-color: #020305;
+  border-radius: 5px;
+  margin-right: 0.5vw;
+  color: rgb(255, 255, 255);
+}
+
+.resultInputContainer input:nth-of-type(3) {
+  width: 10vw !important;
+  height: 4vh;
+  border: none;
+  background-color: #020305;
   border-radius: 5px;
   margin-right: 0.5vw;
   color: rgb(255, 255, 255);
 }
 
 .resultInputContainer input::placeholder {
-  color: rgb(0, 0, 0);
+  color: rgb(251, 251, 251);
 }
 
 h2 {
@@ -266,61 +281,66 @@ h2 {
   text-align: center;
 }
 
-#descriptionInput {
+.createDescription {
   display: flex;
-  flex-direction: column;
-  height: 75vh;
-  padding-bottom: 2vh;
-  margin-top: 10vh;
+  flex-direction: row;
+  height: 70vh;
+  box-shadow: 1px 5px 18px 2px rgba(0, 0, 0, 0.419);
+  border-radius: 10px 10px 0px 0px;
+  background-color: rgba(0, 0, 0, 0.798);
+  animation: fadeIn .7s ease-in;
 }
-#descriptionInput h2 {
-  font-size: 2em !important;
-}
-#descriptionInput textarea {
-  font-size: 2.5em;
-  height: 5vh;
-  text-align: start;
-  padding: none;
+
+.createImage {
+  background-size: 100% 100%;
   width: 50%;
+}
+
+.createImage h1{
+  color: red;
+  height: 100%;
+  text-align: center;
+
+}
+
+
+.descriptionFields {
   margin: auto;
+
+  width: 40vw;
+}
+.descriptionFields textarea {
+  font-size: 1.5em;
+  height: 15vh;
   color: white;
   background-color: rgba(0, 0, 0, 0.798);
   border: none;
-  background-size: 300% 300%;
   border-radius: 5px 5px 5px 5px;
-  /* animation: gradient-animation 30s ease infinite; */
-  box-shadow: 1px 5px 18px 2px rgba(0, 0, 0, 0.419);
 }
 
-#descriptionInput textarea:focus {
-  border-bottom: #ffffff 2mm solid;
+ textarea:focus {
+  border-bottom: #ffffff 2mm solid !important;
+  outline: none !important;
   transition: border 0.2s ease-in;
   box-shadow: none;
 }
 
-#descriptionInput img {
-  margin: auto;
-  margin-top: 10vh;
-  width: 40vw;
-}
 
-#imageEffect {
-  height: 40vh;
-  border-radius: 10px 10px 0px 0px;
-  box-shadow: 1px 5px 18px 2px rgba(0, 0, 0, 0.419);
-  animation: fadeIn ease-in-out infinite;
-  animation-direction: alternate;
-}
-
-#descriptionInput textarea:nth-of-type(2) {
-  font-size: 2em !important;
+.descriptionFields textarea:nth-of-type(2) {
+  font-size: 1.5em !important;
   line-height: 1em;
-  color: white;
+  color: rgb(255, 255, 255);
+}
+
+.descriptionFields h2{
+  font-size: 2em !important;
+  text-align: end;
 }
 
 textarea::placeholder {
   color: white;
 }
+
 .createTestForm p {
   text-align: center;
   max-width: 70vw;
@@ -328,34 +348,23 @@ textarea::placeholder {
   padding: 1em;
   font-family: "Julius Sans One", sans-serif;
 }
-#descriptionInput textarea:nth-of-type(2) {
-  font-size: 3em;
-  height: 10vh;
+
+.descriptionFields textarea:nth-of-type(1) {
+  font-size: 1em;
+  height: 5vh;
   text-align: start;
   padding: none;
   width: 100%;
   margin: auto;
 }
 
-@keyframes marginBgColorizer {
-  0% {
-    background-image: radial-gradient(#474bff 1px, transparent 1px);
-    background-position: 2px 2px;
-  }
-  25% {
-    background-image: radial-gradient(#474bff);
-  }
-  50% {
-    background-image: radial-gradient(#474bff);
-  }
-  75% {
-    background-image: radial-gradient(#474bff);
-  }
-  100% {
-    background-image: radial-gradient(#474bff 5px, transparent 11px);
-    background-position: 50px 50px;
-  }
+.descriptionFields textarea:nth-of-type(2) {
+  font-size: 1em !important;
+  height: 10vh;
+  text-align: start;
+  width: 100%;
 }
+
 
 @keyframes cardEffect {
   0% {
@@ -592,7 +601,7 @@ textarea::placeholder {
     width: 80vw;
     max-width: 80vw;
     margin-right: 1vw;
-    background: rgb(68, 94, 240);
+    background: #020305;
     background-size: 300% 300%;
     animation: gradient-animation 20s ease infinite;
     margin-top: 5vh;
