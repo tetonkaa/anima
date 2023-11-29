@@ -7,6 +7,7 @@ export default function CreatePage(props) {
   const [testData, setTestData] = useState({
     //create default test state
     testName: "",
+    category: "null",
     description: "",
     results: [
       { a: "Result 1", image: "", link: "" },
@@ -60,56 +61,85 @@ export default function CreatePage(props) {
       case 1:
         return (
           <>
-            <div className="createInputFieldContainer" id="testNameInput">
-              <h2>Create a test</h2>
-              <p>
+            <h2>Create a test</h2>
+            <div className="startCreateTest" id="testNameInput">
+              <p className="text-center">
                 Pick an interesting test name, describe what the test is about,
                 and list the possible personality results.
               </p>
-              <input
-                placeholder="Enter test name"
-                required
-                type="text"
-                name="testName"
-                value={testData.testName}
-                onChange={handleTestNameInput}
-              />
+              <div className="createOptions">
+                <input
+                  placeholder="Enter test name"
+                  required
+                  type="text"
+                  name="testName"
+                  value={testData.testName}
+                  onChange={handleTestNameInput}
+                />
+
+                <select
+                  id="createCategories"
+                  name="tags"
+                  required
+                  onChange={handleCategoryInput}
+                >
+                  <option value="null" disabled selected>
+                    Select test Category
+                  </option>
+                  <option value="personality">Personality</option>
+                  <option value="food">Food</option>
+                  <option value="gaming">Gaming</option>
+                  <option value="fashion">Fashion</option>
+                  <option value="television">Television</option>
+                  <option value="technology">Technology</option>
+                  <option value="misc">Miscellaneous</option>
+                </select>
+              </div>
             </div>
+
           </>
         );
       case 2:
         return (
           <>
-            <div className="createInputFieldContainer" id="descriptionInput">
-              <img
-                id="imageEffect"
-                src={
-                  testData.testPic ||
-                  "https://cdn.discordapp.com/attachments/1110618287924072449/1154237337694371914/tetonka._paper_and_pen_meant_to_represent_a_test_white_backgrou_2c40e828-46cf-4ba1-9fbb-2ddbf2a41a12.png"
-                }
-              />
-              <h2>Add image link</h2>
-              <textarea
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Enter link for test display image/icon"
-                type="text"
-                name="testPic"
-                value={testData.testPic}
-                onChange={handleTestPicInput}
-                required
-              />
-              <h2>Add a description</h2>
+            <h2>Create a test</h2>
+            <div className="createDescription">
+              <div
+                className="createImage"
+                style={{
+                  backgroundImage: `url(${
+                    testData.testPic ||
+                    "https://cdn.discordapp.com/attachments/1110618287924072449/1154237337694371914/tetonka._paper_and_pen_meant_to_represent_a_test_white_backgrou_2c40e828-46cf-4ba1-9fbb-2ddbf2a41a12.png"
+                  })`,
+                }}
+              >
+                <h1>This is your test cover image</h1>
+              </div>
+              <div className="descriptionFields">
+                <h2>Add image link</h2>
+                <textarea
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter link for test display image/icon"
+                  type="text"
+                  name="testPic"
+                  value={testData.testPic}
+                  onChange={handleTestPicInput}
+                  required
+                />
+                <h2>Add a description</h2>
 
-              <textarea
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="enter description for test... ie --This test is used to determine what kind of test you enjoy most!"
-                type="text"
-                name="description"
-                value={testData.description}
-                onChange={handleDescriptionInput}
-                required
-              />
+                <textarea
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter description for your test. Example: This test is used to determine what kind of test you enjoy most!"
+                  type="text"
+                  name="description"
+                  value={testData.description}
+                  onChange={handleDescriptionInput}
+                  required
+                />
+              </div>
             </div>
+
           </>
         );
       case 3:
@@ -265,6 +295,7 @@ export default function CreatePage(props) {
                 </div>
               </div>
             </div>
+
           </>
         );
       default:
@@ -291,7 +322,13 @@ export default function CreatePage(props) {
   const handleTestNameInput = (event) => {
     const { value } = event.target;
     setTestData((previousData) => ({ ...previousData, testName: value }));
-    setIsNextButtonEnabled(value.length > 1);
+    setIsNextButtonEnabled(value.length > 1 && testData.category !== "null");
+  };
+
+  const handleCategoryInput = (event) => {
+    const { value } = event.target;
+    setTestData((previousData) => ({ ...previousData, category: value }));
+    setIsNextButtonEnabled(value !== "null" && testData.testName.length >= 1);
   };
 
   const handleDescriptionInput = (event) => {
@@ -319,7 +356,7 @@ export default function CreatePage(props) {
   console.log(testData);
 
   return (
-    <div className="masterPageContainer createPage">
+    <div className="">
       <div className="svgLinesBg">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -369,27 +406,26 @@ export default function CreatePage(props) {
         </svg>
       </div>
       <form onSubmit={handleFormSubmit} className="createTestForm">
-        {/* Render the current step */}
+
         {renderCurrentInputField()}
 
         {currentInputField < 3 && (
           <button
-            className="boldThing text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            className="nextButton"
             onClick={handleNextClick}
             disabled={!isNextButtonEnabled}
           >
-            NEXT
+            <p className="text-button">NEXT</p>
           </button>
         )}
 
-        {/* Submit button */}
         {currentInputField === 3 && (
           <button
-            className="boldThing text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
+            className="nextButton"
             type="submit"
             disabled={!isNextButtonEnabled}
           >
-            Add Questions
+           <p className="text-button">Next</p>
           </button>
         )}
         {currentInputField > 1 && (
