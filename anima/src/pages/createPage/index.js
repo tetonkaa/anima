@@ -336,6 +336,7 @@ export default function CreatePage(props) {
     const { value } = event.target;
     setTestData((previousData) => ({ ...previousData, category: value }));
     setIsNextButtonEnabled(value !== "null" && testData.testName.length >= 1);
+    console.log(testData.category)
   };
 
   const handleDescriptionInput = (event) => {

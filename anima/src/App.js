@@ -20,6 +20,7 @@ function App() {
     JSON.parse(localStorage.getItem("userDetails"))
   );
   const URL = process.env.REACT_APP_URL;
+  const [isNavBarVisible, setNavBarVisibility] = useState(true);
 
   useEffect(() => {
     console.log(user);
@@ -49,6 +50,7 @@ function App() {
                 testId={testId}
                 URL={URL}
                 user={user}
+                isNavBarVisible={isNavBarVisible}
               />
             }
           />
