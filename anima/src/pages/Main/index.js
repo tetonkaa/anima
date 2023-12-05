@@ -40,7 +40,7 @@ export default function MainPage(props) {
       return null; // No tests available
     }
 
-    const randomIndex = Math.floor(Math.random() * tests.length);
+    const randomIndex = Math.floor(Math.random() * 4);
     return tests[randomIndex]._id;
   };
 
