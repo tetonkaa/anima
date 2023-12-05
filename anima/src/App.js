@@ -21,14 +21,14 @@ function App() {
   );
   const URL = process.env.REACT_APP_URL;
   const [isNavBarVisible, setNavBarVisibility] = useState(true);
-
+  const [darkMode, setDarkMode] = useState(false)
   useEffect(() => {
     console.log(user);
   }, [user]);
 
   return (
     <>
-      <DefaultNavbar URL={URL} user={user} />
+      <DefaultNavbar URL={URL} user={user} darkMode={darkMode} />
       <BrowserRouter>
         <Routes>
           <Route
@@ -49,6 +49,8 @@ function App() {
                 setTestId={setTestId}
                 testId={testId}
                 URL={URL}
+                darkMode={darkMode}
+                setDarkMode={setDarkMode}
                 user={user}
                 isNavBarVisible={isNavBarVisible}
               />
