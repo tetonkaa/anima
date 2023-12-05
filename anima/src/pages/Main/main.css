@@ -10,11 +10,12 @@
     #8a1e5a,
     #a9141b
   );
+  
   background-size: 300% 300%;
   border-radius: 0px 0px 10px 10px;
   animation: gradient-animation 30s ease infinite;
   color: white !important;
-  transition: 0.4s ease-in;
+  transition: 0.3s ease-in;
   box-shadow: 1px 5px 18px 2px rgba(0, 0, 0, 0.419);
 }
 
@@ -22,7 +23,7 @@
   padding-top: 5vh;
 }
 .mainPageCards:hover {
-  transform: scale(1.2);
+
 }
 
 .mainPageCards h5 {
