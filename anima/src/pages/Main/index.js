@@ -6,6 +6,7 @@ import axios from "axios";
 import "./main.css";
 import { Routes, Route, Link } from "react-router-dom";
 import { ReactComponent as Loading } from "../../assets/loading.svg";
+import AnimaParticles from "../../components/ Particles";
 import { ReactComponent as Blob1 } from "../../assets/blob-haikei(1).svg";
 import { ReactComponent as Blob2 } from "../../assets/blob-haikei(2).svg";
 import { ReactComponent as Blob3 } from "../../assets/blob-haikei(3).svg";
@@ -58,7 +59,7 @@ export default function MainPage(props) {
       <>
         <div class="mainPageContainer">
           <section
-            class="bg-center bg-no-repeat  bg-gray-700 bg-blend-multiply"
+            class="bg-center bg-cover  bg-gray-400 bg-blend-multiply"
             style={{ backgroundImage: `url(${BackgroundImage})` }}
           >
             <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
@@ -67,7 +68,7 @@ export default function MainPage(props) {
               </h1>
               <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
                 Take a variety of customized assessments to reveal outcomes
-                defined by your selected answers.{" "}
+                defined by your answers.{" "}
               </p>
               <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
                 <a
@@ -103,10 +104,7 @@ export default function MainPage(props) {
           </section>
 
           <div className="mainPageSvg">
-            <Blob1 />
-            <Blob2 />
-            <Blob3 />
-            <Blob4 />
+            <AnimaParticles/>
           </div>
           {tests.slice(0, 4).map((test, i) => {
             return (

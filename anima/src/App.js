@@ -43,7 +43,7 @@ function App() {
             }
           />
           <Route
-            path="/test-list"
+            path="/explore"
             element={
               <MainPage
                 setTestId={setTestId}
