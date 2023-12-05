@@ -35,8 +35,16 @@
   z-index: -1;
   display: flex;
   flex-direction: column;
-  fill: red;
-  animation: 3s ease-in svgColorizer infinite;
+  
+  background: linear-gradient(
+    300deg,
+    #013b31,
+    #378058,
+    #185a81,
+    #8a1e5a,
+    #a9141b
+  );
+  animation: gradient-animation 30s ease infinite;
 }
 
 .mainPageSvg svg {

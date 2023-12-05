@@ -7,7 +7,7 @@ export default function CreatePage(props) {
   const [testData, setTestData] = useState({
     //create default test state
     testName: "",
-    category: "null",
+    category: [],
     description: "",
     results: [
       { a: "Result 1", image: "", link: "" },
@@ -96,7 +96,6 @@ export default function CreatePage(props) {
                 </select>
               </div>
             </div>
-
           </>
         );
       case 2:
@@ -117,20 +116,30 @@ export default function CreatePage(props) {
               </div>
               <div className="descriptionFields">
                 <h2>Add image link</h2>
-                <textarea
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Enter link for test display image/icon"
-                  type="text"
-                  name="testPic"
-                  value={testData.testPic}
-                  onChange={handleTestPicInput}
-                  required
-                />
+                <div class="tooltip">
+                  <div class="top">
+                    <h3>Linking images</h3>
+                    <ul>
+                      <li>When adding images to D3fine, its best to use dedicated image hosting sites- imgur.com is great for this.</li>
+                      <li>Be sure to include the entire image link</li>
+                    </ul>
+                    <i></i>
+                  </div>
+                  <textarea
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Enter link for test display image/icon"
+                    type="text"
+                    name="testPic"
+                    value={testData.testPic}
+                    onChange={handleTestPicInput}
+                    required
+                  />
+                </div>
                 <h2>Add a description</h2>
 
                 <textarea
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Enter description for your test. Example: This test is used to determine what kind of test you enjoy most!"
+                  placeholder="Enter description for your test."
                   type="text"
                   name="description"
                   value={testData.description}
@@ -139,7 +148,6 @@ export default function CreatePage(props) {
                 />
               </div>
             </div>
-
           </>
         );
       case 3:
@@ -295,7 +303,6 @@ export default function CreatePage(props) {
                 </div>
               </div>
             </div>
-
           </>
         );
       default:
@@ -329,6 +336,7 @@ export default function CreatePage(props) {
     const { value } = event.target;
     setTestData((previousData) => ({ ...previousData, category: value }));
     setIsNextButtonEnabled(value !== "null" && testData.testName.length >= 1);
+    console.log(testData.category)
   };
 
   const handleDescriptionInput = (event) => {
@@ -406,7 +414,6 @@ export default function CreatePage(props) {
         </svg>
       </div>
       <form onSubmit={handleFormSubmit} className="createTestForm">
-
         {renderCurrentInputField()}
 
         {currentInputField < 3 && (
@@ -425,7 +432,7 @@ export default function CreatePage(props) {
             type="submit"
             disabled={!isNextButtonEnabled}
           >
-           <p className="text-button">Next</p>
+            <p className="text-button">Next</p>
           </button>
         )}
         {currentInputField > 1 && (

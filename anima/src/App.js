@@ -20,6 +20,7 @@ function App() {
     JSON.parse(localStorage.getItem("userDetails"))
   );
   const URL = process.env.REACT_APP_URL;
+  const [isNavBarVisible, setNavBarVisibility] = useState(true);
 
   useEffect(() => {
     console.log(user);
@@ -42,13 +43,14 @@ function App() {
             }
           />
           <Route
-            path="/test-list"
+            path="/explore"
             element={
               <MainPage
                 setTestId={setTestId}
                 testId={testId}
                 URL={URL}
                 user={user}
+                isNavBarVisible={isNavBarVisible}
               />
             }
           />
