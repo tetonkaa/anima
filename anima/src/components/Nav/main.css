@@ -5,6 +5,17 @@
     transition: .3s ease-in
 }
 
+.darkModeTitle{
+    font-size: 2.5em !important;
+    font-family: Julius Sans One ;
+    color: rgb(255, 255, 255);
+    transition: .3s ease-in
+}
+
+.darkMode{
+    color: white !important;
+}
+
 .navStyle{
     background-color: rgba(0, 0, 0, 0);
     backdrop-filter: blur(10px);

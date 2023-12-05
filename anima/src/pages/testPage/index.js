@@ -1,6 +1,6 @@
 import axios from "axios";
 import "./main.css";
-import TestSideBar from "../../components/testSidebar/testSidebar";
+
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ReactComponent as Loading } from "../../assets/loading.svg";

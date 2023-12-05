@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import TestSideBar from "../../components/testSidebar/testSidebar";
 import axios from "axios";
 import "./main.css";
 import { Routes, Route, Link } from "react-router-dom";
@@ -35,6 +34,10 @@ export default function MainPage(props) {
     setTestList({ tests }.tests.docs);
   }, [tests]);
 
+  useEffect(() => {
+    props.setDarkMode(true);
+  }, []);
+
   const getRandomTestId = () => {
     if (tests.length === 0) {
       return null; // No tests available
@@ -67,8 +70,8 @@ export default function MainPage(props) {
                 Discover your persona.
               </h1>
               <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
-                Take a variety of customized assessments to reveal outcomes
-                defined by your answers.{" "}
+                Take a variety of customized assessments to reveal personality
+                traits and recommendations.
               </p>
               <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
                 <a
@@ -104,7 +107,7 @@ export default function MainPage(props) {
           </section>
 
           <div className="mainPageSvg">
-            <AnimaParticles/>
+            <AnimaParticles />
           </div>
           {tests.slice(0, 4).map((test, i) => {
             return (

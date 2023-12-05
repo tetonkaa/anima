@@ -11,7 +11,7 @@ export default function DefaultNavbar(props) {
       <nav class="bg-white navStyle dark:bg-gray-900 relative w-full z-20 top-0 left-0  border-gray-200 dark:border-gray-600">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="/" class="flex items-center">
-            <span class="self-center text-6xl whitespace-nowrap animaTitle">
+            <span class={`self-center text-6xl whitespace-nowrap animaTitle ${ props.darkMode ?  "darkModeTitle" : ""}`}>
               d3fine
             </span>
           </a>
@@ -67,7 +67,7 @@ export default function DefaultNavbar(props) {
               <li>
                 <a
                   href="/"
-                  class="navItems block py-2 pl-3 pr-4 text-black bg-blue-700 rounded md:bg-transparent  md:p-0 md:dark:text-blue-500"
+                  class={`navItems block py-2 pl-3 pr-4 bg-blue-700 rounded md:bg-transparent  md:p-0 md:dark:text-blue-500 " ${ props.darkMode ?  "text-white" : "text-black"} `}
                   aria-current="page"
                 >
                   Home
@@ -77,7 +77,7 @@ export default function DefaultNavbar(props) {
                 <li>
                   <a
                     href="/create"
-                    class=" navItems block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0  dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    class={`navItems block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0  dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ${ props.darkMode ?  "text-white" : "text-black"} `}
                   >
                     Create
                   </a>
@@ -86,7 +86,7 @@ export default function DefaultNavbar(props) {
               <li>
                 <a
                   href="/explore"
-                  class="navItems block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent  md:p-0  dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  class={`navItems block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent  md:p-0  dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ${ props.darkMode ?  "text-white" : "text-black"}`}
                 >
                   Explore
                 </a>
