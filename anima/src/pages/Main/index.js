@@ -88,9 +88,10 @@ export default function MainPage(props) {
           <div className="mainPageSvg">
             <AnimaParticles />
           </div>
+          <div className="flex flex-row mainCardContainer">
           {tests.slice(0, 4).map((test, i) => {
             return (
-              <div className="mainCardContainer">
+              <div className="mainCard">
                 <Link
                   to="/test"
                   key={test._id}
@@ -140,6 +141,7 @@ export default function MainPage(props) {
               </div>
             );
           })}
+          </div>
         </div>
       </>
     );

@@ -19,12 +19,11 @@
   box-shadow: 1px 5px 18px 2px rgba(0, 0, 0, 0.419);
 }
 
-.mainCardContainer {
-  padding-top: 5vh;
-}
-.mainPageCards:hover {
+.mainCard {
 
+  margin: auto;
 }
+
 
 .mainPageCards h5 {
   font-size: 2em;
@@ -36,26 +35,10 @@
   z-index: -1;
   display: flex;
   flex-direction: column;
-  
-  background: linear-gradient(
-    300deg,
-    #013b31,
-    #378058,
-    #185a81,
-    #8a1e5a,
-    #a9141b
-  );
-  animation: gradient-animation 30s ease infinite;
+
 }
 
-.mainPageSvg svg {
-  display: flex;
-  max-width: 100%;
-  fill: red;
-  filter: blur(1px);
-  align-content: space-around;
-  margin-top: 5vh;
-}
+
 
 #visual1 path {
   animation: 18s ease-in svgFillColorizer1 infinite alternate-reverse;
@@ -209,6 +192,12 @@ button:disabled {
 }
 
 
+@media screen and (max-width: 1558px){
+  .mainCardContainer{
+    flex-direction: column
+  }
+}
+
 @media screen and (max-width: 428px) {
   .testPageContainer button {
     width: 35vw;
@@ -240,6 +229,7 @@ button:disabled {
     transition: 0.2s ease-in;
     box-shadow: 1px 5px 18px 2px rgba(0, 0, 0, 0.419);
   }
+
 
 
   .mainPageSvg {
