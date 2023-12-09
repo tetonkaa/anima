@@ -1,13 +1,30 @@
 .testPageCards {
   margin: auto;
   margin-top: 5%;
-  
   color: rgb(0, 0, 0);
-  transition: .3s ease-in-out
+  transition: .3s ease-in-out;
+  border: none;
+  box-shadow: 2px 5px 18px 1px rgba(0, 0, 0, 0.82);
+  -webkit-box-shadow: 2px 5px 18px 1px rgba(0, 0, 0, 0.82);
+  -moz-box-shadow: 2px 5px 18px 1px rgba(0, 0, 0, 0.82);
 }
 
 .testPageCards:hover {
   background: rgba(91, 115, 249, 0.817);
+  color: white;
+}
+
+.testBackground{
+  background: linear-gradient(
+    300deg,
+    #013b3171,
+    #3780586f,
+    #185b816c,
+    #8a1e5966,
+    #a9141b5b
+  );
+  background-size: 300% 300%;
+  animation: gradient-animation 30s ease infinite;
 }
 
 .answer {
@@ -17,6 +34,18 @@
 .testPageContainer {
   display: flex;
   flex-direction: column;
+  height: 100%;
+
+  background: linear-gradient(
+    300deg,
+    #013b3171,
+    #3780586f,
+    #185b816c,
+    #8a1e5966,
+    #a9141b5b
+  );
+  background-size: 300% 300%;
+  animation: gradient-animation 30s ease infinite;
 }
 
 #linkShare {
@@ -27,6 +56,7 @@
   margin: auto;
   margin-top: 20vh;
   font-size: 1.5em;
+  margin-bottom: 5vh;
 }
 
 .fadeIn{
@@ -48,5 +78,6 @@
     margin: auto;
     margin-top: 20vh;
     font-size: 1.5em;
+    margin-bottom: 5vh !important;
   }
 }

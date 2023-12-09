@@ -66,6 +66,8 @@ function App() {
                 userResult={userResult}
                 URL={URL}
                 user={user}
+                darkMode={darkMode}
+                setDarkMode={setDarkMode}
               />
             }
           />
@@ -85,6 +87,8 @@ function App() {
                 URL={URL}
                 userResult={userResult}
                 user={user}
+                darkMode={darkMode}
+                setDarkMode={setDarkMode}
               />
             }
           />

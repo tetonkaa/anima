@@ -4,6 +4,7 @@ import "./main.css";
 import Typewriter from "typewriter-effect";
 import { ReactComponent as Loading } from "../../assets/loading.svg";
 import { redirect } from "react-router-dom";
+import AnimaParticles from "../../components/ Particles";
 export default function ResultsPage(props) {
   const [renderedResult, setRenderedResult] = useState({});
   const thisTest = localStorage.getItem("currentTestId");
@@ -19,6 +20,10 @@ export default function ResultsPage(props) {
     setRenderedResult(data);
     return data;
   }
+
+  useEffect(() => {
+    props.setDarkMode(true);
+  }, []);
 
   ///async function to allow renderedResult to update upon request pull completion
   useEffect(() => {
@@ -37,7 +42,11 @@ export default function ResultsPage(props) {
 
   function loaded() {
     return (
-      <div class="flex-col items-center mt-[10vh] h-[100%]">
+      <div class="flex-col items-center mt-[5vh] h-[100%]">
+                  <div className="mainPageSvg">
+            <AnimaParticles />
+          </div>
+
         <div
           class="resultCard flex-col items-center mt-[5%] w-[80vw] h-[70vh] p-[10px] m-auto bg-red border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
           style={{
@@ -105,10 +114,14 @@ export default function ResultsPage(props) {
 
   return Object.keys(renderedResult).length > 0 ? (
     loaded()
-  ) : (
+  ) :  (<>
+    <div className="mainPageSvg">
+            <AnimaParticles />
+          </div>
     <div className="loadingSvg">
       {/* <h1 className=" loader animate__animated animate__pulse animate__infinite 	infinite"> Loading...</h1> */}
       <Loading />
     </div>
+    </>
   );
 }
