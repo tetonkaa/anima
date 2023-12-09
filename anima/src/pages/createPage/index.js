@@ -10,10 +10,10 @@ export default function CreatePage(props) {
     category: [],
     description: "",
     results: [
-      { a: "Result 1", image: "", link: "" },
-      { b: "Result 2", image: "", link: "" },
-      { c: "Result 3", image: "", link: "" },
-      { d: "Result 4", image: "", link: "" },
+      { a: "", image: "", link: "" },
+      { b: "", image: "", link: "" },
+      { c: "", image: "", link: "" },
+      { d: "", image: "", link: "" },
     ],
     testPic: "",
     user: "",
@@ -56,6 +56,13 @@ export default function CreatePage(props) {
       "https://cdn.discordapp.com/attachments/1110618287924072449/1153936528205172746/tetonka._sillouhette_of_a_character_akin_to_a_character_card_in_afa4c2ed-e28f-4000-83a8-739907b20168.png",
       "https://cdn.discordapp.com/attachments/1110618287924072449/1153937841240428554/tetonka._sillouhette_of_a_woman_akin_to_a_character_card_in_a_v_e31ccb07-3808-4895-985f-f64383a2e323.png",
     ];
+
+    const placeholderText = [
+      "Result 1",
+      "Result 2",
+      "Result 3",
+      "Result 4"
+    ]
 
     switch (currentInputField) {
       case 1:
@@ -166,7 +173,7 @@ export default function CreatePage(props) {
                   <input
                     type="text"
                     name="a"
-                    value={testData.results[0].a}
+                    value={testData.results[0].a || placeholderText[0]}
                     onChange={(e) => handleFormInput(e, 0)}
                     placeholder="Personality name"
                     required
@@ -202,7 +209,7 @@ export default function CreatePage(props) {
                   <input
                     type="text"
                     name="b"
-                    value={testData.results[1].b}
+                    value={testData.results[1].b || placeholderText[1]}
                     onChange={(e) => handleFormInput(e, 1)}
                     placeholder="Personality name"
                     maxlength="14"
@@ -239,7 +246,7 @@ export default function CreatePage(props) {
                   <input
                     type="text"
                     name="c"
-                    value={testData.results[2].c}
+                    value={testData.results[2].c || placeholderText[2]}
                     onChange={(e) => handleFormInput(e, 2)}
                     placeholder="Personality name"
                     maxlength="14"
@@ -276,7 +283,7 @@ export default function CreatePage(props) {
                   <input
                     type="text"
                     name="d"
-                    value={testData.results[3].d}
+                    value={testData.results[3].d || placeholderText[3]}
                     onChange={(e) => handleFormInput(e, 3)}
                     placeholder="Personality name"
                     maxlength="14"

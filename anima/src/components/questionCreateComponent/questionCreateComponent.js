@@ -44,18 +44,35 @@ export default function QuestionCreateComponent({
     }));
   };
 
-  // console.log(createdQuestion)
+
   console.log(URL.URL);
+
+
+
+  const isAnswerFilled = (index) => {
+    return createdQuestion.answerChoices[index].Answer.length > 1;
+  };
+
+  const updateNextButtonState = () => {
+    const areAnswersFilled = createdQuestion.answerChoices.every((choice, index) =>
+      isAnswerFilled(index)
+    );
+    setIsNextButtonEnabled(areAnswersFilled);
+  };
+
 
   const handleAnswerChoiceChange = (index, field, value) => {
     const updatedAnswerChoices = [...createdQuestion.answerChoices];
     updatedAnswerChoices[index][field] = value;
-    setIsNextButtonEnabled(value.length > 1);
     setCreatedQuestion((previousData) => ({
       ...previousData,
       answerChoices: updatedAnswerChoices,
     }));
+
+    updateNextButtonState();
   };
+
+
 
   const setQuestionClick = (e) => {
     e.preventDefault();
