@@ -20,8 +20,8 @@
 }
 
 .mainCard {
+  margin: 0 auto;
 
-  margin: auto;
 }
 
 
@@ -65,6 +65,10 @@
 .mainPageContainer {
   height: 100%;
   animation: fadeIn 0.3s ease-in;
+}
+
+.mainPageContainer h1{
+ font-family: Julius Sans One ;
 }
 
 .resultCard {

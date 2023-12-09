@@ -45,9 +45,9 @@
   animation: gradient-animation 30s ease infinite;
   text-shadow: none;
   height: 70vh;
-  box-shadow: 2px 5px 22px 1px rgba(0,0,0,0.82);
--webkit-box-shadow: 2px 5px 22px 1px rgba(0,0,0,0.82);
--moz-box-shadow: 2px 5px 22px 1px rgba(0,0,0,0.82);
+  box-shadow: 2px 5px 22px 1px rgba(0, 0, 0, 0.82);
+  -webkit-box-shadow: 2px 5px 22px 1px rgba(0, 0, 0, 0.82);
+  -moz-box-shadow: 2px 5px 22px 1px rgba(0, 0, 0, 0.82);
   border-radius: 8px;
 }
 

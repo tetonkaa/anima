@@ -4,12 +4,13 @@ import "./main.css";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ReactComponent as Loading } from "../../assets/loading.svg";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from "react-toastify";
+import AnimaParticles from "../../components/ Particles";
 export default function TestPage(props) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [thisTest, setThisTest] = useState(
     localStorage.getItem("currentTestId")
-  ); //define testId from local storage
+  );
   const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
   const [userAnswers, setUserAnswers] = useState({
@@ -39,13 +40,16 @@ export default function TestPage(props) {
     } else {
       getQuestions();
     }
-  },[]);
+  }, []);
 
+  useEffect(() => {
+    props.setDarkMode(true);
+  }, []);
 
   const handleAnswerValue = (event, answer) => {
     const questionId = event.target.name;
     const answerLabel = answer.Label;
-  
+
     setUserAnswers((prevUserAnswers) => {
       const updatedUserAnswers = {
         ...prevUserAnswers,
@@ -56,7 +60,7 @@ export default function TestPage(props) {
       };
       return updatedUserAnswers;
     });
-  
+
     setAnsweredQuestions((prevAnsweredQuestions) => ({
       ...prevAnsweredQuestions,
       [questionId]: true,
@@ -64,17 +68,14 @@ export default function TestPage(props) {
   };
   const handleShare = () => {
     console.log(inviteLink);
-    // Get the text field
+
     var copyText = document.getElementById("linkShare");
 
-    // Select the text field
     copyText.select();
-    copyText.setSelectionRange(0, 99999); // For mobile devices
+    copyText.setSelectionRange(0, 99999);
 
-    // Copy the text inside the text field
     navigator.clipboard.writeText(copyText.value);
 
-    // Alert the copied text
     toast.success(`Link copied: ${copyText.value}`);
   };
 
@@ -100,7 +101,10 @@ export default function TestPage(props) {
   return questions.length > 0 ? (
     <div className="testPageContainer">
       <ToastContainer />
-  
+
+<div className="mainPageSvg">
+            <AnimaParticles />
+          </div>
       <input type="text" value={inviteLink} id="linkShare"></input>
       <button
         className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
@@ -109,12 +113,14 @@ export default function TestPage(props) {
       >
         Share This Test
       </button>
-  
+      <div>
       {questions.map((questionItem, i) => {
         return i === currentQuestionIndex ? (
           <div key={questionItem._id}>
             <div
-              className={`flex testPageCards flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 ${ animateQuestion ? "fadeIn" : ""}`}
+              className={`flex testPageCards flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 ${
+                animateQuestion ? "fadeIn" : ""
+              }`}
               onAnimationEnd={handleAnimationEnd}
             >
               <div className="flex flex-col justify-between p-4 leading-normal">
@@ -130,7 +136,7 @@ export default function TestPage(props) {
                           name={questionItem._id}
                           value={answer.Score}
                           id={answer.Label}
-                          onClick={(event) => handleAnswerValue(event, answer)}
+                          onChange={(event) => handleAnswerValue(event, answer)}
                         />
                         <span className="answer">{answer.Answer}</span>
                       </label>
@@ -141,16 +147,24 @@ export default function TestPage(props) {
             </div>
           </div>
         ) : null;
+        
       })}
-  
-  <button
-  type="button"
-  className="d3Button text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-  disabled={!answeredQuestions[questions[currentQuestionIndex]._id]}
-  onClick={currentQuestionIndex === questions.length - 1 ? handleAnswerSubmit : handleNextQuestion}
->
-  {currentQuestionIndex === questions.length - 1 ? 'Submit' : 'Next Question'}
-</button>
+      </div>
+
+      <button
+        type="button"
+        className="d3Button text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+        disabled={!answeredQuestions[questions[currentQuestionIndex]._id]}
+        onClick={
+          currentQuestionIndex === questions.length - 1
+            ? handleAnswerSubmit
+            : handleNextQuestion
+        }
+      >
+        {currentQuestionIndex === questions.length - 1
+          ? "Submit"
+          : "Next Question"}
+      </button>
     </div>
   ) : (
     <div className="loadingSvg">
@@ -158,5 +172,3 @@ export default function TestPage(props) {
     </div>
   );
 }
-
-
