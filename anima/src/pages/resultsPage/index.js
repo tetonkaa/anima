@@ -5,6 +5,7 @@ import Typewriter from "typewriter-effect";
 import { ReactComponent as Loading } from "../../assets/loading.svg";
 import { redirect } from "react-router-dom";
 import AnimaParticles from "../../components/ Particles";
+import { ThemeContext } from "flowbite-react/lib/esm/components/Flowbite/ThemeContext";
 export default function ResultsPage(props) {
   const [renderedResult, setRenderedResult] = useState({});
   const thisTest = localStorage.getItem("currentTestId");
@@ -12,33 +13,67 @@ export default function ResultsPage(props) {
     userResult: props.userResult,
   };
 
-  async function getTestResults() {
-    const { data } = await axios.post(
+  // async function getTestResults() {
+  //   const { data } = await axios.post(
+  //     props.URL + "result/" + thisTest,
+  //     resultParam
+  //   );
+  //   setRenderedResult(data);
+  //   return data;
+  // }
+
+ 
+
+
+  const getTestResults = async () => {
+
+    const response = await axios.post(
       props.URL + "result/" + thisTest,
-      resultParam
-    );
-    setRenderedResult(data);
-    return data;
+      resultParam,);
+      setRenderedResult(response.data)
+      
+  }
+
+  const handleClick =async () => {
+    console.log("props.URL"+props.URL)
+    console.log(typeof props.URL)
+    console.log(typeof thisTest);
+    console.log(typeof resultParam)
+
+
+    try {const response = await axios.post(
+      props.URL + "result/" + thisTest,
+      resultParam)
+      console.log("test post successful", response)
+      setRenderedResult(response.data);}
+      catch (error) {
+        console.error("error posting test", error);
+      }
+      
   }
 
   useEffect(() => {
     props.setDarkMode(true);
   }, []);
 
-  ///async function to allow renderedResult to update upon request pull completion
-  useEffect(() => {
-    async function fetchResults() {
-      const results = await getTestResults();
-      setRenderedResult(results);
-    }
-    fetchResults();
-  }, [thisTest, props.userResult]);
+
+  
 
   useEffect(() => {
-    console.log(renderedResult);
-  }, [renderedResult]);
+    // async function fetchResults() {
+    //   const results = await getTestResults();
+    //   // setRenderedResult(results);
+    // }
+    // fetchResults();
+    // getTestResults();
+    console.log("user result"+props.userResult);
+    console.log("this test"+resultParam.userResult)
+    console.log("renderedResult:"+renderedResult)
+  }, []);
 
-  console.log(renderedResult[Object.keys(renderedResult)[0]]);
+
+
+
 
   function loaded() {
     return (
@@ -119,6 +154,7 @@ export default function ResultsPage(props) {
             <AnimaParticles />
           </div>
     <div className="loadingSvg">
+      <button onClick={()=>handleClick()}> LOAD</button>
       {/* <h1 className=" loader animate__animated animate__pulse animate__infinite 	infinite"> Loading...</h1> */}
       <Loading />
     </div>

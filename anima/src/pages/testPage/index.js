@@ -29,6 +29,7 @@ export default function TestPage(props) {
   async function getQuestions() {
     const { data } = await axios.get(props.URL + "test-questions/" + thisTest);
     setQuestions(data);
+    console.log(questions+"questions log")
     return data;
   }
 
@@ -42,6 +43,8 @@ export default function TestPage(props) {
     }
   }, []);
 
+
+  console.log(localStorage.getItem("currentTestId"))
   useEffect(() => {
     props.setDarkMode(true);
   }, []);
@@ -91,12 +94,15 @@ export default function TestPage(props) {
   async function handleAnswerSubmit() {
     const updateProps = (response) => {
       props.setUserResult(response);
+      
     };
     axios.post(props.URL + "submit", userAnswers).then((response) => {
       updateProps(response.data.finalResult);
     });
     navigate("/result");
   }
+  console.log(answeredQuestions)
+  console.log(userAnswers)
 
   return questions.length > 0 ? (
     <div className="testPageContainer">

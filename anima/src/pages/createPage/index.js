@@ -10,10 +10,10 @@ export default function CreatePage(props) {
     category: [],
     description: "",
     results: [
-      { a: "", image: "", link: "" },
-      { b: "", image: "", link: "" },
-      { c: "", image: "", link: "" },
-      { d: "", image: "", link: "" },
+      { a: "Result A", image: "", link: "" },
+      { b: "Result B", image: "", link: "" },
+      { c: "Result C", image: "", link: "" },
+      { d: "Result D", image: "", link: "" },
     ],
     testPic: "",
     user: "",
@@ -57,12 +57,12 @@ export default function CreatePage(props) {
       "https://cdn.discordapp.com/attachments/1110618287924072449/1153937841240428554/tetonka._sillouhette_of_a_woman_akin_to_a_character_card_in_a_v_e31ccb07-3808-4895-985f-f64383a2e323.png",
     ];
 
-    const placeholderText = [
-      "Result 1",
-      "Result 2",
-      "Result 3",
-      "Result 4"
-    ]
+    // const placeholderText = [
+    //   "Result 1",
+    //   "Result 2",
+    //   "Result 3",
+    //   "Result 4"
+    // ]
 
     switch (currentInputField) {
       case 1:
@@ -173,7 +173,7 @@ export default function CreatePage(props) {
                   <input
                     type="text"
                     name="a"
-                    value={testData.results[0].a || placeholderText[0]}
+                    value={testData.results[0].a}
                     onChange={(e) => handleFormInput(e, 0)}
                     placeholder="Personality name"
                     required
@@ -209,7 +209,7 @@ export default function CreatePage(props) {
                   <input
                     type="text"
                     name="b"
-                    value={testData.results[1].b || placeholderText[1]}
+                    value={testData.results[1].b}
                     onChange={(e) => handleFormInput(e, 1)}
                     placeholder="Personality name"
                     maxlength="14"
@@ -246,7 +246,7 @@ export default function CreatePage(props) {
                   <input
                     type="text"
                     name="c"
-                    value={testData.results[2].c || placeholderText[2]}
+                    value={testData.results[2].c}
                     onChange={(e) => handleFormInput(e, 2)}
                     placeholder="Personality name"
                     maxlength="14"
@@ -283,7 +283,7 @@ export default function CreatePage(props) {
                   <input
                     type="text"
                     name="d"
-                    value={testData.results[3].d || placeholderText[3]}
+                    value={testData.results[3].d}
                     onChange={(e) => handleFormInput(e, 3)}
                     placeholder="Personality name"
                     maxlength="14"
@@ -324,6 +324,8 @@ export default function CreatePage(props) {
       const response = await axios.post(props.URL + "create", testData);
       console.log("test post successful", response);
       localStorage.setItem("newTestId", response.data._id);
+      localStorage.setItem("currentTestId", response.data._id);
+      console.log("newTestId on create is "+ localStorage.getItem("newTestId") )
       var resultsJsonString = JSON.stringify(testData.results);
       localStorage.setItem("createdResults", resultsJsonString);
       console.log(testData.results);
