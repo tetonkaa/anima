@@ -27,6 +27,13 @@
   width: 37vw;
 }
 
+.questionButtons {
+  display: flex;
+  flex-direction: row;
+  width: 40vw;
+  font-size: 0.8em;
+}
+
 .answerInput {
   width: 36vw !important;
 }
@@ -53,4 +60,48 @@ input:disabled {
 
 .questionCreateContainer input::placeholder {
   color: white;
+}
+
+@media screen and (max-width: 433px) {
+  .questionCreateContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    padding-left: 15vw;
+    color: white;
+    font-size: 2em;
+    animation: fadeIn 1s ease-in;
+  }
+
+  .questionInput {
+    width: 75vw !important;
+    margin-bottom: 2vw;
+  }
+
+  .answerLabels {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 75vw;
+  }
+
+  .answerInput {
+    width: 60vw !important;
+  }
+
+  .questionButtons {
+    display: flex;
+    flex-direction: row;
+    width: 70vw;
+    font-size: 0.5em;
+  }
+
+  .scoreInput {
+    width: 15vw !important;
+    color: rgb(3, 246, 3);
+    padding: none !important;
+    margin: none !important;
+  }
 }

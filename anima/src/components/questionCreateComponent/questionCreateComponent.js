@@ -106,15 +106,17 @@ export default function QuestionCreateComponent({
               />
             </div>
           ))}
+          <div className="questionButtons">
           <button disabled={!isNextButtonEnabled} onClick={setQuestionClick}>
             Finish Question
           </button>
 
           {numQuestionForms > 1 && (
-            <button onClick={handleDeleteQuestion} className="deleteButton">
+            <button onClick={handleDeleteQuestion}>
               Delete Question
             </button>
           )}
+          </div>
         </fieldset>
       </form>
     </div>
