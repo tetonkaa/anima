@@ -1,41 +1,36 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./main.css";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import QuestionCreateComponent from "../../components/questionCreateComponent/questionCreateComponent";
 
 export default function QuestionCreate(props) {
-  const handleQuestionData = (data) => {
-    console.log("created question", data);
-    setCreatedQuestions((previousQuestions) => {
-      // Ensure that previousQuestions is initialized as an array
-      const questionsArray = Array.isArray(previousQuestions)
-        ? previousQuestions
-        : [];
-
-      // Use the spread operator to create a new array with the new question
-      return [...questionsArray, data];
-    });
-  };
-  const [questionForms, setQuestionForms] = useState([
-    <QuestionCreateComponent
-      URL={props.URL}
-      sendDataToParent={handleQuestionData}
-    />,
-  ]);
   const [createdQuestions, setCreatedQuestions] = useState([]);
-  const newTestId = localStorage.getItem("newTestId")
+  
+
   const navigate = useNavigate();
 
-  let handleAddForm = (e) => {
+  const handleQuestionData = (data) => {
+    console.log("created question", data);
+    setCreatedQuestions((previousQuestions) => [...previousQuestions, data]);
+  };
+
+  const [numQuestionForms, setNumQuestionForms] = useState(1);
+
+  const handleAddForm = (e) => {
     e.preventDefault();
-    setQuestionForms([
-      ...questionForms,
-      <QuestionCreateComponent
-        key={questionForms.length}
-        sendDataToParent={handleQuestionData}
-      />,
-    ]);
+    setNumQuestionForms((prevNum) => prevNum + 1);
+  };
+
+  const handleDeleteForm = (index) => {
+    if (numQuestionForms > 1) {
+      setNumQuestionForms((prevNum) => prevNum - 1);
+      setCreatedQuestions((prevQuestions) => {
+        const updatedQuestions = [...prevQuestions];
+        updatedQuestions.splice(index, 1);
+        return updatedQuestions;
+      });
+    }
   };
 
   const handleFormSubmit = async (event) => {
@@ -45,48 +40,33 @@ export default function QuestionCreate(props) {
       const response = await axios.post(
         props.URL + "questions/add-question",
         createdQuestions
-      );
+        );
+
       console.log("Question post successful", response);
-      localStorage.setItem("currentTestId", newTestId);
-      navigate("/test")
+      // Navigate to the desired page after submitting questions
+
+      navigate("/test");
     } catch (error) {
       console.error("Error posting question", error);
     }
   };
 
-  // const handleFormSubmit = async (event) => {
-  //   event.preventDefault();
-
-  //   try {
-  //     // You can now access the createdQuestions state here
-  //     console.log("Created Questions:", createdQuestions);
-
-  //     // Use axios to post the questions to the server here
-  //     // ...
-  //   } catch (error) {
-  //     console.error("Error posting questions", error);
-  //   }
-  // };
-
-  console.log(createdQuestions);
-
   return (
-    <div class="questionAddPageContainer">
-      <QuestionCreateComponent
-        URL={props.URL}
-        sendDataToParent={handleQuestionData}
-      />
+    <div className="questionAddPageContainer">
+      {[...Array(numQuestionForms)].map((_, index) => (
+        <QuestionCreateComponent
+          key={index}
+          sendDataToParent={handleQuestionData}
+          onDeleteQuestion={() => handleDeleteForm(index)}
+          numQuestionForms={numQuestionForms}
+        />
+      ))}
       <form>
-        {questionForms}
+        {/* Any additional form-related elements go here */}
       </form>
-        <button class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={handleAddForm}>ADD QUESTION</button>
-      <button
-        type="submit"
-        className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-        onClick={handleFormSubmit}
-      >
-        Finish Questions
-      </button>
+      <button onClick={handleAddForm}>ADD QUESTION</button>
+      <button onClick={handleFormSubmit}>Finish Questions</button>
     </div>
   );
 }
+

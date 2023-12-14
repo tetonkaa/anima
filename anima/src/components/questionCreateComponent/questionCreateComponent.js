@@ -1,27 +1,11 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "./main.css";
 
 export default function QuestionCreateComponent({
-  props,
-  addQuestion,
   sendDataToParent,
+  onDeleteQuestion,
+  numQuestionForms,
 }) {
-  const resultsData = localStorage.getItem("createdResults");
-  const parsedResults = JSON.parse(resultsData);
-
-  const firstResult = parsedResults[0];
-  const secondResult = parsedResults[1];
-  const thirdResult = parsedResults[2];
-  const fourthResult = parsedResults[3];
-  const keysOfFirstResult = Object.keys(firstResult);
-  const placerHolderText0 = keysOfFirstResult[0];
-
-  const keysOfSecondResult = Object.keys(secondResult);
-  const placerHolderText1 = keysOfSecondResult[0];
-
-  console.log(parsedResults);
-
   const [createdQuestion, setCreatedQuestion] = useState({
     question: "",
     answerChoices: [
@@ -44,22 +28,16 @@ export default function QuestionCreateComponent({
     }));
   };
 
-
-  console.log(URL.URL);
-
-
-
   const isAnswerFilled = (index) => {
     return createdQuestion.answerChoices[index].Answer.length > 1;
   };
 
   const updateNextButtonState = () => {
-    const areAnswersFilled = createdQuestion.answerChoices.every((choice, index) =>
-      isAnswerFilled(index)
+    const areAnswersFilled = createdQuestion.answerChoices.every(
+      (choice, index) => isAnswerFilled(index)
     );
     setIsNextButtonEnabled(areAnswersFilled);
   };
-
 
   const handleAnswerChoiceChange = (index, field, value) => {
     const updatedAnswerChoices = [...createdQuestion.answerChoices];
@@ -72,13 +50,17 @@ export default function QuestionCreateComponent({
     updateNextButtonState();
   };
 
-
+  const handleDeleteQuestion = (e) => {
+    e.preventDefault();
+    onDeleteQuestion();
+  };
 
   const setQuestionClick = (e) => {
     e.preventDefault();
     sendDataToParent(createdQuestion);
     setIsFormEnabled(false);
   };
+  console.log(createdQuestion)
   return (
     <div className="questionCreateContainer">
       <h1>Question</h1>
@@ -91,108 +73,54 @@ export default function QuestionCreateComponent({
             placeholder="Enter a question"
             value={createdQuestion.question}
             onChange={handleQuestionInput}
-            readonly
           />
           <div className="answerLabels">
             <h3>Answer</h3>
             <h3>Score</h3>
           </div>
-          <div>
-            <input
-              className="answerInput"
-              type="text"
-              placeholder={`Answer for Choice ${firstResult.a}`}
-              value={createdQuestion.answerChoices[0].Answer}
-              onChange={(e) =>
-                handleAnswerChoiceChange(0, "Answer", e.target.value)
-              }
-              required
-            />
-            <input
-            className="scoreInput"
-              type="number"
-              placeholder={`Score for Choice ${createdQuestion.answerChoices[0].Label}`}
-              value={createdQuestion.answerChoices[0].Score}
-              onChange={(e) =>
-                handleAnswerChoiceChange(0, "Score", parseInt(e.target.value))
-              }
-              required
-            />
-          </div>
-
-          <div>
-            <input
-              className="answerInput"
-              type="text"
-              placeholder={`Answer for Choice ${secondResult.b}`}
-              value={createdQuestion.answerChoices[1].Answer}
-              onChange={(e) =>
-                handleAnswerChoiceChange(1, "Answer", e.target.value)
-              }
-              required
-            />
-            <input
-            className="scoreInput"
-              type="number"
-              placeholder={`Score for Choice ${createdQuestion.answerChoices[1].Label}`}
-              value={createdQuestion.answerChoices[1].Score}
-              onChange={(e) =>
-                handleAnswerChoiceChange(1, "Score", parseInt(e.target.value))
-              }
-              required
-            />
-          </div>
-
-          <div>
-            <input
-              className="answerInput"
-              type="text"
-              placeholder={`Answer for Choice ${thirdResult.c}`}
-              value={createdQuestion.answerChoices[2].Answer}
-              onChange={(e) =>
-                handleAnswerChoiceChange(2, "Answer", e.target.value)
-              }
-              required
-            />
-            <input
-            className="scoreInput"
-              type="number"
-              placeholder={`Score for Choice ${createdQuestion.answerChoices[2].Label}`}
-              value={createdQuestion.answerChoices[2].Score}
-              onChange={(e) =>
-                handleAnswerChoiceChange(2, "Score", parseInt(e.target.value))
-              }
-              required
-            />
-          </div>
-
-          <div>
-            <input
-              className="answerInput"
-              type="text"
-              placeholder={`Answer for Choice ${fourthResult.d}`}
-              value={createdQuestion.answerChoices[3].Answer}
-              onChange={(e) =>
-                handleAnswerChoiceChange(3, "Answer", e.target.value)
-              }
-              required
-            />
-            <input
-            className="scoreInput"
-              type="number"
-              placeholder={`Score for Choice ${createdQuestion.answerChoices[3].Label}`}
-              value={createdQuestion.answerChoices[3].Score}
-              onChange={(e) =>
-                handleAnswerChoiceChange(3, "Score", parseInt(e.target.value))
-              }
-              required
-            />
-          </div>
+          {createdQuestion.answerChoices.map((choice, index) => (
+            <div key={index}>
+              <input
+                className="answerInput"
+                type="text"
+                placeholder={`Answer for Choice ${choice.Label}`}
+                value={choice.Answer}
+                onChange={(e) =>
+                  handleAnswerChoiceChange(index, "Answer", e.target.value)
+                }
+                required
+              />
+              <input
+                className="scoreInput"
+                type="number"
+                placeholder={`Score for Choice ${choice.Label}`}
+                value={choice.Score}
+                onChange={(e) =>
+                  handleAnswerChoiceChange(
+                    index,
+                    "Score",
+                    parseInt(e.target.value)
+                  )
+                }
+                required
+              />
+            </div>
+          ))}
+          <div className="questionButtons">
           <button disabled={!isNextButtonEnabled} onClick={setQuestionClick}>
             Finish Question
           </button>
+
+          {numQuestionForms > 1 && (
+            <button onClick={handleDeleteQuestion}>
+              Delete Question
+            </button>
+          )}
+          </div>
         </fieldset>
       </form>
     </div>
   );
 }
+
+

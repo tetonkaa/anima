@@ -14,14 +14,14 @@ import { db } from "./services/firebase.config";
 import Signin from "./pages/AuthPage/Signin";
 import QuestionCreate from "./pages/questionCreate";
 function App() {
-  const [testId, setTestId] = useState();
+  const [testId, setTestId] = useState("");
   const [userResult, setUserResult] = useState("");
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("userDetails"))
   );
   const URL = process.env.REACT_APP_URL;
   const [isNavBarVisible, setNavBarVisibility] = useState(true);
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(false);
   useEffect(() => {
     console.log(user);
   }, [user]);
@@ -73,11 +73,13 @@ function App() {
           />
           <Route
             path="/create"
-            element={<CreatePage URL={URL} user={user} />}
+            element={<CreatePage URL={URL} user={user} setTestId={setTestId} />}
           />
           <Route
             path="/question-add"
-            element={<QuestionCreate URL={URL} user={user} />}
+            element={
+              <QuestionCreate URL={URL} user={user}/>
+            }
           />
           <Route
             path="/result"
