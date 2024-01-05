@@ -29,11 +29,11 @@ export default function CreatePage(props) {
         const value = props.user.uid;
         return { ...testData, user: value };
       });
-      console.log(testData.user + "User assigned to test create");
-      console.log(props.user.uid + "log in on create");
+      // console.log(testData.user + "User assigned to test create");
+      // console.log(props.user.uid + "log in on create");
     } else {
-      console.log("not signed in");
-      console.log(testData.user);
+      // console.log("not signed in");
+      // console.log(testData.user);
     }
   }, [props.user]);
 
@@ -322,13 +322,13 @@ export default function CreatePage(props) {
 
     try {
       const response = await axios.post(props.URL + "create", testData);
-      console.log("test post successful", response);
+      // console.log("test post successful", response);
       localStorage.setItem("newTestId", response.data._id);
       localStorage.setItem("currentTestId", response.data._id);
       console.log("newTestId on create is "+ localStorage.getItem("newTestId") )
       var resultsJsonString = JSON.stringify(testData.results);
       localStorage.setItem("createdResults", resultsJsonString);
-      console.log(testData.results);
+      // console.log(testData.results);
       navigate("/question-add");
     } catch (error) {
       console.error("error posting test", error);
@@ -345,7 +345,7 @@ export default function CreatePage(props) {
     const { value } = event.target;
     setTestData((previousData) => ({ ...previousData, category: value }));
     setIsNextButtonEnabled(value !== "null" && testData.testName.length >= 1);
-    console.log(testData.category)
+
   };
 
   const handleDescriptionInput = (event) => {
@@ -370,7 +370,6 @@ export default function CreatePage(props) {
     });
     setIsNextButtonEnabled(value.length > 1);
   };
-  console.log(testData);
 
   return (
     <div className="">

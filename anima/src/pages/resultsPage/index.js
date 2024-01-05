@@ -51,25 +51,20 @@ export default function ResultsPage(props) {
       }
       
   }
-
+  
   useEffect(() => {
-    props.setDarkMode(true);
+    getTestResults();
+    console.log('trying to fetch')
   }, []);
+  // useEffect(() => {
+  //   props.setDarkMode(true);
+  // }, []);
+
 
 
   
 
-  useEffect(() => {
-    // async function fetchResults() {
-    //   const results = await getTestResults();
-    //   // setRenderedResult(results);
-    // }
-    // fetchResults();
-    // getTestResults();
-    console.log("user result"+props.userResult);
-    console.log("this test"+resultParam.userResult)
-    console.log("renderedResult:"+renderedResult)
-  }, []);
+
 
 
 
