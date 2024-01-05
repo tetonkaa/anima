@@ -31,12 +31,12 @@ export default function Signin(props) {
         props.setUser(userCredential.user);
         setSuccess(true);
         window.location.reload(true);
-        console.log("pulled user object" + props.user.email);
+        // console.log("pulled user object" + props.user.email);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        // console.log(errorCode, errorMessage);
       });
   };
 
@@ -55,7 +55,7 @@ export default function Signin(props) {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        // console.log(errorCode, errorMessage);
       });
   };
 
@@ -68,16 +68,15 @@ export default function Signin(props) {
         localStorage.setItem("userDetails", JSON.stringify(result.user));
         props.setUser(result.user);
         setSuccess(true);
-        console.log(props.user);
         window.location.reload(true);
-        console.log("pulled user object" + props.user);
+        // console.log("pulled user object" + props.user);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         const email = error.customData.email;
         const credential = GoogleAuthProvider.credentialFromError(error);
-        console.log(errorCode, errorMessage, email, credential);
+        // console.log(errorCode, errorMessage, email, credential);
       });
   };
 
@@ -340,9 +339,9 @@ export default function Signin(props) {
                     </div>
                   </div>
                   <button
+                    onClick={reg}
                     type="submit"
                     class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    // data-modal-hide={success ? "authentication-modal": null}
                     disabled={
                       confirmPwd !== pwd || email.length < 6 || pwd.length < 6
                     }
