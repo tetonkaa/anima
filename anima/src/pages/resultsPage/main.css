@@ -170,6 +170,12 @@ resultCard {
   }
 }
 
+.loadingButton{
+  color: white;
+  position: absolute;
+  margin: auto
+}
+
 
 @media screen and (max-width: 433px) {
   .testPageContainer button {
