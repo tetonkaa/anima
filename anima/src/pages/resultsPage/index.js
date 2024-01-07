@@ -66,7 +66,7 @@ export default function ResultsPage(props) {
         </div>
 
         <div
-          class="resultCard flex-col items-center mt-[5%] w-[80vw] h-[70vh] p-[10px] m-auto bg-red border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+          class="resultCard flex-col items-center w-[80vw] h-[70vh] p-[10px] m-auto bg-red border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
           style={{
             backgroundImage: `url(${renderedResult.image})`,
             backgroundSize: "cover",
