@@ -22,63 +22,51 @@ export default function ResultsPage(props) {
   //   return data;
   // }
 
- 
-
-
   const getTestResults = async () => {
+    try {
+      const response = await axios.post(
+        props.URL + "result/" + thisTest,
+        resultParam
+      );
+      console.log("test post successful", response);
+      setRenderedResult(response.data);
+    } catch (error) {
+      console.error("error posting test", error);
+    }
+  };
 
-    const response = await axios.post(
-      props.URL + "result/" + thisTest,
-      resultParam,);
-      setRenderedResult(response.data)
-      
-  }
+  const handleClick = async () => {
 
-  const handleClick =async () => {
-    console.log("props.URL"+props.URL)
-    console.log(typeof props.URL)
-    console.log(typeof thisTest);
-    console.log(typeof resultParam)
+    try {
+      const response = await axios.post(
+        props.URL + "result/" + thisTest,
+        resultParam
+      );
+      console.log("test post successful", response);
+      setRenderedResult(response.data);
+    } catch (error) {
+      console.error("error posting test", error);
+    }
+  };
 
-
-    try {const response = await axios.post(
-      props.URL + "result/" + thisTest,
-      resultParam)
-      console.log("test post successful", response)
-      setRenderedResult(response.data);}
-      catch (error) {
-        console.error("error posting test", error);
-      }
-      
-  }
-  
   useEffect(() => {
     getTestResults();
-    console.log('trying to fetch')
+    console.log("rendered result"+renderedResult)
+    console.log("trying to fetch");
   }, []);
-  // useEffect(() => {
-  //   props.setDarkMode(true);
-  // }, []);
-
-
-
-  
-
-
-
-
-
-
+  useEffect(() => {
+    props.setDarkMode(true);
+  }, []);
 
   function loaded() {
     return (
       <div class="flex-col items-center mt-[5vh] h-[100%]">
-                  <div className="mainPageSvg">
-            <AnimaParticles />
-          </div>
+        <div className="mainPageSvg">
+          <AnimaParticles />
+        </div>
 
         <div
-          class="resultCard flex-col items-center mt-[5%] w-[80vw] h-[70vh] p-[10px] m-auto bg-red border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+          class="resultCard flex-col items-center w-[80vw] h-[70vh] p-[10px] m-auto bg-red border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
           style={{
             backgroundImage: `url(${renderedResult.image})`,
             backgroundSize: "cover",
@@ -98,22 +86,20 @@ export default function ResultsPage(props) {
             class="p-5 flex-col justify-center align-center"
           >
             <a href={renderedResult.link}>
-            <p class="resultName text-center">
-              <p class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                <Typewriter
-                  options={{
-                    strings: [renderedResult[Object.keys(renderedResult)[0]]],
-                    autoStart: true,
-                    deleteSpeed: 1000000000,
-                    cursor: ""
-                  }}
-                />
+              <p class="resultName text-center">
+                <p class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  <Typewriter
+                    options={{
+                      strings: [renderedResult[Object.keys(renderedResult)[0]]],
+                      autoStart: true,
+                      deleteSpeed: 1000000000,
+                      cursor: "",
+                    }}
+                  />
+                </p>
               </p>
-            </p>
             </a>
-            <p className="text-center">
-            ↑↑↑ click to learn more ↑↑↑
-            </p>
+            <p className="text-center">↑↑↑ click to learn more ↑↑↑</p>
             <a
               href="/test-list"
               id="retakeButton"
@@ -144,15 +130,16 @@ export default function ResultsPage(props) {
 
   return Object.keys(renderedResult).length > 0 ? (
     loaded()
-  ) :  (<>
-    <div className="mainPageSvg">
-            <AnimaParticles />
-          </div>
-    <div className="loadingSvg">
-      <button onClick={()=>handleClick()}> LOAD</button>
-      {/* <h1 className=" loader animate__animated animate__pulse animate__infinite 	infinite"> Loading...</h1> */}
-      <Loading />
-    </div>
+  ) : (
+    <>
+      <div className="mainPageSvg">
+        <AnimaParticles />
+      </div>
+      <div className="loadingSvg">
+        <button onClick={() => handleClick()} className="loadingButton"> REVEAL</button>
+        {/* <h1 className=" loader animate__animated animate__pulse animate__infinite 	infinite"> Loading...</h1> */}
+        <Loading />
+      </div>
     </>
   );
 }

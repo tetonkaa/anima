@@ -1,5 +1,6 @@
 resultCard {
   animation: bgshift 14s linear infinite alternate;
+  margin-top: 10vh !important;
 }
 
 @keyframes bgshift {
@@ -168,6 +169,12 @@ resultCard {
   .resultName{
     text-align: center !important;
   }
+}
+
+.loadingButton{
+  color: white;
+  position: absolute;
+  margin: auto
 }
 
 
