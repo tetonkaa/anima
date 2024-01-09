@@ -15,40 +15,29 @@ export default function ResultsPage(props) {
     userResult: props.userResult,
   };
 
+
+  const [runFunction, setRunFunction] = useState(false)
+
+
   useEffect(() => {
-    console.log("firstStep"+ hasEffectRun)
-    const getTestResults = async () => {
-      try {
-        const response = await axios.post(
-          props.URL + "result/" + thisTest,
-          resultParam
-        );
-        console.log("RESPONSE AFTER API CALL", response.data);
-        setRenderedResult(response.data);
-      } catch (error) {
-        console.error("error posting test", error);
-      }
-    };
-  
-    if (hasEffectRun === false) {
-      getTestResults();
-      sethasEffectRun(true);
-    }
-    console.log(hasEffectRun)
-    console.log(renderedResult);
-  }, []);
-  const handleClick = async () => {
-    try {
-      const response = await axios.post(
-        props.URL + "result/" + thisTest,
-        resultParam
-      );
-      console.log("test post successful", response);
-      setRenderedResult(response.data);
-    } catch (error) {
-      console.error("error posting test", error);
-    }
-  };
+    setRunFunction(true)
+    console.log("first useEffect"+runFunction)
+  }, [])
+
+
+  async function getTestResults() {
+    const { data } = await axios.post(
+      props.URL + "result/" + thisTest,
+      resultParam
+    );
+    setRenderedResult(data);
+  }
+
+
+  useEffect(() => {
+    getTestResults();
+    
+      }, [thisTest, props.userResult]);
 
   useEffect(() => {
     props.setDarkMode(true);
@@ -132,10 +121,7 @@ export default function ResultsPage(props) {
         <AnimaParticles />
       </div>
       <div className="loadingSvg">
-        <button onClick={() => handleClick()} className="loadingButton">
-          {" "}
-          REVEAL
-        </button>
+
         {/* <h1 className=" loader animate__animated animate__pulse animate__infinite 	infinite"> Loading...</h1> */}
         <Loading />
       </div>
