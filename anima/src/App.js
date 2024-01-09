@@ -30,7 +30,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <DefaultNavbar URL={URL} user={user} darkMode={darkMode} />
+        <DefaultNavbar URL={URL} user={user} darkMode={darkMode} />
         <Routes>
           <Route
             path="/"
@@ -73,8 +73,8 @@ function App() {
             }
           />
           <Route
-          path="/profile"
-                      element={
+            path="/profile"
+            element={
               <Profile
                 testId={testId}
                 setUserResult={setUserResult}
@@ -88,13 +88,19 @@ function App() {
           />
           <Route
             path="/create"
-            element={<CreatePage URL={URL} user={user} setTestId={setTestId} />}
+            element={
+              <CreatePage
+                URL={URL}
+                user={user}
+                darkMode={darkMode}
+                setDarkMode={setDarkMode}
+                setTestId={setTestId}
+              />
+            }
           />
           <Route
             path="/question-add"
-            element={
-              <QuestionCreate URL={URL} user={user}/>
-            }
+            element={<QuestionCreate URL={URL} user={user} />}
           />
           <Route
             path="/result"

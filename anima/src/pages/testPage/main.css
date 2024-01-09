@@ -59,6 +59,37 @@
   margin-bottom: 5vh;
 }
 
+
+
+.questionContainer{
+  border: dotted red;
+}
+
+.answerOptions{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5vw;
+}
+
+.answerSelection span{
+  background-color: white;
+  width: 40vw;
+  padding: 2vw;
+  justify-content: space-evenly;
+  font-size: 1.5em;
+  border-radius: 4px;
+  box-shadow: 2px 5px 12px 1px rgba(0, 0, 0, 0.82);
+}
+
+input[type="radio"] {
+  visibility: hidden;
+}
+
+.answerSelection input[type="radio"]:checked + span {
+  background-color: #abcdef; 
+}
+
 .fadeIn{
   
   animation: fadeIn 1s ease-in;

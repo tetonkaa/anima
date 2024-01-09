@@ -24,6 +24,10 @@ export default function CreatePage(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    props.setDarkMode(true);
+  }, []);
+  
+  useEffect(() => {
     if (Object.keys(props.user).length > 0) {
       setTestData((testData) => {
         const value = props.user.uid;

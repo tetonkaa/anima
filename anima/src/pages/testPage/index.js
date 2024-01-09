@@ -29,7 +29,7 @@ export default function TestPage(props) {
   async function getQuestions() {
     const { data } = await axios.get(props.URL + "test-questions/" + thisTest);
     setQuestions(data);
-    console.log(questions+"questions log")
+    console.log(questions + "questions log");
     return data;
   }
 
@@ -43,8 +43,7 @@ export default function TestPage(props) {
     }
   }, []);
 
-
-  console.log(localStorage.getItem("currentTestId"))
+  console.log(localStorage.getItem("currentTestId"));
   useEffect(() => {
     props.setDarkMode(true);
   }, []);
@@ -94,23 +93,22 @@ export default function TestPage(props) {
   async function handleAnswerSubmit() {
     const updateProps = (response) => {
       props.setUserResult(response);
-      
     };
     axios.post(props.URL + "submit", userAnswers).then((response) => {
       updateProps(response.data.finalResult);
     });
     navigate("/result");
   }
-  console.log(answeredQuestions)
-  console.log(userAnswers)
+  console.log(answeredQuestions);
+  console.log(userAnswers);
 
   return questions.length > 0 ? (
     <div className="testPageContainer">
       <ToastContainer />
 
-<div className="mainPageSvg">
-            <AnimaParticles />
-          </div>
+      <div className="mainPageSvg">
+        <AnimaParticles />
+      </div>
       <input type="text" value={inviteLink} id="linkShare"></input>
       <button
         className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
@@ -119,42 +117,42 @@ export default function TestPage(props) {
       >
         Share This Test
       </button>
-      <div>
-      {questions.map((questionItem, i) => {
-        return i === currentQuestionIndex ? (
-          <div key={questionItem._id}>
-            <div
-              className={`flex testPageCards flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 ${
-                animateQuestion ? "fadeIn" : ""
-              }`}
-              onAnimationEnd={handleAnimationEnd}
-            >
-              <div className="flex flex-col justify-between p-4 leading-normal">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  {questionItem.question}
-                </h5>
-                <ul>
-                  {questionItem.answerChoices.map((answer) => (
-                    <li key={answer._id}>
-                      <label>
-                        <input
-                          type="radio"
-                          name={questionItem._id}
-                          value={answer.Score}
-                          id={answer.Label}
-                          onChange={(event) => handleAnswerValue(event, answer)}
-                        />
-                        <span className="answer">{answer.Answer}</span>
-                      </label>
-                    </li>
-                  ))}
-                </ul>
+      <div className="questionContainer">
+        {questions.map((questionItem, i) => {
+          return i === currentQuestionIndex ? (
+            <div key={questionItem._id}>
+              <div
+                className={`flex testPageCards flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 ${
+                  animateQuestion ? "fadeIn" : ""
+                }`}
+                onAnimationEnd={handleAnimationEnd}
+              >
+                <div className="flex flex-col justify-between p-4 leading-normal">
+                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    {questionItem.question}
+                  </h5>
+                </div>
               </div>
+              
+              <ul className="answerOptions">
+                {questionItem.answerChoices.map((answer) => (
+                  <li key={answer._id}>
+                    <label className="answerSelection" htmlFor={answer.Label}>
+                      <input
+                        type="radio"
+                        name={questionItem._id}
+                        value={answer.Score}
+                        id={answer.Label}
+                        onChange={(event) => handleAnswerValue(event, answer)}
+                      />
+                      <span className="answer">{answer.Answer}</span>
+                    </label>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
-        ) : null;
-        
-      })}
+          ) : null;
+        })}
       </div>
 
       <button
