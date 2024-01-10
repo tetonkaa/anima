@@ -64,12 +64,6 @@ resultCard {
 
 
 @media screen and (max-width: 1227px) {
-  .testPageContainer button {
-    width: 35vw;
-    margin: auto;
-    margin-top: 20vh;
-    font-size: 1.5em;
-  }
   .mainPageCards:hover {
     transform: none;
   }
@@ -115,12 +109,7 @@ resultCard {
 }
 
 @media screen and (max-width: 724px) {
-  .testPageContainer button {
-    width: 35vw;
-    margin: auto;
-    margin-top: 20vh;
-    font-size: 1.2em;
-  }
+
   .mainPageCards:hover {
     transform: none;
   }
@@ -145,12 +134,7 @@ resultCard {
 
 
 @media screen and (max-width: 744px) {
-  .testPageContainer button {
-    width: 35vw;
-    margin: auto;
-    margin-top: 20vh;
-    font-size: 1.5em;
-  }
+
   .mainPageCards:hover {
     transform: none;
   }
@@ -179,12 +163,7 @@ resultCard {
 
 
 @media screen and (max-width: 433px) {
-  .testPageContainer button {
-    width: 35vw;
-    margin: auto;
-    margin-top: 20vh;
-    font-size: 1.5em;
-  }
+
   .mainPageCards:hover {
     transform: none;
   }
@@ -204,12 +183,7 @@ resultCard {
 
 
 @media screen and (max-width: 428px) {
-  .testPageContainer button {
-    width: 35vw;
-    margin: auto;
-    margin-top: 20vh;
-    font-size: 1.5em;
-  }
+
   .mainPageCards:hover {
     transform: none;
   }

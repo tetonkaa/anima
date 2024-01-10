@@ -6,10 +6,6 @@ import "./main.css";
 import { Routes, Route, Link } from "react-router-dom";
 import { ReactComponent as Loading } from "../../assets/loading.svg";
 import AnimaParticles from "../../components/ Particles";
-import { ReactComponent as Blob1 } from "../../assets/blob-haikei(1).svg";
-import { ReactComponent as Blob2 } from "../../assets/blob-haikei(2).svg";
-import { ReactComponent as Blob3 } from "../../assets/blob-haikei(3).svg";
-import { ReactComponent as Blob4 } from "../../assets/blob-haikei(4).svg";
 import BackgroundImage from "../../assets/testBgImage.png";
 export default function MainPage(props) {
   const [tests, setTests] = useState([]);
