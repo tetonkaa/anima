@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   getAuth,
@@ -16,7 +17,7 @@ export default function Signin(props) {
   const [confirmPwd, setConfirmPwd] = useState("");
   const [isRegistered, setIsRegistered] = useState(true);
   const [success, setSuccess] = useState(false);
-
+  const navigate = useNavigate()
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
 
@@ -30,13 +31,12 @@ export default function Signin(props) {
         );
         props.setUser(userCredential.user);
         setSuccess(true);
+        navigate("/profile")
         window.location.reload(true);
-        // console.log("pulled user object" + props.user.email);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // console.log(errorCode, errorMessage);
       });
   };
 
@@ -50,12 +50,12 @@ export default function Signin(props) {
         );
         props.setUser(userCredential.user);
         setSuccess(true);
+        navigate("/profile")
         window.location.reload(true);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // console.log(errorCode, errorMessage);
       });
   };
 
@@ -63,20 +63,17 @@ export default function Signin(props) {
     e.preventDefault();
     signInWithPopup(auth, provider)
       .then((result) => {
-        // const credential = GoogleAuthProvider.credentialFromResult(result);
-        // const token = credential.accessToken;
         localStorage.setItem("userDetails", JSON.stringify(result.user));
         props.setUser(result.user);
         setSuccess(true);
+        navigate("/profile")
         window.location.reload(true);
-        // console.log("pulled user object" + props.user);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         const email = error.customData.email;
         const credential = GoogleAuthProvider.credentialFromError(error);
-        // console.log(errorCode, errorMessage, email, credential);
       });
   };
 

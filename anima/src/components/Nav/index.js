@@ -1,11 +1,19 @@
 import "./main.css";
+import { useNavigate } from "react-router-dom";
 
-const handleLogout = () => {
-  localStorage.clear();
-  window.location.reload("/");
-};
+
+
+
+
 
 export default function DefaultNavbar(props) {
+
+  const navigate = useNavigate()
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/");
+    window.location.reload("/");
+  };
   return (
     <>
       <nav class="bg-white navStyle dark:bg-gray-900 relative w-full z-20 top-0 left-0  border-gray-200 dark:border-gray-600">
@@ -73,6 +81,16 @@ export default function DefaultNavbar(props) {
                   Home
                 </a>
               </li>
+              {props.user ? (
+                <li>
+                  <a
+                    href="/profile"
+                    class={`navItems block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0  dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ${ props.darkMode ?  "text-white" : "text-black"} `}
+                  >
+                    Profile
+                  </a>
+                </li>
+              ) : null}
               {props.user ? (
                 <li>
                   <a

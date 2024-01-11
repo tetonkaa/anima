@@ -9,6 +9,7 @@ import React, { useState, useEffect } from "react";
 import CreatePage from "./pages/createPage";
 import ResultsPage from "./pages/resultsPage";
 import HomePage from "./pages/Home";
+import Profile from "./pages/Profile";
 import Footer from "./components/Footer";
 import { db } from "./services/firebase.config";
 import Signin from "./pages/AuthPage/Signin";
@@ -28,8 +29,8 @@ function App() {
 
   return (
     <>
-      <DefaultNavbar URL={URL} user={user} darkMode={darkMode} />
       <BrowserRouter>
+        <DefaultNavbar URL={URL} user={user} darkMode={darkMode} />
         <Routes>
           <Route
             path="/"
@@ -72,14 +73,34 @@ function App() {
             }
           />
           <Route
+            path="/profile"
+            element={
+              <Profile
+                testId={testId}
+                setUserResult={setUserResult}
+                userResult={userResult}
+                URL={URL}
+                user={user}
+                darkMode={darkMode}
+                setDarkMode={setDarkMode}
+              />
+            }
+          />
+          <Route
             path="/create"
-            element={<CreatePage URL={URL} user={user} setTestId={setTestId} />}
+            element={
+              <CreatePage
+                URL={URL}
+                user={user}
+                darkMode={darkMode}
+                setDarkMode={setDarkMode}
+                setTestId={setTestId}
+              />
+            }
           />
           <Route
             path="/question-add"
-            element={
-              <QuestionCreate URL={URL} user={user}/>
-            }
+            element={<QuestionCreate URL={URL} user={user} />}
           />
           <Route
             path="/result"
