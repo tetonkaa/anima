@@ -103,6 +103,7 @@
   padding: 2vw;
   justify-content: space-between;
   font-size: 1.5em;
+  user-select: none;
   overflow: auto;
   border-radius: 4px;
   color: white;
@@ -150,6 +151,7 @@ input[type="radio"] {
     margin: auto;
     margin-top: 2vh;
     font-size: 1.5em;
+    pointer-events: none;
     margin-bottom: 2vh;
   }
 
@@ -171,6 +173,7 @@ input[type="radio"] {
     padding: 2vw;
     justify-content: space-between;
     font-size: 1.2em;
+    pointer-events: none;
     border-radius: 4px;
     color: white;
     box-shadow: 2px 5px 12px 1px rgba(0, 0, 0, 0.82);
