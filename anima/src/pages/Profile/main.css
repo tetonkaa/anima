@@ -1,9 +1,40 @@
 .profilePageContainer {
-  border: dotted rgb(43, 255, 0);
   height: 100%;
+}
+
+.profileCardContainer {
+  border: solid rgba(192, 192, 192, 0.76);
+  justify-content: space-between;
+  height: 100%;
+  width: 75%;
+  flex-wrap: wrap;
+  margin: auto;
 }
 
 .profilePageContainer h1 {
   text-align: center;
+  margin-top: 4vh;
+  font-size: larger;
   font-weight: bolder;
+  font-family: Julius Sans One;
+}
+.profilePageContainer h1:nth-of-type(2) {
+  text-align: center;
+  margin-top: 8vh;
+  margin-bottom: 2vh;
+  font-weight: lighter;
+  color: gray;
+}
+.profilePic {
+  margin: auto;
+  padding-top: 4vh;
+  border-radius: 50%;
+}
+
+.testsPlaceholder {
+  text-align: center;
+  margin: auto;
+  font-weight: lighter;
+  color: gray;
+  padding: 10vw;
 }

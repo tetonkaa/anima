@@ -10,7 +10,7 @@
     #8a1e5a,
     #a9141b
   );
-  
+
   background-size: 300% 300%;
   border-radius: 0px 0px 10px 10px;
   animation: gradient-animation 30s ease infinite;
@@ -21,9 +21,7 @@
 
 .mainCard {
   margin: 0 auto;
-
 }
-
 
 .mainPageCards h5 {
   font-size: 2em;
@@ -35,10 +33,7 @@
   z-index: -1;
   display: flex;
   flex-direction: column;
-
 }
-
-
 
 #visual1 path {
   animation: 18s ease-in svgFillColorizer1 infinite alternate-reverse;
@@ -57,7 +52,7 @@
   animation: 13s ease-in svgFillColorizer4 infinite alternate-reverse;
 }
 
-#visual4{
+#visual4 {
   margin-top: 10vh;
   margin-left: 25vw;
 }
@@ -67,8 +62,8 @@
   animation: fadeIn 0.3s ease-in;
 }
 
-.mainPageContainer h1{
- font-family: Julius Sans One ;
+.mainPageContainer h1 {
+  font-family: Julius Sans One;
 }
 
 .resultCard {
@@ -195,15 +190,13 @@ button:disabled {
   cursor: not-allowed;
 }
 
-
-@media screen and (max-width: 1558px){
-  .mainCardContainer{
-    flex-direction: column
+@media screen and (max-width: 1558px) {
+  .mainCardContainer {
+    flex-direction: column;
   }
 }
 
 @media screen and (max-width: 428px) {
-
   .mainPageCards:hover {
     transform: none;
   }
@@ -229,8 +222,6 @@ button:disabled {
     box-shadow: 1px 5px 18px 2px rgba(0, 0, 0, 0.419);
   }
 
-
-
   .mainPageSvg {
     height: 100%;
     width: 75vw;
@@ -241,5 +232,4 @@ button:disabled {
     fill: red;
     animation: 3s ease-in svgColorizer infinite;
   }
-
 }
