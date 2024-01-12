@@ -76,6 +76,7 @@ function App() {
             path="/profile"
             element={
               <Profile
+                setTestId={setTestId}
                 testId={testId}
                 setUserResult={setUserResult}
                 userResult={userResult}
