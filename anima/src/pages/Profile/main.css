@@ -1,0 +1,9 @@
+.profilePageContainer {
+  border: dotted rgb(43, 255, 0);
+  height: 100%;
+}
+
+.profilePageContainer h1 {
+  text-align: center;
+  font-weight: bolder;
+}
