@@ -29,9 +29,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "npm i --force serve -g && serve -s build",
+    "start": "cd anima && react-scripts start",
     "local": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "cd anima && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
